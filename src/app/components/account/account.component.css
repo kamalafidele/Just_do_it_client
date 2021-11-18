@@ -1,0 +1,39 @@
+div.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../../assets/Images/Back3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+div.content-container{
+    width:50%;
+    margin-top: 5%;
+    padding: 10px;
+    background-color: white;
+}
+div.head h2.header{
+    text-align: center;
+    color: hsl(0, 50%, 40%);
+    font-size: 50px;
+}
+div.head p{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+@media only screen and (max-width:620px){
+    div.container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    div.content-container{
+        width:98%;
+        padding: 10px;
+    }
+}

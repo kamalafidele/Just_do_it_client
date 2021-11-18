@@ -1,0 +1,53 @@
+
+<h2 class="head">Create New Account</h2>
+<div class="signup-container">
+  <form  > 
+    <mat-horizontal-stepper linear>
+
+      <mat-step label="First Step " [completed]="firstStepCompleted">
+        <div class="row">
+            <mat-form-field appearance="outline" class="inputs">
+                <mat-label>Username</mat-label>
+                <input type="text"  matInput [(ngModel)]="username" name="username"  />
+              </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline" class="inputs">
+                <mat-label>Email</mat-label>
+                <input type="email"  matInput [(ngModel)]="email" name="email"  (change)="checkStep()" />
+              </mat-form-field>
+              <button mat-raised-button matStepperNext color="primary" 
+              style="display: block;" [disabled]="!firstStepCompleted" >Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step label="Last Step " completed=false>
+        <div class="row">
+            <mat-form-field appearance="outline" class="inputs">
+                <mat-label>Password</mat-label>
+                <input type="password"  matInput [(ngModel)]="password"  name="password"  />
+              </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline" class="inputs">
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" matInput [(ngModel)]="confirmPassword" name="confirmPassword"  />
+              </mat-form-field>
+           <p class="error" *ngIf="withErrors">{{error}}</p>
+        </div>
+        <div class="row">
+            <button mat-raised-button class="btn" color="primary" type="submit" (click)="register()">
+            <span *ngIf="!isLoading">Sign Up</span>  <div *ngIf="isLoading" class="loader"></div></button>
+            <button mat-raised-button matStepperPrevious color="accent" style="display: block;margin-top: 6px;">Back</button>
+        </div>
+      </mat-step>
+
+      </mat-horizontal-stepper>
+  </form>
+
+
+</div>
+<div class="row">
+     Already have an account? <button mat-button matStepperPrevious color="primary">Login</button>
+</div>
+ 
