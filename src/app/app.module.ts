@@ -34,6 +34,7 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
     EmailSentComponent,
     AskQuestionComponent
   ],
+  entryComponents:[AskQuestionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -18,7 +18,7 @@
             </div>
         </div>
      <div class="profile-question-container">
-         <button class="add-question">Add question</button>
+         <button class="add-question" (click)="openQuestionDialog()">Add question</button>
          <div class="user-img-container">
              <img [src]="userImg" alt="" class="user-profile">
          </div>
@@ -30,11 +30,8 @@
           <div class="user-workspaces">
               <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces" 
                >
-              <a routerLink="/issues/{{userWorkspace.name}}/{{userWorkspace._id}}" >
                 <img src="{{userWorkspace.picture}}"  alt="{{userWorkspace.name}}" class="topic-profile">
                 <h3 class="topic-name" matBadge="'" matBadgePosition="above before" matBadgeColor="warn">{{userWorkspace.name}}</h3>
-              </a>
-
               </div>
           </div>
         </div>

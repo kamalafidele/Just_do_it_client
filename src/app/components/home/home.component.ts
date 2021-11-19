@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AskQuestionComponent } from '../ask-question/ask-question.component';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
    userImg:any=this.user.profile;
    userWorkspaces:any=[];
 
-  constructor(private router:Router,private workspaceSer:WorkspacesService) { }
+  constructor(private router:Router,private workspaceSer:WorkspacesService, public dialog:MatDialog) { }
 
   ngOnInit(): void {
      this.workspaceSer.getUserWorkspaces()
@@ -23,5 +25,7 @@ export class HomeComponent implements OnInit {
      if(this.userWorkspaces.length > 5)
         this.router.navigate(["/workspace"]);
   }
-
+  openQuestionDialog(){
+      this.dialog.open(AskQuestionComponent);
+  }
 }
