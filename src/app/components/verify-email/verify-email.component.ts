@@ -20,6 +20,7 @@ export class VerifyEmailComponent implements OnInit {
         this.verificationCode= params.get("id") ;
      
     });
+    
     let data={verificationCode:this.verificationCode};
     this.service.verifyEmail(data)
     .subscribe((res:any) =>{

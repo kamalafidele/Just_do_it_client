@@ -9,7 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { WorkspaceComponent } from './components/workspace/workspace.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './components/login/login.component';
@@ -19,17 +19,20 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { EmailSentComponent } from './components/email-sent/email-sent.component';
 import { AppRoutesModule } from './app-routes/app-routes.module';
 import { AuthGuardService } from './services/auth-guard.service';
+import { WorkspacesService } from './services/workspaces.service';
+import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     HomeComponent,
-    DashboardComponent,
+    WorkspaceComponent,
     LoginComponent,
     RegisterComponent,
     VerifyEmailComponent,
-    EmailSentComponent
+    EmailSentComponent,
+    AskQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     MaterialModule,
     AppRoutesModule
   ],
-  providers: [LoginRegisterService,AuthGuardService],
+  providers: [LoginRegisterService,AuthGuardService,WorkspacesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

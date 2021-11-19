@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit{
      let user=localStorage.getItem("justDoItUser");
 
      if(this.loginService.isLoggedIn() && user){
-        this.router.navigate(["/worspace"]);
+        this.router.navigate(["/"]);
      }
    }
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit{
       localStorage.setItem("justDoitTokAuth",res.token);
       localStorage.setItem("justDoItUser",JSON.stringify(res.user));
       
-      this.router.navigate(["/workspace"]);
+      this.router.navigate(["/"]);
       
     },
     (err:any) =>{
