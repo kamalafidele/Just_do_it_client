@@ -1,0 +1,69 @@
+div.navbar{
+    width:100%;
+    height: 60px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    -webkit-box-shadow: 0 10px 6px -6px rgb(216, 216, 216);
+    -moz-box-shadow: 0 10px 6px -6px rgb(216, 216, 216);
+     box-shadow: 0 10px 6px -6px rgb(216, 216, 216);
+     padding: 10px;
+}
+
+h2.header{
+    color: hsl(0, 50%, 40%);
+    font-size: 40px;
+    padding-left: 20px;
+}
+div.workspaces-container{
+    width: 50%;
+    height: 520px;
+    border-radius: 5px;
+    background-color: white;
+    margin: 10px auto;
+    border: 1px solid rgb(204, 204, 204);
+}
+div.lastStep{
+    padding: 10px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    background-color: rgb(224, 224, 224);
+}
+div.workspaces{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   padding: 10px;
+}
+div.workspace{
+    width:24%;
+    cursor: pointer;
+    position: relative;
+}
+div.workspace img{
+    width: 100%;
+    height: 100px;
+    border-radius: 3px;
+}
+span.workspace-title{
+    color: white;
+    position: relative;
+    bottom: 30px;
+    font-weight: bold;
+    left: 10px;
+}
+.check{
+    border-radius: 50%;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.select-container{
+    border-top: 1px solid rgb(204, 204, 204);
+    padding: 10px;
+    background-color: rgb(194, 194, 194);
+}

@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     let user=localStorage.getItem("justDoItUser");
 
     if(this.registerService.isLoggedIn() && user){
-      this.router.navigate(["/workspace"]);
+      this.router.navigate(["/"]);
     }
   }
 

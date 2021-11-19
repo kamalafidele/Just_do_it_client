@@ -1,3 +1,48 @@
 <div class="container">
+    <div class="navbar">
+        <div class="head-search">
+            <h2 class="header">JustDoit</h2>
+            <div class="input-container">
+                <input type="search"  name="searchTerm" class="input" placeholder=" Search JustdoIt"/>
+                <div class="icon-container">
+                    <mat-icon class="icon">search</mat-icon>
+                </div>
+            </div>
+            <div class="home-icon-container">
+                <mat-icon class="home-icon">home</mat-icon>
+            </div>
+            <div class="notification-container">
+                <div class="notification-icon-container">
+                    <mat-icon class="notification-icon" matBadge="4" matBadgeColor="warn">notifications_none</mat-icon>
+                </div>
+            </div>
+        </div>
+     <div class="profile-question-container">
+         <button class="add-question">Add question</button>
+         <div class="user-img-container">
+             <img [src]="userImg" alt="" class="user-profile">
+         </div>
+     </div>
+    </div>
 
+    <div class="content-container">
+        <div class="left-sidebar">
+          <div class="user-workspaces">
+              <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces" 
+               >
+              <a routerLink="/issues/{{userWorkspace.name}}/{{userWorkspace._id}}" >
+                <img src="{{userWorkspace.picture}}"  alt="{{userWorkspace.name}}" class="topic-profile">
+                <h3 class="topic-name" matBadge="'" matBadgePosition="above before" matBadgeColor="warn">{{userWorkspace.name}}</h3>
+              </a>
+
+              </div>
+          </div>
+        </div>
+        <div class="middle">
+
+        </div>
+        <div class="right-sidebar">
+          
+        </div>
+    </div>
 </div>

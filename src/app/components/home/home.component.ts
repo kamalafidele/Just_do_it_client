@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginRegisterService } from 'src/app/services/login-register.service';
+import { WorkspacesService } from 'src/app/services/workspaces.service';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +8,20 @@ import { LoginRegisterService } from 'src/app/services/login-register.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+   user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
+   userImg:any=this.user.profile;
+   userWorkspaces:any=[];
 
-  constructor(private loginService:LoginRegisterService,private router:Router) { }
+  constructor(private router:Router,private workspaceSer:WorkspacesService) { }
 
   ngOnInit(): void {
-    let user=localStorage.getItem("justDoItUser");
+     this.workspaceSer.getUserWorkspaces()
+     .subscribe((res:any) =>{
+       this.userWorkspaces=res.userWorkspaces[0].workspaces;
+     })
 
-    if(this.loginService.isLoggedIn() && user){
-      this.router.navigate(["/workspace"]);
-    }
+     if(this.userWorkspaces.length > 5)
+        this.router.navigate(["/workspace"]);
   }
 
 }
