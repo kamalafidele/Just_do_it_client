@@ -12,4 +12,12 @@ export class AnswersService {
   addAnswer(data:any){
     return this.http.post("http://localhost:4500/api/justdoit/answers/addAnswer",data,{headers:{"Bearer":`${this.token}`}});
   }
+
+  upVote(data:any){
+    return this.http.post("http://localhost:4500/api/justdoit/answers/upVoteAnswer",data,{headers:{"Bearer":`${this.token}`}})
+  }
+
+  downVote(data:any){
+    return this.http.post("http://localhost:4500/api/justdoit/answers/downVoteAnswer",data,{headers:{"Bearer":`${this.token}`}})
+  }
 }

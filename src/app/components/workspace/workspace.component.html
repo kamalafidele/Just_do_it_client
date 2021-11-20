@@ -19,7 +19,9 @@
             [disabled]="selectedWorkspaces.length!=5">
             <span *ngIf="selectedWorkspaces.length<5">Choose</span>  
             {{selectedWorkspaces.length<5 ? 5-selectedWorkspaces.length: ''}} <span *ngIf="selectedWorkspaces.length<5">topics</span>
-                <span *ngIf="selectedWorkspaces.length==5">Continue</span>
+                <span *ngIf="selectedWorkspaces.length==5"> 
+                    <span *ngIf="!isLoading">Continue</span> <div *ngIf="isLoading" class="loader"></div> 
+                </span>
             </button>
         </div>
     </div>

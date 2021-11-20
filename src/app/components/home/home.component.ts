@@ -22,11 +22,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
      this.workspaceSer.getUserWorkspaces()
      .subscribe((res:any) =>{
+       
+      if(res.userWorkspaces[0].workspaces.length < 5)
+          this.router.navigate(["/workspace"]);
+          
        this.userWorkspaces=res.userWorkspaces[0].workspaces;
      })
 
-     if(this.userWorkspaces.length > 5)
-        this.router.navigate(["/workspace"]);
   }
   openQuestionDialog(){
       this.dialog.open(AskQuestionComponent);

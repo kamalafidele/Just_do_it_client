@@ -38,7 +38,7 @@
         </div>
         <div class="middle">
            <div *ngIf="noneChecked" class="allQuestions">
-                <h2>This is me</h2>
+                <all-topics></all-topics>
            </div>
            <div class="specifiTopic" *ngIf="!noneChecked">
                <specific-topic [passedTopic]="checkedWorkspace"></specific-topic>

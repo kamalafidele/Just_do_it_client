@@ -67,3 +67,21 @@ div.select-container{
     padding: 10px;
     background-color: rgb(194, 194, 194);
 }
+
+div.loader{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 7px lightgray solid;
+    border-top: 7px #3D52B4 solid;
+    animation: spinner 1s linear infinite;
+    margin: 0px auto;
+}
+@keyframes spinner{
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }

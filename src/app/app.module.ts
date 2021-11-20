@@ -23,6 +23,7 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SpecificTopicComponent } from './components/specific-topic/specific-topic.component';
 import { AddAnswerComponent } from './components/add-answer/add-answer.component';
+import { AllTopicsComponent } from './components/all-topics/all-topics.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddAnswerComponent } from './components/add-answer/add-answer.component
     EmailSentComponent,
     AskQuestionComponent,
     SpecificTopicComponent,
-    AddAnswerComponent
+    AddAnswerComponent,
+    AllTopicsComponent
   ],
   entryComponents:[AskQuestionComponent,AddAnswerComponent],
   imports: [
