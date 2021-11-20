@@ -7,6 +7,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatSelectModule} from "@angular/material/select";
 
 export const MaterialComponents=[
   MatInputModule,
@@ -15,7 +16,8 @@ export const MaterialComponents=[
   MatCheckboxModule,
   MatIconModule,
   MatBadgeModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule
 ];
 
 @NgModule({

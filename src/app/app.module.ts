@@ -21,6 +21,8 @@ import { AppRoutesModule } from './app-routes/app-routes.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { WorkspacesService } from './services/workspaces.service';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { SpecificTopicComponent } from './components/specific-topic/specific-topic.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
     RegisterComponent,
     VerifyEmailComponent,
     EmailSentComponent,
-    AskQuestionComponent
+    AskQuestionComponent,
+    SpecificTopicComponent
   ],
   entryComponents:[AskQuestionComponent],
   imports: [
@@ -43,7 +46,8 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AppRoutesModule
+    AppRoutesModule,
+    AngularEditorModule
   ],
   providers: [LoginRegisterService,AuthGuardService,WorkspacesService],
   bootstrap: [AppComponent]

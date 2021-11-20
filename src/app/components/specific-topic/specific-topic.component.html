@@ -1,0 +1,25 @@
+<div class="questions">
+    <div class="question" *ngFor="let question of questions">
+        <div class="asked-by">
+            <div class="left">
+                <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
+                <strong class="askedBy-username">{{question.askedBy.username}}</strong>
+            </div>
+            <div class="right"><mat-icon class="close-icon">close</mat-icon></div>
+        </div>
+        <div class="question-container">
+            <p class="question-body"><strong>{{question.question}}</strong></p>
+            <div class="images" *ngIf="question.images.length > 0">
+                <img src="{{question.images[0]}}" alt="" class="question-img">
+            </div>
+            
+        </div>
+        <div class="answer-section">
+            <div class="votes-add-answers">
+                <div class="icon-1 ico-container"><mat-icon class="arrow_upward">arrow_upward</mat-icon> Like</div>
+                <div class="icon-2 ico-container"><mat-icon class="arrow_downward">arrow_downward</mat-icon> Dislike</div>
+                <div class="icon-3 ico-container"><mat-icon class="reply_all">reply_all</mat-icon> Answer</div>
+            </div>
+        </div>
+    </div>
+</div>
