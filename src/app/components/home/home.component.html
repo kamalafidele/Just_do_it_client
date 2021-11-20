@@ -20,7 +20,7 @@
      <div class="profile-question-container">
          <button class="add-question" (click)="openQuestionDialog()">Add question</button>
          <div class="user-img-container">
-             <img [src]="userImg" alt="" class="user-profile">
+             <img [src]="userImg" alt="user.username" class="user-profile">
          </div>
      </div>
     </div>
@@ -28,14 +28,21 @@
     <div class="content-container">
         <div class="left-sidebar">
           <div class="user-workspaces">
-              <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces" 
-               >
+              <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces;trackBy: trackWorkspace" 
+              [class.active]="userWorkspace.isChecked"
+                (click)="toggleCheck(userWorkspace)">
                 <img src="{{userWorkspace.picture}}"  alt="{{userWorkspace.name}}" class="topic-profile">
                 <h3 class="topic-name" matBadge="'" matBadgePosition="above before" matBadgeColor="warn">{{userWorkspace.name}}</h3>
               </div>
           </div>
         </div>
         <div class="middle">
+           <div *ngIf="noneChecked" class="allQuestions">
+                <h2>This is me</h2>
+           </div>
+           <div class="specifiTopic" *ngIf="!noneChecked">
+               <specific-topic [passedTopic]="checkedWorkspace"></specific-topic>
+           </div>
 
         </div>
         <div class="right-sidebar">
