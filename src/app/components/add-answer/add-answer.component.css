@@ -1,0 +1,32 @@
+.answer-container{
+    width: 500px;
+}
+textarea{
+    padding: 10px;
+    font-size: 20px;
+}
+.select-workspace{
+    width: 400px;
+    display: block;
+}
+
+.error{
+    color: crimson;
+}
+div.loader{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 7px lightgray solid;
+    border-top: 7px #3D52B4 solid;
+    animation: spinner 1s linear infinite;
+    margin: 0px auto;
+}
+@keyframes spinner{
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
