@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
 
@@ -10,19 +11,25 @@ export class WorkspaceComponent implements OnInit {
   workspaces:any =[];
   selectedWorkspaces:any=[];
   isChecked=false;
+  isLoading=false;
 
-  constructor(private workspaceService:WorkspacesService) { }
+  constructor(private workspaceService:WorkspacesService,private router:Router) { }
 
   ngOnInit(): void {
       this.workspaceService.getAllWorkspaces()
       .subscribe((res:any) =>{
       this.workspaces=res.workspaces;
-      
       },
       (err:any) =>{
         console.log("Error: ",err); 
       }
       )
+
+      this.workspaceService.getUserWorkspaces()
+      .subscribe((res:any) =>{
+        if(res.userWorkspaces[0].workspaces.length >= 5)
+           this.router.navigate(["/"]);
+      })
   }
 
   trackWorkspace(workspace:any,index:number){
@@ -38,11 +45,14 @@ export class WorkspaceComponent implements OnInit {
   }
 
   submitWorspaces(){
+    this.isLoading=true;
     this.workspaceService.addUserWorkspaces(this.selectedWorkspaces) 
     .subscribe((res:any) =>{
-      console.log("Res: ",res);
+      this.isLoading=false;
+      this.router.navigate(["/"]);
     },
     (err:any) =>{
+      this.isLoading=false;
       console.log("Error: ",err);
     }
     )

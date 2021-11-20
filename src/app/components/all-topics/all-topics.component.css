@@ -1,4 +1,4 @@
-.question,div.workspace-details{
+.question{
     background-color: white;
     border-top: 2px solid rgb(177, 177, 177);
     border-radius: 2px;
@@ -12,18 +12,6 @@
 .question:hover{
     background-color: rgb(219, 219, 219);
 
-}
-.workspace-name{
-    font-weight: bold;
-}
-div.workspace-details img.workspace-img{
-    width: 90%;
-    border-radius: 5px;
-    height: 200px;
-}
-.workspace-description{
-    font-size: 24px;
-    
 }
 .asked-by{
     display: flex;
@@ -99,6 +87,7 @@ div.question-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .word{
     padding-left: 30px;
