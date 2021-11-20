@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +22,7 @@ import { WorkspacesService } from './services/workspaces.service';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SpecificTopicComponent } from './components/specific-topic/specific-topic.component';
+import { AddAnswerComponent } from './components/add-answer/add-answer.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +35,10 @@ import { SpecificTopicComponent } from './components/specific-topic/specific-top
     VerifyEmailComponent,
     EmailSentComponent,
     AskQuestionComponent,
-    SpecificTopicComponent
+    SpecificTopicComponent,
+    AddAnswerComponent
   ],
-  entryComponents:[AskQuestionComponent],
+  entryComponents:[AskQuestionComponent,AddAnswerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

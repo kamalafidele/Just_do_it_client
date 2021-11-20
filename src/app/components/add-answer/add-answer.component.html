@@ -1,0 +1,14 @@
+<div class="answer-container">
+    <form>
+         <p class="question-para"></p>
+        <span *ngIf="errorExists" class="error">{{error}}</span>
+        <angular-editor [(ngModel)]="htmlContent" [config]="config" name="htmlContent"></angular-editor>
+ 
+        <span *ngIf="isImageError" class="error">Only two images allowed. Click Ctrl+Z to reduce them</span>
+        <div class="btn-container">
+            <button mat-raised-button color="primary" (click)="giveAnswer()">
+               <span *ngIf="!isLoading">Answer</span> <div *ngIf="isLoading" class="loader"></div> </button>
+        </div>
+    </form>
+
+</div>

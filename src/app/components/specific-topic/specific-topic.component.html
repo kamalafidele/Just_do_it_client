@@ -9,17 +9,28 @@
         </div>
         <div class="question-container">
             <p class="question-body"><strong>{{question.question}}</strong></p>
-            <div class="images" *ngIf="question.images.length > 0">
-                <img src="{{question.images[0]}}" alt="" class="question-img">
+            <div class="images"  *ngFor="let image of question.images">
+                <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
             </div>
             
         </div>
-        <div class="answer-section">
-            <div class="votes-add-answers">
-                <div class="icon-1 ico-container"><mat-icon class="arrow_upward">arrow_upward</mat-icon> Like</div>
-                <div class="icon-2 ico-container"><mat-icon class="arrow_downward">arrow_downward</mat-icon> Dislike</div>
-                <div class="icon-3 ico-container"><mat-icon class="reply_all">reply_all</mat-icon> Answer</div>
+        <div class="answers" *ngIf="question.answertoshow">
+            <div class="answer" >
+               <p class="answer-para">{{question.answertoshow.answer}}</p>
+               <div class="answer-images"  *ngFor="let answerImages of question.answertoshow.images">
+                <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
             </div>
+            <div class="votes-add-answers">
+                <div class="icon-1 ico-container"><mat-icon class="arrow_upward">arrow_upward</mat-icon> <span class="word">Likes</span></div>
+                <div class="icon-2 ico-container"><mat-icon class="arrow_downward">arrow_downward</mat-icon> <span class="word">Dislikes</span></div>
+                <div class="btn-answer-cont">
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="button-answer-cont">
+            <button class="btn-answer" (click)="openAnsweringDialog(question)">Reply</button>
         </div>
     </div>
 </div>
