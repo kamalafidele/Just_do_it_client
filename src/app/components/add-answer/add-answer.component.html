@@ -1,6 +1,6 @@
 <div class="answer-container">
     <form>
-         <p class="question-para"></p>
+         <p class="question-para">{{passedQuestion.question.question}}</p>
         <span *ngIf="errorExists" class="error">{{error}}</span>
         <angular-editor [(ngModel)]="htmlContent" [config]="config" name="htmlContent"></angular-editor>
  

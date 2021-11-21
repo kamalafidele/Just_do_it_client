@@ -1,0 +1,25 @@
+<div class="profile-container">
+    <div class="profile-container-header">
+        <img [src]="user.profile"  alt="{{user.username}}" class="user-profile-img" *ngIf="!isUploaded">
+        <img [src]="uploadedImgCopy" *ngIf="isUploaded" class="user-profile-img" id="isUploading">
+        <h2>{{user.username}} <strong><em *ngIf="user.isPro" style="color: dodgerblue;">Pro</em></strong> </h2>
+    </div>
+    <div class="upload">
+        <input type="file" name="uploadedImg" id="uploaded" style="display: none;" [(ngModel)]="uploadedImg" (change)="upload($event)">
+        <!-- <label for="uploaded" class="change-profile" *ngIf="!isUploaded">Change profile Picture</label> -->
+        <label for="uploaded" class="change-profile">Change profile Picture</label>
+    </div>
+     <div class="profile-inputs-container">
+         <label for="name"><strong>Username</strong></label>
+         <mat-form-field appearance="outline">
+             <input matInput type="text" name="username" [value]="user.username"  class="username" spellcheck="false" readonly>
+         </mat-form-field>
+     </div>
+     <p class="upload-message" *ngIf="wasUploaded" style="color: green; text-align: center;">Profile picture changed successfully</p>
+    <div class="for-saving" *ngIf="!wasUploaded">
+        <div class="save-para" *ngIf="isUploaded" (click)="save()">
+            <p *ngIf="!isLoading">Save</p> 
+            <div *ngIf="isLoading" class="loader"></div>
+        </div>
+    </div>
+</div>

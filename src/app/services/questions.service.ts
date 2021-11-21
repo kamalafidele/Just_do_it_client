@@ -9,14 +9,14 @@ export class QuestionsService {
   constructor(private http:HttpClient) { }
 
   addQuestion(data:any){
-    return this.http.post("http://localhost:4500/api/justdoit/questions/addQuestion",data,{headers:{"Bearer":`${this.token}`}});
+    return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/questions/addQuestion",data,{headers:{"Bearer":`${this.token}`}});
   }
 
   getAllQuestions(){
-    return this.http.get("http://localhost:4500/api/justdoit/questions/allQuestions",{headers:{"Bearer":`${this.token}`}});
+    return this.http.get("https://justdoitrw.herokuapp.com/api/justdoit/questions/allQuestions",{headers:{"Bearer":`${this.token}`}});
   }
 
   getTopicRelatedQuestions(id:any){
-    return this.http.get(`http://localhost:4500/api/justdoit/questions/topicQuestions/${id}`,{headers:{"Bearer":`${this.token}`}});
+    return this.http.get(`https://justdoitrw.herokuapp.com/api/justdoit/questions/topicQuestions/${id}`,{headers:{"Bearer":`${this.token}`}});
   }
 }

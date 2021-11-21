@@ -33,6 +33,7 @@ export class AllTopicsComponent implements OnInit, OnChanges {
    isLoading=false;
    isUpVote=false;
    isDownVote=false;
+   user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
 
   constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService) { }
 
@@ -40,9 +41,9 @@ export class AllTopicsComponent implements OnInit, OnChanges {
     this.isLoading=true;
      this.questionService.getAllQuestions()
      .subscribe((res:any) =>{
-
        this.isLoading=false;
        this.questions=res.questions;
+       console.log(res.questions);
        this.length=res.questions.length;
      })
     }

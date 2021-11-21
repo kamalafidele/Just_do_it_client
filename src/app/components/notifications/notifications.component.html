@@ -1,0 +1,25 @@
+<div class="notifications-container">
+
+    <div class="loadingQuestions" *ngIf="isLoading">
+        <div class="circle" id="circle1"></div>
+        <div class="circle" id="circle2"></div>
+        <div class="circle" id="circle3"></div>
+    </div>
+
+    <ng-container *ngIf="length>0">
+        <div class="notification" *ngFor="let notification of notifications">
+            <div class="left">
+                <p>{{notification.notificationMessage}}</p>
+            </div>
+            <div>
+                <div class="right"><mat-icon class="close-icon" (click)="removeNotification(notification._id)">close</mat-icon></div>
+            </div>
+        </div>
+    </ng-container>
+
+
+    <div class="no-notification" *ngIf="length <= 0">
+        <p class="no-notification-para">No new Notifications available </p>
+    </div>
+
+</div>

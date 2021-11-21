@@ -11,14 +11,14 @@ export class WorkspacesService {
   getAllWorkspaces(){
     
 
-    return this.http.get("http://localhost:4500/api/justdoit/workspaces/allWorkspaces",{headers:{"Bearer":`${this.token}`}});
+    return this.http.get("https://justdoitrw.herokuapp.com/api/justdoit/workspaces/allWorkspaces",{headers:{"Bearer":`${this.token}`}});
   }
 
   addUserWorkspaces(data:any){
-    return this.http.post("http://localhost:4500/api/justdoit/workspaces/addUser_workspaces",data,{headers:{"Bearer":`${this.token}`}});
+    return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/workspaces/addUser_workspaces",data,{headers:{"Bearer":`${this.token}`}});
   }
 
   getUserWorkspaces(){
-    return this.http.get("http://localhost:4500/api/justdoit/workspaces/userWorkspaces",{headers:{"Bearer":`${this.token}`}});
+    return this.http.get("https://justdoitrw.herokuapp.com/api/justdoit/workspaces/userWorkspaces",{headers:{"Bearer":`${this.token}`}});
   }
 }

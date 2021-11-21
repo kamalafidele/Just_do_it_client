@@ -11,13 +11,10 @@ import { WorkspacesService } from 'src/app/services/workspaces.service';
 })
 export class AskQuestionComponent implements OnInit {
   htmlContent = '';
-  images=document.getElementsByTagName("img");
+  //images=document.getElementsByTagName("img");
   fonts=document.getElementsByTagName("font");
-  insertedImages:any=[];
   enteredQuestion="";
   error="";
-  imageError="";
-  isImageError=false;
   errorExists=false;
   workspaces:any=[];
   selectedWorkspace="";
@@ -60,6 +57,7 @@ export class AskQuestionComponent implements OnInit {
         'link',
         'unlink',
         'insertVideo',
+        'insertImage',
         'insertHorizontalRule',
         'removeFormat',
         'toggleEditorMode'
@@ -96,36 +94,22 @@ export class AskQuestionComponent implements OnInit {
 
   askQuestion(){
      
-    for(let i=0; i<this.images.length; i++){
-     if(!this.images[i].alt){
-      this.insertedImages.push(this.images[i].src)
-     }
-    }
-
     for(let j=0; j<this.fonts.length; j++){
        this.enteredQuestion+=this.fonts[j].innerText+" ";
-       
     }
 
     if(this.selectedWorkspace==""){
        this.topicError=true;
-       this.insertedImages=[];
        this.enteredQuestion="";
     }
     else if(this.enteredQuestion == "" ){
           this.error="Type your question please.";
           this.errorExists=true;
-
-          this.insertedImages=[];
     }
-    else if(this.insertedImages.length >2){
-         this.isImageError=true;
-    }
-    else if(this.insertedImages.length <=2){
+    else {
 
       this.isLoading=true;
-      let data={topic:this.selectedWorkspace,question:this.enteredQuestion,images:this.insertedImages};
-       console.log(data);
+      let data={topic:this.selectedWorkspace,question:this.enteredQuestion};
 
       this.questionServ.addQuestion(data)
       .subscribe((res:any) =>{
@@ -139,7 +123,6 @@ export class AskQuestionComponent implements OnInit {
       )
 
     this.enteredQuestion="";
-    this.insertedImages=[];
     this.topicError=false;
     this.error="";
     }
