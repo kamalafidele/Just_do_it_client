@@ -8,6 +8,9 @@ import { MatIconModule} from "@angular/material/icon";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatListModule} from "@angular/material/list";
+import {MatDividerModule} from "@angular/material/divider";
 
 export const MaterialComponents=[
   MatInputModule,
@@ -17,7 +20,10 @@ export const MaterialComponents=[
   MatIconModule,
   MatBadgeModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatMenuModule,
+  MatListModule,
+  MatDividerModule
 ];
 
 @NgModule({

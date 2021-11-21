@@ -20,7 +20,21 @@
      <div class="profile-question-container">
          <button class="add-question" (click)="openQuestionDialog()">Add question</button>
          <div class="user-img-container">
-             <img [src]="userImg" alt="user.username" class="user-profile">
+             <img [src]="userImg" alt="user.username"  class="user-profile" (click)="toggleSettings()">
+      <!-- [matMenuTriggerFor]="menu" -->
+           <div class="user-settings" *ngIf="showSettings">
+            <button mat-button class="go-to-profile-btn">User Profile</button>
+               <mat-divider></mat-divider>
+               <button mat-button class="logout-btn" (click)="logout()">Logout</button>
+            <!-- <mat-menu  #menu="matMenu">
+                <mat-nav-list>
+                    <mat-list-item> <mat-icon matListIcon>person</mat-icon>Profile</mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item> <mat-icon matListIcon>power_settings_new</mat-icon>Logout</mat-list-item>
+                  </mat-nav-list>
+             </mat-menu> -->
+           </div>
+
          </div>
      </div>
     </div>

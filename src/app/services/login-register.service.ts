@@ -33,4 +33,10 @@ export class LoginRegisterService {
     
      return !isExpired;
    }
+
+   logout(){
+        localStorage.removeItem("justDoitTokAuth");
+        localStorage.removeItem("justDoItUser");
+        return true;
+   }
 }

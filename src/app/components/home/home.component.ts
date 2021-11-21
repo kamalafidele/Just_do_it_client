@@ -1,3 +1,4 @@
+import { LoginRegisterService } from './../../services/login-register.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
@@ -16,8 +17,9 @@ export class HomeComponent implements OnInit {
    userWorkspaces:any=[];
    checkedWorkspace:any;
    noneChecked=true;
+   showSettings=false;
 
- constructor(private router:Router,private workspaceSer:WorkspacesService, public dialog:MatDialog) { }
+ constructor(private router:Router,private workspaceSer:WorkspacesService, public dialog:MatDialog,private loginReg:LoginRegisterService) { }
 
   ngOnInit(): void {
      this.workspaceSer.getUserWorkspaces()
@@ -48,6 +50,15 @@ export class HomeComponent implements OnInit {
         wksp.isChecked=false;
       }
      } )
-  
+     this.showSettings=false;
+   }
+
+   toggleSettings(){
+     this.showSettings=!this.showSettings;
+   }
+
+   logout(){
+     if(this.loginReg.logout())
+       this.router.navigate(["/account"]);
    }
 }
