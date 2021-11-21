@@ -75,6 +75,7 @@ div.home-icon-container{
     padding: 0px 20px;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 .add-question{
     margin-right: 20px;
@@ -93,7 +94,18 @@ div.home-icon-container{
     border-radius: 50%;
     cursor: pointer;
 }
+.user-settings{
+    padding-top: 20px;
+    position: absolute;
+    right: 20px;
+    height: auto;
+    width: 200px;
+    background-color: white;
 
+}
+.user-settings .logout-btn, .user-settings .go-to-profile-btn{
+    width: 100%;
+}
 div.left-sidebar{
     width: 25%;
     height: 90.5%;
