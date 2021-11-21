@@ -19,7 +19,7 @@ div.head-search{
 }
 
 h2.header{
-    color: hsl(0, 35%, 43%);
+    color: dodgerblue;
     font-size: 40px;
     padding-left: 20px;
 }
@@ -61,7 +61,6 @@ div.home-icon-container{
     position: relative;
     right: 8px;
     font-size: 40px;
-    color: dodgerblue;
     cursor: pointer;
 }
 .notification-icon-container{
@@ -111,7 +110,7 @@ div.left-sidebar{
     height: 90.5%;
     position: fixed;
     left: 0;
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(226, 226, 226);
     bottom: 0;
     border-right: 2px solid rgb(177, 177, 177);
     display: flex;
@@ -130,7 +129,7 @@ div.right-sidebar{
     position: fixed;
     right: 0;
     bottom: 0;
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(226, 226, 226);
     border-left: 2px solid rgb(177, 177, 177);
 }
 

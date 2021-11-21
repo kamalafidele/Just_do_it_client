@@ -29,7 +29,7 @@ export class AddAnswerComponent implements OnInit {
     height: '20rem',
     minHeight: '5rem',
     width:'100%',
-    placeholder: 'Enter a question here...',
+    placeholder: 'Enter your answer here...',
     translate: 'no',
     enableToolbar: false,
     defaultParagraphSeparator: 'p',
@@ -81,7 +81,9 @@ export class AddAnswerComponent implements OnInit {
     ]
   };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any,public answerServ:AnswersService,) { } 
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any,public answerServ:AnswersService,) {
+    this.passedQuestion=data;
+   } 
 
   ngOnInit(): void {
 

@@ -24,6 +24,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SpecificTopicComponent } from './components/specific-topic/specific-topic.component';
 import { AddAnswerComponent } from './components/add-answer/add-answer.component';
 import { AllTopicsComponent } from './components/all-topics/all-topics.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,11 @@ import { AllTopicsComponent } from './components/all-topics/all-topics.component
     AskQuestionComponent,
     SpecificTopicComponent,
     AddAnswerComponent,
-    AllTopicsComponent
+    AllTopicsComponent,
+    UserProfileComponent,
+    NotificationsComponent
   ],
-  entryComponents:[AskQuestionComponent,AddAnswerComponent],
+  entryComponents:[AskQuestionComponent,AddAnswerComponent,UserProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

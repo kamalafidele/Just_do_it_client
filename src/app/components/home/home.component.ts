@@ -1,3 +1,5 @@
+import { NotificationService } from './../../services/notification.service';
+import { UserProfileComponent } from './../user-profile/user-profile.component';
 import { LoginRegisterService } from './../../services/login-register.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -18,8 +20,10 @@ export class HomeComponent implements OnInit {
    checkedWorkspace:any;
    noneChecked=true;
    showSettings=false;
-
- constructor(private router:Router,private workspaceSer:WorkspacesService, public dialog:MatDialog,private loginReg:LoginRegisterService) { }
+   notificationChecked=false;
+  notifications:any=[];
+ constructor(private router:Router,private workspaceSer:WorkspacesService,
+   public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService) { }
 
   ngOnInit(): void {
      this.workspaceSer.getUserWorkspaces()
@@ -29,6 +33,12 @@ export class HomeComponent implements OnInit {
           this.router.navigate(["/workspace"]);
           
        this.userWorkspaces=res.userWorkspaces[0].workspaces;
+     })
+
+     this.notif.getAllNotifications()
+     .subscribe((res:any) =>{
+       console.log(res.notifications)
+       this.notifications=res.notifications;
      })
 
   }
@@ -60,5 +70,23 @@ export class HomeComponent implements OnInit {
    logout(){
      if(this.loginReg.logout())
        this.router.navigate(["/account"]);
+   }
+
+   hideSettings(){
+     this.showSettings=false;
+   }
+   goHome(){
+     this.noneChecked=true;
+     this.notificationChecked=false;
+     this.checkedWorkspace.isChecked=false;
+   }
+
+   openUserProfile(){
+     this.dialog.open(UserProfileComponent);
+   }
+
+   changeNotifyStatus(){
+     this.notificationChecked=true;
+     this.noneChecked=true;
    }
 }

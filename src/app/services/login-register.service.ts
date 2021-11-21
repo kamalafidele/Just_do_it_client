@@ -13,15 +13,15 @@ export class LoginRegisterService {
    }
 
    login(data:any):any{
-     return this.http.post("http://localhost:4500/api/justdoit/users/login",data);
+     return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/users/login",data);
    }
 
    register(data:any):any{
-    return this.http.post("http://localhost:4500/api/justdoit/users/register",data);
+    return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/users/register",data);
    }
 
    verifyEmail(data:any){
-     return this.http.post("http://localhost:4500/api/justdoit/users/confirmEmail",data);
+     return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/users/confirmEmail",data);
    }
 
    isLoggedIn() : boolean{
