@@ -22,6 +22,9 @@ export class HomeComponent implements OnInit {
    showSettings=false;
    notificationChecked=false;
   notifications:any=[];
+  ad1Image="../../../assets/Images/Chat1.jpg";
+  ad2Image="../../../assets/Images/Chat2.jpg";
+  ad3Image="../../../assets/Images/Chat3.jpg";
  constructor(private router:Router,private workspaceSer:WorkspacesService,
    public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService) { }
 
