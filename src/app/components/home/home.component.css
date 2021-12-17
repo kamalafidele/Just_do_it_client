@@ -1,3 +1,6 @@
+input#check{
+    display: none;
+}
 div.navbar{
     width:100%;
     height: 60px;
@@ -8,7 +11,7 @@ div.navbar{
      padding: 15px;
      display: flex;
      justify-content: space-between;
-     position: sticky;
+     position: fixed;
      top: 0px;
      background-color: white;
      z-index: 1;
@@ -22,6 +25,9 @@ h2.header{
     color: dodgerblue;
     font-size: 40px;
     padding-left: 20px;
+}
+#mobile-header{
+    display: none;
 }
 .input-container{
     position: relative;
@@ -105,6 +111,9 @@ div.home-icon-container{
 .user-settings .logout-btn, .user-settings .go-to-profile-btn{
     width: 100%;
 }
+.bars{
+    display: none;
+}
 div.left-sidebar{
     width: 25%;
     height: 90.5%;
@@ -119,7 +128,7 @@ div.left-sidebar{
 div.middle{
     margin-left: 25%;
     width: 50%;
-    padding-top: 0%;
+    padding-top: 4%;
     background-color: rgb(194, 194, 194);
     padding-bottom: 10px;
 }
@@ -131,6 +140,7 @@ div.right-sidebar{
     bottom: 0;
     background-color: rgb(226, 226, 226);
     border-left: 2px solid rgb(177, 177, 177);
+    overflow: hidden;
 }
 
 div.user-workspaces{
@@ -159,4 +169,86 @@ div.user-workspace h3{
 }
 .active h3{
     color: dodgerblue;
+}
+div.test{
+    display: none;
+    width: 25%;
+    height: 90.5%;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    background-color: #e2e2e2;
+    border-right: 2px solid rgb(177,177,177);
+    justify-content: center;
+}
+
+@media only screen and (max-width:620px){
+    .header{
+        display: none;
+    }
+    #mobile-header{
+        display: block;
+        font-size: 28px;
+    }
+    div.head-search{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .input-container{
+        display: none;
+    }
+    div.home-icon-container{
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+    div.notification-icon-container{
+        padding-left: 5px;
+    }
+    .add-question{
+        margin-right: 20px;
+        padding: 3px;
+        height: 30px;
+    }
+    .profile-question-container{
+        padding: 0px 10px;
+    }
+    .notification-icon, .home-icon{
+        font-size: 30px;
+    }
+    .bars{
+        padding-top: 3px;
+        display: block;
+    }
+    div.left-sidebar{
+        width: 0%;
+        height: 0%;
+    }
+    div.middle{
+        margin-left: 0%;
+        width: 100%;
+        padding-left: 5px;
+        padding-right: 5px;
+        z-index: 0;
+        padding-top: 15%;
+    }
+    div.right-sidebar{
+        width: 0%;
+        height: 0%;
+    }
+    div.user-workspace{
+        padding-left: 10px;
+        padding-top: 20px;
+    }
+    div.test{
+        display: block;
+        width: 0%;
+        margin-left: -50%;
+        transition: 1s margin-left;
+        visibility: hidden;
+    }
+    #check:checked ~ div.test{
+        width: 45%;
+        margin-left: 0%;
+        visibility: visible;
+    }
 }

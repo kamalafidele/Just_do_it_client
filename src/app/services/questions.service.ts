@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MYAPIS } from '../components/Api';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,14 @@ export class QuestionsService {
   constructor(private http:HttpClient) { }
 
   addQuestion(data:any){
-    return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/questions/addQuestion",data,{headers:{"Bearer":`${this.token}`}});
+    return this.http.post(`${MYAPIS.LIVEAPI}/questions/addQuestion`,data,{headers:{"Bearer":`${this.token}`}});
   }
 
   getAllQuestions(){
-    return this.http.get("https://justdoitrw.herokuapp.com/api/justdoit/questions/allQuestions",{headers:{"Bearer":`${this.token}`}});
+    return this.http.get(`${MYAPIS.LIVEAPI}/questions/allQuestions`,{headers:{"Bearer":`${this.token}`}});
   }
 
   getTopicRelatedQuestions(id:any){
-    return this.http.get(`https://justdoitrw.herokuapp.com/api/justdoit/questions/topicQuestions/${id}`,{headers:{"Bearer":`${this.token}`}});
+    return this.http.get(`${MYAPIS.LIVEAPI}/questions/topicQuestions/${id}`,{headers:{"Bearer":`${this.token}`}});
   }
 }

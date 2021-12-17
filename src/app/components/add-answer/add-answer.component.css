@@ -5,11 +5,9 @@ textarea{
     padding: 10px;
     font-size: 20px;
 }
-.select-workspace{
-    width: 400px;
-    display: block;
+.btn-container{
+  padding-top: 10px;
 }
-
 .error{
     color: crimson;
 }
@@ -28,5 +26,14 @@ div.loader{
     }
     100%{
       transform: rotate(360deg);
+    }
+  }
+
+  @media only screen and (max-width: 620px){
+    .answer-container{
+        width: 100%;
+    }
+    .btn-container{
+        padding-top: 10px;
     }
   }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { MYAPIS } from '../components/Api';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,15 @@ export class LoginRegisterService {
    }
 
    login(data:any):any{
-     return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/users/login",data);
+     return this.http.post(`${MYAPIS.LIVEAPI}/users/login`,data);
    }
 
    register(data:any):any{
-    return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/users/register",data);
+    return this.http.post(`${MYAPIS.LIVEAPI}/users/register`,data);
    }
 
    verifyEmail(data:any){
-     return this.http.post("https://justdoitrw.herokuapp.com/api/justdoit/users/confirmEmail",data);
+     return this.http.post(`${MYAPIS.LIVEAPI}/users/confirmEmail`,data);
    }
 
    isLoggedIn() : boolean{

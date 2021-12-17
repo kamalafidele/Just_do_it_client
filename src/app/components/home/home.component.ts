@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
    noneChecked=true;
    showSettings=false;
    notificationChecked=false;
-  notifications:any=[];
+   notifications:any=[];
+   mobileIcons=false;
+
  constructor(private router:Router,private workspaceSer:WorkspacesService,
    public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService) { }
 
@@ -88,5 +90,9 @@ export class HomeComponent implements OnInit {
    changeNotifyStatus(){
      this.notificationChecked=true;
      this.noneChecked=true;
+   }
+
+   toggleMobileIcons(){
+     this.mobileIcons=!this.mobileIcons;
    }
 }

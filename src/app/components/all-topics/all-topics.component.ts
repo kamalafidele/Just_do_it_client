@@ -1,20 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-all-topics',
-//   templateUrl: './all-topics.component.html',
-//   styleUrls: ['./all-topics.component.css']
-// })
-// export class AllTopicsComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
-
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import {MatDialog} from "@angular/material/dialog";
@@ -43,7 +26,6 @@ export class AllTopicsComponent implements OnInit, OnChanges {
      .subscribe((res:any) =>{
        this.isLoading=false;
        this.questions=res.questions;
-       console.log(res.questions);
        this.length=res.questions.length;
      })
     }
