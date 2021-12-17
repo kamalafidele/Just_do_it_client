@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MYAPIS } from '../components/Api';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,10 @@ export class NotificationService {
   constructor(public http:HttpClient) { }
 
   getAllNotifications(){
-    return this.http.get("https://justdoitrw.herokuapp.com/api/justdoit/userNotifications/notifications",{headers:{"Bearer":`${this.token}`}});
+    return this.http.get(`${MYAPIS.LIVEAPI}/userNotifications/notifications`,{headers:{"Bearer":`${this.token}`}});
   }
   
   deleteNotication(id:any){
-    return this.http.delete(`https://justdoitrw.herokuapp.com/api/justdoit/userNotifications/${id}`,{headers:{"Bearer":`${this.token}`}});
+    return this.http.delete(`${MYAPIS.LIVEAPI}/userNotifications/${id}`,{headers:{"Bearer":`${this.token}`}});
   }
 }

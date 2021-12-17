@@ -21,10 +21,9 @@ export class HomeComponent implements OnInit {
    noneChecked=true;
    showSettings=false;
    notificationChecked=false;
-  notifications:any=[];
-  ad1Image="../../../assets/Images/Chat1.jpg";
-  ad2Image="../../../assets/Images/Chat2.jpg";
-  ad3Image="../../../assets/Images/Chat3.jpg";
+   notifications:any=[];
+   mobileIcons=false;
+
  constructor(private router:Router,private workspaceSer:WorkspacesService,
    public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService) { }
 
@@ -91,5 +90,9 @@ export class HomeComponent implements OnInit {
    changeNotifyStatus(){
      this.notificationChecked=true;
      this.noneChecked=true;
+   }
+
+   toggleMobileIcons(){
+     this.mobileIcons=!this.mobileIcons;
    }
 }

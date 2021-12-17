@@ -1,7 +1,9 @@
 <div class="container">
+    <input type="checkbox" name="check" id="check">
     <div class="navbar" >
         <div class="head-search" (click)="hideSettings()">
             <h2 class="header">JustDoit</h2>
+            <h2 class="header" id="mobile-header">JDI</h2>
             <div class="input-container">
                 <input type="search"  name="searchTerm" class="input" placeholder=" Search JustdoIt"/>
                 <div class="icon-container">
@@ -22,23 +24,22 @@
          <button class="add-question" (click)="openQuestionDialog()">Ask question</button>
          <div class="user-img-container">
              <img [src]="userImg" alt="user.username"  class="user-profile" (click)="toggleSettings()">
-      <!-- [matMenuTriggerFor]="menu" -->
+
            <div class="user-settings" *ngIf="showSettings">
             <button mat-button class="go-to-profile-btn" (click)="openUserProfile()">User Profile</button>
                <mat-divider></mat-divider>
                <button mat-button class="go-to-profile-btn">JustDoIt Pro</button>
                <mat-divider></mat-divider>
                <button mat-button class="logout-btn" (click)="logout()">Logout</button>
-            <!-- <mat-menu  #menu="matMenu">
-                <mat-nav-list>
-                    <mat-list-item> <mat-icon matListIcon>person</mat-icon>Profile</mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item> <mat-icon matListIcon>power_settings_new</mat-icon>Logout</mat-list-item>
-                  </mat-nav-list>
-             </mat-menu> -->
            </div>
 
          </div>
+     </div>
+     <div class="bars">
+         <label for="check">
+            <mat-icon class="reorder" (click)="toggleMobileIcons()" *ngIf="!mobileIcons">reorder</mat-icon>
+            <mat-icon class="close" (click)="toggleMobileIcons()" *ngIf="mobileIcons">close</mat-icon>
+         </label>
      </div>
     </div>
 
@@ -65,11 +66,19 @@
            </div> 
         </div>
         <div class="right-sidebar">
-           <div class="image-container">
-               <img [src]="ad1Image" alt="ad pic">
-               <img [src]="ad2Image" alt="ad2 pic">
-               <img [src]="ad3Image" alt="ad3 pic">
-           </div>
+
+        </div>
+    </div>
+    <div class="test">
+        <div class="left-2-sidebar">
+            <div class="user-workspaces">
+                <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces;trackBy: trackWorkspace" 
+                [class.active]="userWorkspace.isChecked"
+                  (click)="toggleCheck(userWorkspace)">
+                  <img src="{{userWorkspace.picture}}"  alt="{{userWorkspace.name}}" class="topic-profile">
+                  <h3 class="topic-name" matBadge="{{userWorkspace.isChecked ? '': '..' }}" matBadgePosition="above before" matBadgeColor="primary">{{userWorkspace.name}}</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
+
 const routes:Routes=[
   {component:HomeComponent,path:"",canActivate:[AuthGuardService]},
   {component:AccountComponent,path:"account"},

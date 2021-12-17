@@ -9,7 +9,9 @@ textarea{
     width: 400px;
     display: block;
 }
-
+.btn-container{
+    padding-top: 10px;
+}
 .error{
     color: crimson;
 }
@@ -30,3 +32,13 @@ div.loader{
       transform: rotate(360deg);
     }
   }
+
+@media only screen and (max-width: 620px){
+    .question-container{
+        width: 100%;
+    }
+    .select-workspace{
+        width: 100%;
+        display: block;
+    }
+}

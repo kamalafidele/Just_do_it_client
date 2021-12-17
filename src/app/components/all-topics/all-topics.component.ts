@@ -26,7 +26,6 @@ export class AllTopicsComponent implements OnInit, OnChanges {
      .subscribe((res:any) =>{
        this.isLoading=false;
        this.questions=res.questions;
-       console.log(res.questions);
        this.length=res.questions.length;
      })
     }

@@ -8,3 +8,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.question,div.workspace-details{
+    background-color: white;
+    border-top: 2px solid rgb(177, 177, 177);
+    border-radius: 2px;
+    margin-top: 10px;
+    min-height: 100px;
+    transition: 1s;
+    position: relative;
+    z-index: 0;
+    padding: 5px;
+}
+.asked-by{
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    display: flex;
+    justify-content: center;
+}
+div.right .close-icon{
+    color: rgb(241, 105, 133);
+    transition: 1s;
+    cursor: pointer;
+}
+div.right .close-icon:hover{
+    background-color: darkgrey;
+    border-radius: 20px;
+}
+.askedBy-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.askedBy-username{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+div.question-container{
+    padding: 10px;
+    cursor: pointer;
+}
+.question:hover{
+    background-color: rgb(219, 219, 219);
+
+}
+
+.button-answer-cont{
+    position: relative;
+    padding-left: 5px;
+}
+.btn-answer{
+    border-radius: 40px;
+    color: white;
+    background-color: dodgerblue;
+    height: 30px;
+    width: 100px;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+.answer-para{
+    padding-left: 10px;
+}
+.answer{
+    position: relative;
+}
+.answer-img{
+    width: 95%;
+    height: auto;
+    margin-left: 10px;
+}
+
+.votes-add-answers{
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.ico-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.word{
+    padding-left: 30px;
+}
+.arrow_upward, .arrow_downward{
+    cursor: pointer;
+}
+
+/* ENDING EQUATIONS LOADER */
+.no-question{
+    background-color: white;
+    border-top: 2px solid rgb(177, 177, 177);
+    border-radius: 2px;
+    margin-top: 10px;
+    height: 250px;
+    transition: 1s;
+    position: relative;
+    z-index: 0;
+    padding: 5px;
+}
+.no-question-para{
+    text-align: center;
+    font-size: 20px;
+}
