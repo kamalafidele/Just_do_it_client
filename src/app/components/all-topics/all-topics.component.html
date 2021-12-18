@@ -21,7 +21,7 @@
                 <div class="right"><mat-icon class="close-icon" (click)="removeQuestion(question._id)">close</mat-icon></div>
             </div>
             <div class="question-container">
-                <a [routerLink]="['']">
+                <a [routerLink]="['/questionAnswers',question._id]" target="_blank">
                   <p class="question-body" style="color: white;"><strong>{{question.question}}</strong></p>
                </a>
                 <div class="images"  *ngFor="let image of question.images">
@@ -38,11 +38,11 @@
                 <div class="votes-add-answers">
                     <div class="icon-1 ico-container">
                         <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow._id)">arrow_upward</mat-icon> 
-                        <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Likes</span>
+                        <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Votes</span>
                     </div>
                     <div class="icon-2 ico-container">
                         <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow._id)">arrow_downward</mat-icon> 
-                        <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Dislikes</span>
+                        <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
                     </div>
                     <div class="btn-answer-cont">
                     </div>

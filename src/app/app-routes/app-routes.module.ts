@@ -7,6 +7,7 @@ import { EmailSentComponent } from '../components/email-sent/email-sent.componen
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ViewQuestionComponent } from '../components/view-question/view-question.component';
 
 
 const routes:Routes=[
@@ -14,7 +15,8 @@ const routes:Routes=[
   {component:AccountComponent,path:"account"},
   {component:WorkspaceComponent,path:"workspace",canActivate:[AuthGuardService]},
   {component:VerifyEmailComponent,path:"verifyEmail/:id"},
-  {component:EmailSentComponent,path:"emailSent"}
+  {component:EmailSentComponent,path:"emailSent"},
+  {component:ViewQuestionComponent, path:"questionAnswers/:questionId"}
 ]
 
 
