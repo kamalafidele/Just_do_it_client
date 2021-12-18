@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation,Inject } from '@angular/core';
 import {AngularEditorConfig} from "@kolkov/angular-editor"
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AnswersService } from 'src/app/services/answers.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class AddAnswerComponent implements OnInit {
   images=document.getElementsByTagName("img");
   fonts=document.getElementsByTagName("font");
   insertedImages:any=[];
-  enteredAnswer="";
+  enteredAnswer=""; 
+  dialogRef=this.dialog;
   error="";
   imageError="";
   isImageError=false;
@@ -81,7 +82,7 @@ export class AddAnswerComponent implements OnInit {
     ]
   };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any,public answerServ:AnswersService,) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any,public answerServ:AnswersService,public dialog:MatDialog) {
     this.passedQuestion=data;
    } 
 
@@ -138,5 +139,7 @@ export class AddAnswerComponent implements OnInit {
     
   }
 
-
+  closeDialog(){
+    this.dialogRef.closeAll();
+  }
 }

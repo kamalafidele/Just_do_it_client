@@ -1,4 +1,7 @@
-
+.questions{
+    background-color: black;
+    min-height: 700px;
+}
 .workspace-name{
     font-weight: bold;
 }

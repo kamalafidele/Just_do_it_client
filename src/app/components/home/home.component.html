@@ -1,32 +1,34 @@
 <div class="container">
-    <input type="checkbox" name="check" id="check">
+    <input #abc type="checkbox" name="check" id="check">
     <div class="navbar" >
         <div class="head-search" (click)="hideSettings()">
-            <h2 class="header">JustDoit</h2>
-            <h2 class="header" id="mobile-header">JDI</h2>
-            <div class="input-container">
-                <input type="search"  name="searchTerm" class="input" placeholder=" Search JustdoIt"/>
-                <div class="icon-container">
-                    <mat-icon class="icon">search</mat-icon>
-                </div>
-            </div>
-            <div class="home-icon-container">
-                <mat-icon class="home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? 'dodgerblue': 'black'}" (click)="goHome()">home</mat-icon>
-            </div>
-            <div class="notification-container">
-                <div class="notification-icon-container">
-                    <mat-icon class="notification-icon"  [ngStyle]="{'color':noneChecked && notificationChecked ? 'dodgerblue': 'black'}"
-                     [matBadge]="notifications.length>0 ? notifications.length : '' " matBadgeColor="warn" (click)="changeNotifyStatus()">notifications_none</mat-icon>
-                </div>
+            <div>
+                <h2 class="header">JustDoIt</h2>
+                <h2 class="header" id="mobile-header">JDI</h2>
             </div>
         </div>
+
+        <div class="defaultIcons">
+            <div class="home-icon-container">
+                <mat-icon class="home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? 'dodgerblue': 'white'}" (click)="goHome()">home</mat-icon>
+            </div>
+                <div class="notification-icon-container">
+                    <mat-icon class="notification-icon"  [ngStyle]="{'color':noneChecked && notificationChecked ? 'dodgerblue': 'white'}"
+                     [matBadge]="notifications.length>0 ? notifications.length : '' " matBadgeColor="warn" (click)="changeNotifyStatus()">notifications_none</mat-icon>
+                </div>
+        </div>
+
+        <div class="input-container">
+            <input type="search"  name="searchTerm" class="input" placeholder=" Search  JustdoIt"/>
+        </div>
+
      <div class="profile-question-container">
          <button class="add-question" (click)="openQuestionDialog()">Ask question</button>
          <div class="user-img-container">
              <img [src]="userImg" alt="user.username"  class="user-profile" (click)="toggleSettings()">
 
            <div class="user-settings" *ngIf="showSettings">
-            <button mat-button class="go-to-profile-btn" (click)="openUserProfile()">User Profile</button>
+               <button mat-button class="go-to-profile-btn" (click)="openUserProfile()">User Profile</button>
                <mat-divider></mat-divider>
                <button mat-button class="go-to-profile-btn">JustDoIt Pro</button>
                <mat-divider></mat-divider>
@@ -69,7 +71,7 @@
 
         </div>
     </div>
-    <div class="test">
+    <div class="test" id="tdiv">
         <div class="left-2-sidebar">
             <div class="user-workspaces">
                 <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces;trackBy: trackWorkspace" 
