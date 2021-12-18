@@ -26,6 +26,7 @@ import { AddAnswerComponent } from './components/add-answer/add-answer.component
 import { AllTopicsComponent } from './components/all-topics/all-topics.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ViewQuestionComponent } from './components/view-question/view-question.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NotificationsComponent } from './components/notifications/notifications
     AddAnswerComponent,
     AllTopicsComponent,
     UserProfileComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ViewQuestionComponent
   ],
   entryComponents:[AskQuestionComponent,AddAnswerComponent,UserProfileComponent],
   imports: [

@@ -1,0 +1,128 @@
+<div class="container">
+
+    <div class="navbar" >
+        <div class="head-search">
+            <div>
+                <a [routerLink]="['/']">
+                    <h2 class="header" id="mobile-header">JDI</h2>
+                    <h2 class="header">JustDoIt</h2>
+                </a>
+            </div>
+        </div>
+
+        <div class="viewq-input-container" >
+            <input type="search"  name="searchTerm" class="input" placeholder=" Search  JustdoIt"/>
+        </div>
+
+     <div class="enter-links" >
+
+         <p class="signup-para" *ngIf="!token">
+            <a [routerLink]="['/account']">Signup</a>
+         </p>
+     </div>
+
+    </div>
+
+    <div class="viewq-left">
+
+    </div>
+    <div class="viewq-middle">
+
+        <div class="loadingQuestions" *ngIf="isLoading">
+            <div class="circle" id="circle1"></div>
+            <div class="circle" id="circle2"></div>
+            <div class="circle" id="circle3"></div>
+        </div>
+
+        <ng-container *ngIf="length  > 0">
+            <div class="question">
+                <div class="asked-by">
+                    <div class="left">
+                        <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
+                        <strong class="askedBy-username" style="color: white;">{{question.askedBy.username}} 
+                            <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
+                    </div>
+                    
+                </div>
+                <div class="question-container">
+                      <p class="question-body" style="color: white;"><strong>{{question.question}}</strong></p>                    
+                </div>
+
+                <div class="answers" *ngFor="let answer of answers; index as i">
+                    <strong style="color: dodgerblue; padding-left: 10px;">Answer {{i+1}}</strong>
+                    <div class="answer">
+                       <p class="answer-para" style="color: white;">{{answer.answer}}</p>
+                       <div class="answer-images"  *ngFor="let answerImages of answer.images">
+                        <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
+                    </div>
+                    <div class="votes-add-answers">
+                        <div class="icon-1 ico-container">
+                            <mat-icon class="arrow_upward" >arrow_upward</mat-icon> 
+                            <span class="word"><strong>{{answer.upVotes}}</strong>  Votes</span>
+                        </div>
+                        <div class="icon-2 ico-container">
+                            <mat-icon class="arrow_downward">arrow_downward</mat-icon> 
+                            <span class="word"> <strong>{{answer.downVotes}}</strong> Rejects</span>
+                        </div>
+                        <div class="btn-answer-cont">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        
+            
+            </div>
+
+            <div class="loadingQuestions" *ngIf="isLoading2">
+                <div class="circle" id="circle1"></div>
+                <div class="circle" id="circle2"></div>
+                <div class="circle" id="circle3"></div>
+            </div>
+            <div class="relatedQuestions">
+                <div class="question" *ngFor="let question of questions">
+                    <div class="asked-by">
+                        <div class="left">
+                            <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
+                            <strong class="askedBy-username" style="color: white;">{{question.askedBy.username}} 
+                                <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
+                        </div>
+                        
+                    </div>
+                    <div class="question-container">
+                        <a [routerLink]="['/questionAnswers',question._id]" style="text-decoration: underline dodgerblue;" target="_blank">
+                          <p class="question-body" style="color: white;"><strong>{{question.question}}</strong></p>
+                       </a>
+                        <div class="images"  *ngFor="let image of question.images">
+                            <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
+                        </div>
+                        
+                    </div>
+                    <div class="answers" *ngIf="question.answertoshow">
+                        <div class="answer" >
+                           <p class="answer-para" style="color: white;">{{question.answertoshow.answer}}</p>
+                           <div class="answer-images"  *ngFor="let answerImages of question.answertoshow.images">
+                            <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
+                        </div>
+                        <div class="votes-add-answers">
+                            <div class="icon-1 ico-container">
+                                <mat-icon class="arrow_upward">arrow_upward</mat-icon> 
+                                <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Likes</span>
+                            </div>
+                            <div class="icon-2 ico-container">
+                                <mat-icon class="arrow_downward" >arrow_downward</mat-icon> 
+                                <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Dislikes</span>
+                            </div>
+                            <div class="btn-answer-cont">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </ng-container>
+    </div>
+    <div class="viewq-right">
+        
+    </div>
+</div>

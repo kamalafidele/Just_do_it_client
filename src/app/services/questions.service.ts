@@ -20,4 +20,9 @@ export class QuestionsService {
   getTopicRelatedQuestions(id:any){
     return this.http.get(`${MYAPIS.LIVEAPI}/questions/topicQuestions/${id}`,{headers:{"Bearer":`${this.token}`}});
   }
+
+  getQuestionAndAnswers(id:any){
+    return this.http.get(`${MYAPIS.LIVEAPI}/users/question/${id}`);
+  }
+
 }
