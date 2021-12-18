@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild,ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-view-question',
@@ -21,7 +22,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   id:any="";
 
   @ViewChild("abc") abc:ElementRef;
-  constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService) {
+  constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService, public title:Title,public meta:Meta) {
     this.abc=ref;
    }
 
@@ -38,6 +39,16 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
        this.answers=res.answers;
        this.question=res.question;
        this.length=res.answers.length;
+
+       this.title.setTitle(res.question.question);
+       this.meta.updateTag({name:"description",content:res.question.question});
+
+       if(res.answers.length > 0)
+         this.meta.updateTag({property:"og:description",content:res.answers[0].answer});
+
+       if(res.answers.length > 0 && res.answers[0].images.length > 0 )
+          this.meta.updateTag({property:"og:image",content:res.answers[0].images[0]})
+         
      },
      (err:any) =>{
       this.isLoading=false;
@@ -55,6 +66,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
       })
      },3000);
 
+     
   }
   
   toggleMobileIcons(){

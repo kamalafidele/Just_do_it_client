@@ -218,6 +218,7 @@ div.test{
         padding-top: 10px;
     }
     div.head-search{
+        padding-top: 0px;
         display: flex;
         justify-content: flex-start;
     }

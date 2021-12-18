@@ -18,7 +18,7 @@
                     <strong class="askedBy-username" style="color: white;">{{question.askedBy.username}} 
                         <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
                 </div>
-                <div class="right"><mat-icon class="close-icon" (click)="removeQuestion(question._id)">close</mat-icon></div>
+                <!-- <div class="right"><mat-icon class="close-icon" (click)="removeQuestion(question._id)">close</mat-icon></div> -->
             </div>
             <div class="question-container">
                 <a [routerLink]="['/questionAnswers',question._id]" target="_blank">

@@ -42,9 +42,9 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
   openAnsweringDialog(question:any){
      this.dialog.open(AddAnswerComponent,{data:{question}});
   }
-  removeQuestion(id:any){
-    this.questions=this.questions.filter((q:any) => q._id != id)
-  }
+  // removeQuestion(id:any){
+  //   this.questions=this.questions.filter((q:any) => q._id != id)
+  // }
 
   upvote(id:any){
     this.fowardVote(id,"upvote");
