@@ -10,6 +10,8 @@ textarea{
     display: block;
 }
 .btn-container{
+    display: flex;
+    justify-content: space-between;
     padding-top: 10px;
 }
 .error{

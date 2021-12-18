@@ -43,7 +43,7 @@ export class AllTopicsComponent implements OnInit, OnChanges {
   }
 
   openAnsweringDialog(question:any){
-     this.dialog.open(AddAnswerComponent,{data:{question}});
+     this.dialog.open(AddAnswerComponent,{data:{question},panelClass:"custom-dialog-container"});
   }
   removeQuestion(id:any){
     this.questions=this.questions.filter((q:any) => q._id != id)
@@ -79,6 +79,7 @@ export class AllTopicsComponent implements OnInit, OnChanges {
     this.questions.forEach((q:any) => {
       if(q.answertoshow._id==id && action=="upvote") q.answertoshow.upVotes--;
       else if(q.answertoshow._id==id && action=="downvote")  q.answertoshow.downVotes--;});
+      
   }
 
 }

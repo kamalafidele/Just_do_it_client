@@ -1,7 +1,7 @@
 import { NotificationService } from './../../services/notification.service';
 import { UserProfileComponent } from './../user-profile/user-profile.component';
 import { LoginRegisterService } from './../../services/login-register.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,15 +17,18 @@ export class HomeComponent implements OnInit {
    user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
    userImg:any=this.user.profile;
    userWorkspaces:any=[];
-   checkedWorkspace:any;
+   checkedWorkspace:any=null;
    noneChecked=true;
    showSettings=false;
    notificationChecked=false;
    notifications:any=[];
    mobileIcons=false;
+  @ViewChild("abc") abc:ElementRef;
 
- constructor(private router:Router,private workspaceSer:WorkspacesService,
-   public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService) { }
+ constructor(private router:Router,private workspaceSer:WorkspacesService, 
+   public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService, public ref:ElementRef) {
+     this.abc=ref;
+    }
 
   ngOnInit(): void {
      this.workspaceSer.getUserWorkspaces()
@@ -39,13 +42,13 @@ export class HomeComponent implements OnInit {
 
      this.notif.getAllNotifications()
      .subscribe((res:any) =>{
-       console.log(res.notifications)
        this.notifications=res.notifications;
      })
 
   }
   openQuestionDialog(){
-      this.dialog.open(AskQuestionComponent);
+    this.showSettings=false;
+      this.dialog.open(AskQuestionComponent,{panelClass:"custom-dialog-container",closeOnNavigation:true});
   }
 
   trackWorkspace(workspace:any,index:number){
@@ -53,6 +56,7 @@ export class HomeComponent implements OnInit {
 }
 
   toggleCheck(workspace:any){
+
     this.noneChecked=false;
     this.userWorkspaces.forEach((wksp:any) =>{
       if(wksp._id==workspace._id){
@@ -63,6 +67,9 @@ export class HomeComponent implements OnInit {
       }
      } )
      this.showSettings=false;
+
+     this.abc.nativeElement.checked=!this.abc.nativeElement.checked;
+     this.mobileIcons=!this.mobileIcons;
    }
 
    toggleSettings(){
@@ -80,10 +87,12 @@ export class HomeComponent implements OnInit {
    goHome(){
      this.noneChecked=true;
      this.notificationChecked=false;
-     this.checkedWorkspace.isChecked=false;
+     if(this.checkedWorkspace != null)
+       this.checkedWorkspace.isChecked=false;
    }
 
    openUserProfile(){
+     this.showSettings=false;
      this.dialog.open(UserProfileComponent);
    }
 

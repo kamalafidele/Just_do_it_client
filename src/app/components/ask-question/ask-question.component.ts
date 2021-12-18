@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import {AngularEditorConfig} from "@kolkov/angular-editor"
 import { QuestionsService } from 'src/app/services/questions.service';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
@@ -20,7 +21,7 @@ export class AskQuestionComponent implements OnInit {
   selectedWorkspace="";
   topicError=false;
   isLoading=false;
-
+  dialogRef=this.dialog;
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -80,7 +81,7 @@ export class AskQuestionComponent implements OnInit {
     ]
   };
 
-  constructor(public questionServ:QuestionsService,public workspaceServ:WorkspacesService) { } 
+  constructor(public questionServ:QuestionsService,public workspaceServ:WorkspacesService, public dialog:MatDialog) { } 
 
   ngOnInit(): void {
     this.workspaceServ.getUserWorkspaces()
@@ -129,5 +130,8 @@ export class AskQuestionComponent implements OnInit {
     
   }
 
+  closeDialog(){
+    this.dialogRef.closeAll();
+  }
 
 }

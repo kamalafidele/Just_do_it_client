@@ -10,10 +10,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .question,div.workspace-details{
-    background-color: white;
-    border-top: 2px solid rgb(177, 177, 177);
+    background-color: black;
+    border-top: 1px solid rgb(41, 40, 40);
     border-radius: 2px;
-    margin-top: 10px;
+    margin-top: 0px;
     min-height: 100px;
     transition: 1s;
     position: relative;
@@ -52,8 +52,7 @@ div.question-container{
     cursor: pointer;
 }
 .question:hover{
-    background-color: rgb(219, 219, 219);
-
+    background-color: rgb(15, 15, 15);
 }
 
 .button-answer-cont{
@@ -95,9 +94,11 @@ div.question-container{
 }
 .word{
     padding-left: 30px;
+    color: white;
 }
 .arrow_upward, .arrow_downward{
     cursor: pointer;
+    color: white;
 }
 
 /* ENDING EQUATIONS LOADER */
@@ -115,4 +116,12 @@ div.question-container{
 .no-question-para{
     text-align: center;
     font-size: 20px;
+}
+/* .custom-dialog-container .mat-dialog-container{
+    background-color: black;
+} */
+@media only screen and (max-width:620px){
+    .custom-dialog-container .mat-dialog-container {
+        width: 100vh;
+    }
 }

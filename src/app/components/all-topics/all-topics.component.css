@@ -3,6 +3,11 @@
 
 
 /* LOADER FOR QUESTIONS */
+.questions{
+   background-color: black;
+   min-height: 700px;
+}
+
 .loadingQuestions{
     display: flex;
     flex-direction: row;
