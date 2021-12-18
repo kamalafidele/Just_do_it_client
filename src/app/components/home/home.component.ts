@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AskQuestionComponent } from '../ask-question/ask-question.component';
+import { Meta, Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-home',
@@ -23,14 +25,21 @@ export class HomeComponent implements OnInit {
    notificationChecked=false;
    notifications:any=[];
    mobileIcons=false;
+   defaultDesc="JustDoIt is a social platform where people discuss world matters and interesting topics that you like..";
+   defaultImg="https://res.cloudinary.com/justdoit/image/upload/v1637511391/users/images/Just_do_display_image_a4lvcx.png"; 
+
   @ViewChild("abc") abc:ElementRef;
 
- constructor(private router:Router,private workspaceSer:WorkspacesService, 
+ constructor(private router:Router,private workspaceSer:WorkspacesService, private meta:Meta,private title:Title,
    public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService, public ref:ElementRef) {
      this.abc=ref;
     }
 
   ngOnInit(): void {
+     this.title.setTitle("JDI | Home");
+     this.meta.updateTag({name:"description",content:this.defaultDesc});
+     this.meta.updateTag({property:"og:image",content:this.defaultImg});
+
      this.workspaceSer.getUserWorkspaces()
      .subscribe((res:any) =>{
        
