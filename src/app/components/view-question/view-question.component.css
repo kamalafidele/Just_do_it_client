@@ -1,12 +1,10 @@
 .viewq-input-container{
     display: flex;
     border-radius: 20%;
-    background-color: black;
     width: 400px;
     height: auto;
     padding-top: 0px;
     align-items: center;
-
 }
 
 .enter-links {
@@ -25,30 +23,43 @@
 }
 .viewq-left{
     width: 20%;
-    height: 100%;
+    height: 90.5%;
     position: fixed;
     left: 0;
-    background-color: black;
-    border-right: 1px solid rgb(41, 40, 40);
+    bottom: 0;
+}
+.leftBorderLight{
+    border-right: 1px solid rgb(139, 139, 139);
+}
+.leftBorderDark{
+    border-right:620px 1px solid rgb(41, 40, 40);
 }
 .viewq-middle{
     width: 60%;
-    height: 100%;
-    background-color: black;
     margin-left: 20%;
-    color: white;
     padding-top: 4.3%;
 }
 .viewq-right{
     width: 20%;
-    height: 100%;
+    height: 90.5%;
     position: fixed;
     right: 0;
     bottom: 0;
-    background-color: black;
+}
+.rightBorderLight{
+    border-left: 1px solid rgb(139, 139, 139);
+}
+.rightBorderDark{
     border-left: 1px solid rgb(41, 40, 40);
 }
 
+/*  LOADERS */
+.commonDiv .loadingQuestions  .circle{
+    background-color: white;
+ }
+ .lightMode .loadingQuestions  .circle{
+    background-color: black;
+ }
 .loadingQuestions{
     display: flex;
     flex-direction: row;
@@ -60,7 +71,6 @@
         height: 20px;
         border-radius: 50%;
         margin: 0px 15px;
-        background-color: white;
         animation: bounce 2s infinite ease-in-out both;
     }
     
@@ -87,7 +97,7 @@
             width: 0%;
         }
         .viewq-middle{
-            width: 98%;
+            width: 100%;
             margin-left: 0%;
             padding-top: 15%;
         }

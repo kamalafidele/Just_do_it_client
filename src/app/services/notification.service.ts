@@ -8,6 +8,7 @@ import { MYAPIS } from '../components/Api';
 export class NotificationService {
   token=localStorage.getItem("justDoitTokAuth");
 
+
   constructor(public http:HttpClient) { }
 
   getAllNotifications(){
@@ -16,5 +17,9 @@ export class NotificationService {
   
   deleteNotication(id:any){
     return this.http.delete(`${MYAPIS.LIVEAPI}/userNotifications/${id}`,{headers:{"Bearer":`${this.token}`}});
+  }
+
+  updateUserMode(modeStatus:boolean){
+    return this.http.post(`${MYAPIS.LIVEAPI}/userNotifications/userMode/${modeStatus}`,{name:"Kamara"},{headers:{"Bearer":`${this.token}`}});
   }
 }

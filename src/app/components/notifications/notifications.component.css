@@ -1,12 +1,10 @@
 .notifications-container{
-    background-color: black;
+    /* background-color: black; */
     min-height: 600px;
 }
 .notification{
-    background-color: rgb(34, 33, 33);
-    border-top: 1px solid rgb(41, 40, 40);
     border-radius: 2px;
-    margin-top: 10px;
+    margin-top: 3px;
     min-height: 100px;
     transition: 1s;
     position: relative;
@@ -15,9 +13,18 @@
     display: flex;
     justify-content: space-between;
 }
-.notification:hover{
-    background-color: rgb(219, 219, 219);
+.notif-dark{
+    background-color: rgb(29, 29, 29);
+    border-top: 1px solid rgb(41, 40, 40);
 }
+.notif-light{
+    background-color: rgb(150, 150, 150);
+    border-top: 1px solid rgb(161, 161, 161);
+}
+
+/* .notification:hover{
+    background-color: rgb(94, 94, 94);
+} */
 
 .left{
     width: 80%;
@@ -39,8 +46,17 @@ div.right .close-icon:hover{
     border-radius: 20px;
 }
 
-.no-notification{
+div.commonDiv .no-notification{
     background-color: rgb(34, 33, 33);
+}
+div.lightMode .no-notification{
+    background-color: rgb(190, 190, 190);
+}
+div.lightMode .no-notification-para{
+    color: black;
+}
+.no-notification{
+    
     border-top: 1px solid rgb(41, 40, 40);
     border-radius: 2px;
     margin-top: 0px;
@@ -57,6 +73,13 @@ div.right .close-icon:hover{
 }
 
 /* LOADER FOR NOTIFICATIONS */
+.commonDiv .loadingQuestions  .circle{
+    background-color: white;
+ }
+ .lightMode .loadingQuestions  .circle{
+    background-color: black;
+ }
+ 
 .loadingQuestions{
     display: flex;
     flex-direction: row;
@@ -68,7 +91,6 @@ div.right .close-icon:hover{
         height: 20px;
         border-radius: 50%;
         margin: 0px 15px;
-        background-color: white;
         animation: bounce 2s infinite ease-in-out both;
     }
     

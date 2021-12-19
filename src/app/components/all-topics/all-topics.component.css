@@ -4,8 +4,13 @@
 
 /* LOADER FOR QUESTIONS */
 .questions{
-   background-color: black;
    min-height: 700px;
+}
+.commonDiv .loadingQuestions  .circle{
+   background-color: white;
+}
+.lightMode .loadingQuestions  .circle{
+   background-color: black;
 }
 
 .loadingQuestions{
@@ -19,7 +24,6 @@
         height: 20px;
         border-radius: 50%;
         margin: 0px 15px;
-        background-color: white;
         animation: bounce 2s infinite ease-in-out both;
     }
     

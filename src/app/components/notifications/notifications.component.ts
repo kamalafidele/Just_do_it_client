@@ -10,6 +10,7 @@ export class NotificationsComponent implements OnInit {
   notifications:any=[];
   isLoading=false;
   length=1;
+  user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
 
   constructor(public notificationsServ:NotificationService) { }
 

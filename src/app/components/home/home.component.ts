@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { AskQuestionComponent } from '../ask-question/ask-question.component';
 import { Meta, Title } from '@angular/platform-browser';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -112,5 +111,24 @@ export class HomeComponent implements OnInit {
 
    toggleMobileIcons(){
      this.mobileIcons=!this.mobileIcons;
+   }
+
+   updateUserMode(){
+     let userCopr=this.user;
+     userCopr.darkMode=!this.user.darkMode;
+     
+     this.notif.updateUserMode(this.user.darkMode)
+     .subscribe((res:any) =>{
+ 
+       localStorage.removeItem("justDoItUser");
+
+       localStorage.setItem("justDoItUser",JSON.stringify(userCopr));
+       this.router.navigate(["/account"]);
+     },
+     (err:any) =>{
+        console.log("MODE ERROR: ",err);
+     }
+     ) 
+
    }
 }

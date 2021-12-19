@@ -1,8 +1,8 @@
-<div class="questions">
+<div class="questions " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' ">
     <div class="workspace-details">
-        <h2 class="workspace-name" style="color: white;">{{passedTopic.name}}</h2>
+        <h2 class="workspace-name" [ngStyle]="user.darkMode ? {color:'white'} : {color:'black'}">{{passedTopic.name}}</h2>
         <img [src]="passedTopic.picture" alt="{{passedTopic.name}}" class="workspace-img">
-        <p class="workspace-description" style="color: white;">{{passedTopic.description}}</p>
+        <p class="workspace-description" [ngStyle]="user.darkMode ? {color:'white'} : {color:'black'}">{{passedTopic.description}}</p>
     </div>
 
     <div class="loadingQuestions" *ngIf="isLoading">
@@ -16,7 +16,8 @@
             <div class="asked-by">
                 <div class="left">
                     <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
-                    <strong class="askedBy-username" style="color: white;">{{question.askedBy.username}}
+                    <strong class="askedBy-username" 
+                    [ngStyle]="user.darkMode ? {color:'white'} : {color:'black'}">{{question.askedBy.username}}
                         <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> 
                     </strong>
                 </div>
@@ -24,7 +25,7 @@
             </div>
             <div class="question-container">
                 <a [routerLink]="['/questionAnswers',question._id]" target="_blank">
-                  <p class="question-body" style="color: white;"><strong>{{question.question}}</strong></p>
+                  <p class="question-body" [ngStyle]="user.darkMode ? {color:'white'} : {color:'black'}"><strong>{{question.question}}</strong></p>
                 </a>
                 <div class="images"  *ngFor="let image of question.images">
                     <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
@@ -33,7 +34,7 @@
             </div>
             <div class="answers" *ngIf="question.answertoshow">
                 <div class="answer" >
-                   <p class="answer-para" style="color: white;">{{question.answertoshow.answer}}</p>
+                   <p class="answer-para" [ngStyle]="user.darkMode ? {color:'white'} : {color:'black'}">{{question.answertoshow.answer}}</p>
                    <div class="answer-images"  *ngFor="let answerImages of question.answertoshow.images">
                     <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
                 </div>
