@@ -1,6 +1,6 @@
 <div class="container">
     <input #abc type="checkbox" name="check" id="check">
-    <div class="navbar" >
+    <div class="navbar " [ngClass]="user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
         <div class="head-search" (click)="hideSettings()">
             <div>
                 <h2 class="header">JustDoIt</h2>
@@ -10,16 +10,17 @@
 
         <div class="defaultIcons">
             <div class="home-icon-container">
-                <mat-icon class="home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? 'dodgerblue': 'white'}" (click)="goHome()">home</mat-icon>
+                <mat-icon class="home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? 'dodgerblue': user.darkMode ? 'white' : 'black'}" (click)="goHome()">home</mat-icon>
             </div>
                 <div class="notification-icon-container">
-                    <mat-icon class="notification-icon"  [ngStyle]="{'color':noneChecked && notificationChecked ? 'dodgerblue': 'white'}"
+                    <mat-icon class="notification-icon"  [ngStyle]="{'color':noneChecked && notificationChecked ? 'dodgerblue': user.darkMode ? 'white' : 'black'}"
                      [matBadge]="notifications.length>0 ? notifications.length : '' " matBadgeColor="warn" (click)="changeNotifyStatus()">notifications_none</mat-icon>
                 </div>
         </div>
 
-        <div class="input-container">
-            <input type="search"  name="searchTerm" class="input" placeholder=" Search  JustdoIt"/>
+        <div class="input-container " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' ">
+            <input type="search"  name="searchTerm" class="input" [ngClass]="user.darkMode ? 'input-dark' : 'input-light' " 
+            placeholder=" Search  JustdoIt"/>
         </div>
 
      <div class="profile-question-container">
@@ -30,6 +31,11 @@
            <div class="user-settings" *ngIf="showSettings">
                <button mat-button class="go-to-profile-btn" (click)="openUserProfile()">User Profile</button>
                <mat-divider></mat-divider>
+               <button mat-button class="go-to-profile-btn" (click)="updateUserMode()">
+                  <span *ngIf="user.darkMode">Light mode</span>
+                  <span *ngIf="!user.darkMode">Dark mode</span> 
+                </button>
+               <mat-divider></mat-divider>
                <button mat-button class="go-to-profile-btn">JustDoIt Pro</button>
                <mat-divider></mat-divider>
                <button mat-button class="logout-btn" (click)="logout()">Logout</button>
@@ -39,14 +45,16 @@
      </div>
      <div class="bars">
          <label for="check">
-            <mat-icon class="reorder" (click)="toggleMobileIcons()" *ngIf="!mobileIcons">reorder</mat-icon>
-            <mat-icon class="close" (click)="toggleMobileIcons()" *ngIf="mobileIcons">close</mat-icon>
+            <mat-icon class="reorder" (click)="toggleMobileIcons()" [ngStyle]="{color:user.darkMode ? 'white' : 'black' }" 
+            *ngIf="!mobileIcons">reorder</mat-icon>
+            <mat-icon class="close" (click)="toggleMobileIcons()" [ngStyle]="{color:user.darkMode ? 'white' : 'black' }"
+             *ngIf="mobileIcons">close</mat-icon>
          </label>
      </div>
     </div>
 
     <div class="content-container" (click)="hideSettings()">
-        <div class="left-sidebar">
+        <div class="left-sidebar " [ngClass]="user.darkMode ? 'commonDiv leftBorderDark' : 'lightMode leftBorderLight' ">
           <div class="user-workspaces">
               <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces;trackBy: trackWorkspace" 
               [class.active]="userWorkspace.isChecked"
@@ -54,9 +62,17 @@
                 <img src="{{userWorkspace.picture}}"  alt="{{userWorkspace.name}}" class="topic-profile">
                 <h3 class="topic-name" matBadge="{{userWorkspace.isChecked ? '': '..' }}" matBadgePosition="above before" matBadgeColor="primary">{{userWorkspace.name}}</h3>
               </div>
+              <!-- FOR ANALYSIS -->
+              <div class="dark-mode-btn" style="margin-top: 40%;">
+                <button mat-raised-button style="background-color: dodgerblue;color: white; border-radius: 20px;" class="go-to-profile-btn" (click)="updateUserMode()">
+                    <span *ngIf="user.darkMode">Light mode</span>
+                    <span *ngIf="!user.darkMode">Dark mode</span> 
+                  </button>
+              </div>
+              <!-- FOR ANALYSIS -->
           </div>
         </div>
-        <div class="middle">
+        <div class="middle " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' ">
            <div *ngIf="noneChecked && !notificationChecked" class="allQuestions">
                 <all-topics></all-topics>
            </div>
@@ -67,19 +83,30 @@
               <notifications></notifications>
            </div> 
         </div>
-        <div class="right-sidebar">
+        <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
 
         </div>
     </div>
-    <div class="test" id="tdiv">
+    <div class="test " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " id="tdiv">
         <div class="left-2-sidebar">
             <div class="user-workspaces">
                 <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces;trackBy: trackWorkspace" 
                 [class.active]="userWorkspace.isChecked"
                   (click)="toggleCheck(userWorkspace)">
                   <img src="{{userWorkspace.picture}}"  alt="{{userWorkspace.name}}" class="topic-profile">
-                  <h3 class="topic-name" matBadge="{{userWorkspace.isChecked ? '': '..' }}" matBadgePosition="above before" matBadgeColor="primary">{{userWorkspace.name}}</h3>
+                  <h3 [ngClass]="user.darkMode ? 'topic-name-dark' : 'topic-name-light' " 
+                  matBadge="{{userWorkspace.isChecked ? '': '..' }}" matBadgePosition="above before" matBadgeColor="primary">{{userWorkspace.name}}</h3>
                 </div>
+                
+                              <!-- FOR ANALYSIS -->
+              <div class="dark-mode-btn" style="margin-top: 30%; margin-left: 5%;">
+                <button mat-raised-button style="background-color: dodgerblue;color: white; border-radius: 20px;" class="go-to-profile-btn" (click)="updateUserMode()">
+                    <span *ngIf="user.darkMode">Light mode</span>
+                    <span *ngIf="!user.darkMode">Dark mode</span> 
+                  </button>
+              </div>
+              <!-- FOR ANALYSIS -->
+
             </div>
         </div>
     </div>

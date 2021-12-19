@@ -18,8 +18,10 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
 
   relatedQuestions:any=[];
   questions:any=[];
-  token=localStorage.getItem("justDoitTokAuth");  
+  token=localStorage.getItem("justDoitTokAuth") || '';  
   id:any="";
+
+  user:any=JSON.parse(localStorage.getItem("justDoItUser") || 'null' );
 
   @ViewChild("abc") abc:ElementRef;
   constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService, public title:Title,public meta:Meta) {
@@ -59,7 +61,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
      
      setTimeout(() =>{
-      this.qService.getTopicRelatedQuestions(this.question.topic._id)
+      this.qService.getQuestionRelatedQuestions(this.question.topic._id)
       .subscribe((res:any) =>{
         this.isLoading2=false;
         this.questions=res.topicQuestions.filter((q:any) => q._id != this.question._id);

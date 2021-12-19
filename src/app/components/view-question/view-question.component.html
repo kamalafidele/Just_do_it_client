@@ -1,17 +1,18 @@
 <div class="container">
 
-    <div class="navbar" >
+    <div class="navbar " [ngClass]="user && user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
         <div class="head-search">
             <div>
-                <a [routerLink]="['/']">
+                <a [routerLink]="['/']" style="text-decoration: none;">
                     <h2 class="header" id="mobile-header">JDI</h2>
                     <h2 class="header">JustDoIt</h2>
                 </a>
             </div>
         </div>
 
-        <div class="viewq-input-container" >
-            <input type="search"  name="searchTerm" class="input" placeholder=" Search  JustdoIt"/>
+        <div class="viewq-input-container " [ngClass]="user && user.darkMode ? 'commonDiv' : 'lightMode' " >
+            <input type="search"  name="searchTerm" class="input" [ngClass]="user && user.darkMode ? 'input-dark' : 'input-light' " 
+             placeholder=" Search  JustdoIt"/>
         </div>
 
      <div class="enter-links" >
@@ -23,10 +24,10 @@
 
     </div>
 
-    <div class="viewq-left">
+    <div class="viewq-left" [ngClass]="user && user.darkMode ? 'commonDiv leftBorderDark' : 'lightMode leftBorderLight' ">
 
     </div>
-    <div class="viewq-middle">
+    <div class="viewq-middle" [ngClass]="user && user.darkMode ? 'commonDiv' : 'lightMode' ">
 
         <div class="loadingQuestions" *ngIf="isLoading">
             <div class="circle" id="circle1"></div>
@@ -39,19 +40,21 @@
                 <div class="asked-by">
                     <div class="left">
                         <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
-                        <strong class="askedBy-username" style="color: white;">{{question.askedBy.username}} 
+                        <strong class="askedBy-username"  
+                        [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{question.askedBy.username}} 
                             <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
                     </div>
                     
                 </div>
                 <div class="question-container">
-                      <p class="question-body" style="color: white;"><strong>{{question.question}}</strong></p>                    
+                      <p class="question-body" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                          <strong>{{question.question}}</strong></p>                    
                 </div>
 
                 <div class="answers" *ngFor="let answer of answers; index as i">
                     <strong style="color: dodgerblue; padding-left: 10px;">Answer {{i+1}}</strong>
                     <div class="answer">
-                       <p class="answer-para" style="color: white;">{{answer.answer}}</p>
+                       <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{answer.answer}}</p>
                        <div class="answer-images"  *ngFor="let answerImages of answer.images">
                         <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
                     </div>
@@ -83,14 +86,16 @@
                     <div class="asked-by">
                         <div class="left">
                             <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
-                            <strong class="askedBy-username" style="color: white;">{{question.askedBy.username}} 
+                            <strong class="askedBy-username" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                                {{question.askedBy.username}} 
                                 <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
                         </div>
                         
                     </div>
                     <div class="question-container">
                         <a [routerLink]="['/questionAnswers',question._id]" style="text-decoration: underline dodgerblue;" target="_blank">
-                          <p class="question-body" style="color: white;"><strong>{{question.question}}</strong></p>
+                          <p class="question-body" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                              <strong>{{question.question}}</strong></p>
                        </a>
                         <div class="images"  *ngFor="let image of question.images">
                             <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
@@ -99,7 +104,8 @@
                     </div>
                     <div class="answers" *ngIf="question.answertoshow">
                         <div class="answer" >
-                           <p class="answer-para" style="color: white;">{{question.answertoshow.answer}}</p>
+                           <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                            {{question.answertoshow.answer}}</p>
                            <div class="answer-images"  *ngFor="let answerImages of question.answertoshow.images">
                             <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
                         </div>
@@ -122,7 +128,7 @@
 
         </ng-container>
     </div>
-    <div class="viewq-right">
+    <div class="viewq-right" [ngClass]="user && user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
         
     </div>
 </div>

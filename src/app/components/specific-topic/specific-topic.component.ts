@@ -14,6 +14,7 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
    questions:any=[];
    isLoading=false;
    length=1;
+   user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
 
   constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService) { }
 

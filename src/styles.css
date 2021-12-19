@@ -5,13 +5,38 @@
     box-sizing: border-box;
 }
 
+div.commonDiv{
+    background-color: black;
+    color: white;
+}
+div.lightMode{
+   background-color: white;
+   opacity: 1;
+   color: black;
+}
+
+div.commonDiv a{
+    color: white;
+    text-decoration: 1px solid white underline;
+     
+}
+
+div.lightMode a{
+    color: black
+}
+div.lightMode .question{
+    border-top: 1px solid rgb(202, 202, 202);
+}
+
+div.commonDiv  .question{
+    border-top: 1px solid rgb(41, 40, 40);
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .question,div.workspace-details{
-    background-color: black;
-    border-top: 1px solid rgb(41, 40, 40);
     border-radius: 2px;
     margin-top: 0px;
     min-height: 100px;
@@ -55,6 +80,14 @@ div.question-container{
     background-color: rgb(15, 15, 15);
 }
 
+div.lightMode .question:hover{
+    background-color: rgb(189, 189, 189);
+}
+
+div.commonDiv  .question:hover{
+    background-color: rgb(15, 15, 15);
+}
+
 .button-answer-cont{
     position: relative;
     padding-left: 5px;
@@ -94,11 +127,9 @@ div.question-container{
 }
 .word{
     padding-left: 30px;
-    color: white;
 }
 .arrow_upward, .arrow_downward{
     cursor: pointer;
-    color: white;
 }
 
 /* ENDING EQUATIONS LOADER */

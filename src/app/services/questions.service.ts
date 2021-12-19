@@ -24,5 +24,7 @@ export class QuestionsService {
   getQuestionAndAnswers(id:any){
     return this.http.get(`${MYAPIS.LIVEAPI}/users/question/${id}`);
   }
-
+  getQuestionRelatedQuestions(id:any){
+    return this.http.get(`${MYAPIS.LIVEAPI}/users/questionRelatedQuestions/${id}`);
+  }
 }

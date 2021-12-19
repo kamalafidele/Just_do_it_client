@@ -8,10 +8,11 @@ div.container{
     height: 100%;
 }
 div.content-container{
-    width:50%;
+    width:45%;
     margin-top: 5%;
     padding: 10px;
     background-color: white;
+    border-radius: 5px;
 }
 div.head h2.header{
     text-align: center;
