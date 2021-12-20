@@ -80,7 +80,7 @@
                <specific-topic [passedTopic]="checkedWorkspace" [passedUser]="user"></specific-topic>
            </div>
            <div class="user-notifications" *ngIf="noneChecked && notificationChecked">
-              <notifications></notifications>
+              <notifications [passedUser]="user"></notifications>
            </div> 
         </div>
         <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">

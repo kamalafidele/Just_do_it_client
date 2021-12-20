@@ -1,5 +1,5 @@
 import { NotificationService } from './../../services/notification.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'notifications',
@@ -7,14 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
+  @Input() passedUser:any;
   notifications:any=[];
   isLoading=false;
   length=1;
-  user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
+  user:any;
 
   constructor(public notificationsServ:NotificationService) { }
 
   ngOnInit(): void {
+    this.user=this.passedUser
+    
     this.isLoading=true;
     this.notificationsServ.getAllNotifications()
     .subscribe((res:any) =>{
