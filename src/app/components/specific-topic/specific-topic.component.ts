@@ -7,7 +7,7 @@ import { AnswersService } from 'src/app/services/answers.service';
 @Component({
   selector: 'specific-topic',
   templateUrl: './specific-topic.component.html',
-  styleUrls: ['./specific-topic.component.css']
+  styleUrls: ['./specific-topic.component.css','../loader.css']
 })
 export class SpecificTopicComponent implements OnInit, OnChanges {
   @Input() passedTopic:any;

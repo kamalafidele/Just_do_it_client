@@ -161,12 +161,7 @@ div.left-sidebar{
     display: flex;
     justify-content: center;
 }
-.leftBorderLight{
-    border-right: 1px solid rgb(202, 202, 202);
-}
-.leftBorderDark{
-    border-right: 1px solid rgb(41, 40, 40);
-}
+
 div.middle{
     margin-left: 25%;
     width: 50%;
@@ -181,12 +176,7 @@ div.right-sidebar{
     bottom: 0;
     overflow: hidden;
 }
-.rightBorderLight{
-    border-left: 1px solid rgb(202, 202, 202);
-}
-.rightBorderDark{
-    border-left: 1px solid rgb(41, 40, 40);
-}
+
 div.user-workspaces{
     margin-top: 30px;
 }

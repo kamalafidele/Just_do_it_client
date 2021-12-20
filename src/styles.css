@@ -1,4 +1,6 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 *{
     margin: 0px;
     padding: 0px;
@@ -36,9 +38,6 @@ div.commonDiv  .question{
     border-top: 1px solid rgb(41, 40, 40);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .question,div.workspace-details{
     border-radius: 2px;

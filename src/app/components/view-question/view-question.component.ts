@@ -6,13 +6,14 @@ import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-view-question',
   templateUrl: './view-question.component.html',
-  styleUrls: ['./view-question.component.css','../home/home.component.css']
+  styleUrls: ['./view-question.component.css','../home/home.component.css','../loader.css']
 })
 export class ViewQuestionComponent implements OnInit, AfterViewInit {
   mobileIcons=false;
   question:any=[];
   answers:any=[];
-  length=1;
+  length=0;
+  length2=0;
   isLoading=false;
   isLoading2=true;
 
@@ -39,8 +40,9 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
      .subscribe((res:any) =>{
       this.isLoading=false;
        this.answers=res.answers;
+       this.length=1;
        this.question=res.question;
-       this.length=res.answers.length;
+       this.length2=res.answers.length;
 
        this.title.setTitle(res.question.question);
        this.meta.updateTag({name:"description",content:res.question.question});

@@ -7,7 +7,7 @@ import { AnswersService } from 'src/app/services/answers.service';
 @Component({
   selector: 'all-topics',
   templateUrl: './all-topics.component.html',
-  styleUrls: ['./all-topics.component.css']
+  styleUrls: ['./all-topics.component.css','../loader.css']
 })
 export class AllTopicsComponent implements OnInit {
   @Input() passedTopic:any;

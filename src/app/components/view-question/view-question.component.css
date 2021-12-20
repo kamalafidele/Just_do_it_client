@@ -28,12 +28,7 @@
     left: 0;
     bottom: 0;
 }
-.leftBorderLight{
-    border-right: 1px solid rgb(139, 139, 139);
-}
-.leftBorderDark{
-    border-right:620px 1px solid rgb(41, 40, 40);
-}
+
 .viewq-middle{
     width: 60%;
     margin-left: 20%;
@@ -47,51 +42,9 @@
     right: 0;
     bottom: 0;
 }
-.rightBorderLight{
-    border-left: 1px solid rgb(139, 139, 139);
-}
-.rightBorderDark{
-    border-left: 1px solid rgb(41, 40, 40);
-}
 
-/*  LOADERS */
-.commonDiv .loadingQuestions  .circle{
-    background-color: white;
- }
- .lightMode .loadingQuestions  .circle{
-    background-color: black;
- }
-.loadingQuestions{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 20px;
-    }
-    .loadingQuestions  .circle{
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        margin: 0px 15px;
-        animation: bounce 2s infinite ease-in-out both;
-    }
-    
-    #circle1{
-    animation-delay: -0.3s;
-    }
-    
-    #circle2{
-    animation-delay: -0.15s;
-    }
-    
-    @keyframes bounce{
-       0%,80%,100%{
-          transform:scale(0);
-       }
-       
-       40%{
-       transform:scale(0.6);
-       }
-    }
+
+
 
     @media only screen and (max-width: 620px){
         .viewq-left{
