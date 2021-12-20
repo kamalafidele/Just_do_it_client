@@ -48,12 +48,14 @@ h2.header{
     border-radius: 10px;
 }
 .input-light{
-   background-color: rgb(214, 214, 214);
+   background-color: white;
+   outline: 1px solid gray;
    color: black;
 }
 .input-dark{
-    background-color: rgb(34, 33, 33); 
+    background-color: black; 
     color: white;
+    outline: 1px solid gray;
 }
 .input::placeholder{
     

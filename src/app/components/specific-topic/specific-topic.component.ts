@@ -11,14 +11,16 @@ import { AnswersService } from 'src/app/services/answers.service';
 })
 export class SpecificTopicComponent implements OnInit, OnChanges {
   @Input() passedTopic:any;
+  @Input() passedUser:any;
    questions:any=[];
    isLoading=false;
    length=1;
-   user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
+   user:any;
 
   constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService) { }
 
   ngOnInit(): void {
+    this.user=this.passedUser;
     this.isLoading=true;
      this.questionService.getTopicRelatedQuestions(this.passedTopic._id)
      .subscribe((res:any) =>{

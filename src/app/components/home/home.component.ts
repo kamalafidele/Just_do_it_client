@@ -114,16 +114,14 @@ export class HomeComponent implements OnInit {
    }
 
    updateUserMode(){
-     let userCopr=this.user;
-     userCopr.darkMode=!this.user.darkMode;
-     
+
+     this.user.darkMode=!this.user.darkMode
      this.notif.updateUserMode(this.user.darkMode)
      .subscribe((res:any) =>{
  
        localStorage.removeItem("justDoItUser");
 
-       localStorage.setItem("justDoItUser",JSON.stringify(userCopr));
-       this.router.navigate(["/account"]);
+       localStorage.setItem("justDoItUser",JSON.stringify(this.user));
      },
      (err:any) =>{
         console.log("MODE ERROR: ",err);

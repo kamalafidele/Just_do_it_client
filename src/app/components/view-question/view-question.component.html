@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngStyle]="{'background-color': user.darkMode ? 'black' : 'white'} ">
 
     <div class="navbar " [ngClass]="user && user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
         <div class="head-search">
@@ -47,7 +47,7 @@
                     
                 </div>
                 <div class="question-container">
-                      <p class="question-body" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                      <p class="question-body" >
                           <strong>{{question.question}}</strong></p>                    
                 </div>
 
@@ -93,8 +93,8 @@
                         
                     </div>
                     <div class="question-container">
-                        <a [routerLink]="['/questionAnswers',question._id]" style="text-decoration: underline dodgerblue;" target="_blank">
-                          <p class="question-body" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                        <a [routerLink]="['/questionAnswers',question._id]"  target="_blank">
+                          <p class="question-body" >
                               <strong>{{question.question}}</strong></p>
                        </a>
                         <div class="images"  *ngFor="let image of question.images">

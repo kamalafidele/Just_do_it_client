@@ -1,5 +1,5 @@
 .questions{
-    min-height: 700px;
+    min-height: 100vh;
 }
 .workspace-name{
     font-weight: bold;
@@ -53,6 +53,6 @@ div.workspace-details img.workspace-img{
        }
        
        40%{
-       transform:scale(1);
+       transform:scale(0.5);
        }
     }

@@ -11,8 +11,8 @@
     </div>
      <div class="profile-inputs-container">
          <label for="name"><strong>Username</strong></label>
-         <mat-form-field appearance="outline">
-             <input matInput type="text" name="username" [value]="user.username"  class="username" spellcheck="false" readonly>
+         <mat-form-field appearance="outline" class="profile-input">
+             <input matInput type="text"  name="username" [value]="user.username"  class="username" spellcheck="false" readonly>
          </mat-form-field>
      </div>
      <p class="upload-message" *ngIf="wasUploaded" style="color: green; text-align: center;">Profile picture changed successfully</p>

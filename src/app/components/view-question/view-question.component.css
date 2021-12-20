@@ -38,6 +38,7 @@
     width: 60%;
     margin-left: 20%;
     padding-top: 4.3%;
+    min-height: 100vh;
 }
 .viewq-right{
     width: 20%;

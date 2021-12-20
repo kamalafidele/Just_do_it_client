@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import {MatDialog} from "@angular/material/dialog";
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
@@ -9,18 +9,23 @@ import { AnswersService } from 'src/app/services/answers.service';
   templateUrl: './all-topics.component.html',
   styleUrls: ['./all-topics.component.css']
 })
-export class AllTopicsComponent implements OnInit, OnChanges {
+export class AllTopicsComponent implements OnInit {
   @Input() passedTopic:any;
+  @Input() passedUser:any;
    questions:any=[];
    length=1;
    isLoading=false;
    isUpVote=false;
    isDownVote=false;
-   user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
+   user:any;
 
-  constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService) { }
+  constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService) {
+    
+   }
 
   ngOnInit(): void {
+    this.user=this.passedUser;
+
     this.isLoading=true;
      this.questionService.getAllQuestions()
      .subscribe((res:any) =>{
@@ -29,18 +34,6 @@ export class AllTopicsComponent implements OnInit, OnChanges {
        this.length=res.questions.length;
      })
     }
-
-  ngOnChanges(changes:SimpleChanges){
-    this.isLoading=true;
-    this.length=1;
-    this.passedTopic=changes.passedTopic.currentValue;
-    this.questionService.getTopicRelatedQuestions(this.passedTopic._id)
-    .subscribe((res:any) =>{
-      this.isLoading=false;
-      this.questions=res.topicQuestions;
-      this.length=res.topicQuestions.length;
-    })
-  }
 
   openAnsweringDialog(question:any){
      this.dialog.open(AddAnswerComponent,{data:{question},panelClass:"custom-dialog-container"});
