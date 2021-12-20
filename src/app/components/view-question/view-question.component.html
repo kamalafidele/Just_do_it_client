@@ -1,4 +1,4 @@
-<div class="container" [ngStyle]="{'background-color': user.darkMode ? 'black' : 'white'} ">
+<div class="container" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'} ">
 
     <div class="navbar " [ngClass]="user && user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
         <div class="head-search">
@@ -50,29 +50,34 @@
                       <p class="question-body" >
                           <strong>{{question.question}}</strong></p>                    
                 </div>
-
-                <div class="answers" *ngFor="let answer of answers; index as i">
-                    <strong style="color: dodgerblue; padding-left: 10px;">Answer {{i+1}}</strong>
-                    <div class="answer">
-                       <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{answer.answer}}</p>
-                       <div class="answer-images"  *ngFor="let answerImages of answer.images">
-                        <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
-                    </div>
-                    <div class="votes-add-answers">
-                        <div class="icon-1 ico-container">
-                            <mat-icon class="arrow_upward" >arrow_upward</mat-icon> 
-                            <span class="word"><strong>{{answer.upVotes}}</strong>  Votes</span>
+                 
+                <ng-container *ngIf="length2 > 0">
+                    <div class="answers" *ngFor="let answer of answers; index as i">
+                        <strong style="color: dodgerblue; padding-left: 10px;">Answer {{i+1}}</strong>
+                        <div class="answer">
+                           <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{answer.answer}}</p>
+                           <div class="answer-images"  *ngFor="let answerImages of answer.images">
+                            <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
                         </div>
-                        <div class="icon-2 ico-container">
-                            <mat-icon class="arrow_downward">arrow_downward</mat-icon> 
-                            <span class="word"> <strong>{{answer.downVotes}}</strong> Rejects</span>
+                        <div class="votes-add-answers">
+                            <div class="icon-1 ico-container">
+                                <mat-icon class="arrow_upward" >arrow_upward</mat-icon> 
+                                <span class="word"><strong>{{answer.upVotes}}</strong>  Votes</span>
+                            </div>
+                            <div class="icon-2 ico-container">
+                                <mat-icon class="arrow_downward">arrow_downward</mat-icon> 
+                                <span class="word"> <strong>{{answer.downVotes}}</strong> Rejects</span>
+                            </div>
+                            <div class="btn-answer-cont">
+                            </div>
                         </div>
-                        <div class="btn-answer-cont">
                         </div>
                     </div>
-                    </div>
+                </ng-container>
+                <div  *ngIf="length2 <= 0 && !isLoading" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'}">
+                    <p style="padding-left: 10px;" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black'}">
+                        This question doesn't currently have answers </p>
                 </div>
-        
             
             </div>
 
@@ -127,6 +132,9 @@
             </div>
 
         </ng-container>
+        <div class="no-question" *ngIf="length <= 0 && !isLoading" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'}">
+            <p class="no-question-para" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black'}">This question doesn't exist on our platform </p>
+        </div>
     </div>
     <div class="viewq-right" [ngClass]="user && user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
         

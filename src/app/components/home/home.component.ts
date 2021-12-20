@@ -11,7 +11,7 @@ import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css','../loader.css']
 })
 export class HomeComponent implements OnInit {
 
