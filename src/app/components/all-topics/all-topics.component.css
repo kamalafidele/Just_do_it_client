@@ -4,7 +4,7 @@
 
 /* LOADER FOR QUESTIONS */
 .questions{
-   min-height: 700px;
+   min-height: 100vh;
 }
 .commonDiv .loadingQuestions  .circle{
    background-color: white;
@@ -41,6 +41,6 @@
        }
        
        40%{
-       transform:scale(1);
+       transform:scale(0.5);
        }
     }

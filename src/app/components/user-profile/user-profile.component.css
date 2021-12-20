@@ -28,6 +28,9 @@ label.change-profile, .save-para{
 .profile-inputs-container label{
     display: block;
 }
+.profile-input{
+    width: 90%;
+}
 
 /* loader */
 div.loader{

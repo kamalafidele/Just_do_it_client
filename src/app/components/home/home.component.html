@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngStyle]="{'background-color': user.darkMode ? 'black' : 'white'} ">
     <input #abc type="checkbox" name="check" id="check">
     <div class="navbar " [ngClass]="user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
         <div class="head-search" (click)="hideSettings()">
@@ -74,10 +74,10 @@
         </div>
         <div class="middle " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' ">
            <div *ngIf="noneChecked && !notificationChecked" class="allQuestions">
-                <all-topics></all-topics>
+                <all-topics [passedUser]="user"></all-topics>
            </div>
            <div class="specifiTopic" *ngIf="!noneChecked">
-               <specific-topic [passedTopic]="checkedWorkspace"></specific-topic>
+               <specific-topic [passedTopic]="checkedWorkspace" [passedUser]="user"></specific-topic>
            </div>
            <div class="user-notifications" *ngIf="noneChecked && notificationChecked">
               <notifications></notifications>

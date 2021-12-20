@@ -25,7 +25,7 @@
             </div>
             <div class="question-container">
                 <a [routerLink]="['/questionAnswers',question._id]" target="_blank">
-                  <p class="question-body" [ngStyle]="user.darkMode ? {color:'white'} : {color:'black'}"><strong>{{question.question}}</strong></p>
+                  <p class="question-body" ><strong>{{question.question}}</strong></p>
                 </a>
                 <div class="images"  *ngFor="let image of question.images">
                     <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
