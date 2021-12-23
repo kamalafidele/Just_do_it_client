@@ -9,7 +9,7 @@ div.navbar{
 }
 
 h2.header{
-    color: hsl(0, 50%, 40%);
+    color: dodgerblue;
     font-size: 40px;
     padding-left: 20px;
 }
@@ -85,3 +85,9 @@ div.loader{
       transform: rotate(360deg);
     }
   }
+
+@media only screen and (max-width: 620px){
+    div.workspaces-container{
+        width: 98%;
+    }
+}

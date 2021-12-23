@@ -26,7 +26,11 @@ export class HomeComponent implements OnInit {
    mobileIcons=false;
    defaultDesc="JustDoIt is a social platform where people discuss world matters and interesting topics that you like..";
    defaultImg="https://res.cloudinary.com/justdoit/image/upload/v1637511391/users/images/Just_do_display_image_a4lvcx.png"; 
-
+   mboneraDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Mbonera-dark_ntdvzp.png";
+   mboneraLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105207/questionImages/images/Mbonera-light_ntebvt.png";
+   bookingDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Codeam-dark_hrqnkd.png";
+   bookingLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Booking-light_nzux3f.png";
+   //../../../assets/Images/Mbonera-light.png
   @ViewChild("abc") abc:ElementRef;
 
  constructor(private router:Router,private workspaceSer:WorkspacesService, private meta:Meta,private title:Title,
@@ -41,8 +45,8 @@ export class HomeComponent implements OnInit {
 
      this.workspaceSer.getUserWorkspaces()
      .subscribe((res:any) =>{
-       
-      if(res.userWorkspaces[0].workspaces.length < 5)
+       console.log("GOT RESPONSE",res.userWorkspaces.length);
+      if(res.userWorkspaces.length==0 || res.userWorkspaces[0].workspaces.length < 5)
           this.router.navigate(["/workspace"]);
           
        this.userWorkspaces=res.userWorkspaces[0].workspaces;

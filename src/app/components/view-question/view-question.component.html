@@ -1,11 +1,16 @@
 <div class="container" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'} ">
 
     <div class="navbar " [ngClass]="user && user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
-        <div class="head-search">
+        <div class="head-search" id="head-search-viewq">
             <div>
                 <a [routerLink]="['/']" style="text-decoration: none;">
                     <h2 class="header" id="mobile-header">JDI</h2>
                     <h2 class="header">JustDoIt</h2>
+                </a>
+            </div>
+            <div class="home-ic" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black' }">
+                <a [routerLink]="['/']" style="text-decoration: none;" class="viewq-link">
+                    <mat-icon>home</mat-icon>
                 </a>
             </div>
         </div>
@@ -137,6 +142,18 @@
         </div>
     </div>
     <div class="viewq-right" [ngClass]="user && user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
-        
+        <div class="add-images">
+            <h2 style="padding-left: 10px;" [ngStyle]="{'color': user.darkMode ? 'white' : 'black' }"><em>TRENDING WEB APPS</em> </h2>
+            <div class="img-1">
+                <a href="https://mbonera.live" target="_blank">
+                 <img [src]="user && user.darkMode ? mboneraDarkImg : mboneraLightImg" alt="mbonera add">
+                </a>
+            </div>
+            <div class="img-2">
+                <a href="https://bookinga.netlify.app" target="_blank">
+                 <img [src]="user && user.darkMode ? codeamaDarkImg : codeamaLightImg" alt="codeama add">
+                </a>
+            </div>
+        </div>
     </div>
 </div>

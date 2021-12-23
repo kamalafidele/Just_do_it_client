@@ -84,7 +84,19 @@
            </div> 
         </div>
         <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
-
+               <div class="add-images">
+                   <h2 style="padding-left: 10px;" [ngStyle]="{'color': user.darkMode ? 'white' : 'black' }"> <em>TRENDING WEB APPS</em> </h2>
+                   <div class="img-1">
+                       <a href="https://mbonera.live" target="_blank">
+                        <img [src]="user.darkMode ? mboneraDarkImg : mboneraLightImg" alt="mbonera add">
+                       </a>
+                   </div>
+                   <div class="img-2">
+                       <a href="https://bookinga.netlify.app" target="_blank">
+                        <img [src]="user.darkMode ?  bookingDarkImg : bookingLightImg" alt="booking add">
+                       </a>
+                   </div>
+               </div>
         </div>
     </div>
     <div class="test " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " id="tdiv">
