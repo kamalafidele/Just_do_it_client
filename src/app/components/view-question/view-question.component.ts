@@ -23,6 +23,10 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   id:any="";
 
   user:any=JSON.parse(localStorage.getItem("justDoItUser") || 'null' );
+  mboneraDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Mbonera-dark_ntdvzp.png";
+  mboneraLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105207/questionImages/images/Mbonera-light_ntebvt.png";
+  codeamaDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Booking-dark_rdl3lp.png";
+  codeamaLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Codeama-light_ayegug.png";
 
   @ViewChild("abc") abc:ElementRef;
   constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService, public title:Title,public meta:Meta) {

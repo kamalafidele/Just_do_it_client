@@ -43,10 +43,22 @@
     bottom: 0;
 }
 
+.home-ic{
+    margin-left: 70%; 
+    margin-top: 10px;
+}
 
 
 
     @media only screen and (max-width: 620px){
+        .viewq-link{
+            display: block;
+        }
+        .home-ic{
+            margin-left: 13%;
+            margin-top: 5px;
+            display: block;
+        }
         .viewq-left{
             width: 0%;
         }
@@ -64,6 +76,6 @@
             border-radius: 30%;
             width: 100%;
             height: auto;
-            margin-left: 10px;
+            margin-left: 10%;
         }
     }
