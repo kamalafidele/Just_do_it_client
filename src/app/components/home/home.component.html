@@ -85,7 +85,7 @@
         </div>
         <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
                <div class="add-images">
-                   <h2 style="padding-left: 10px;" [ngStyle]="{'color': user.darkMode ? 'white' : 'black' }"> <em>TRENDING WEB APPS</em> </h2>
+                   <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2>
                    <div class="img-1">
                        <a href="https://mbonera.live" target="_blank">
                         <img [src]="user.darkMode ? mboneraDarkImg : mboneraLightImg" alt="mbonera add">
@@ -110,7 +110,7 @@
                   matBadge="{{userWorkspace.isChecked ? '': '..' }}" matBadgePosition="above before" matBadgeColor="primary">{{userWorkspace.name}}</h3>
                 </div>
                 
-                              <!-- FOR ANALYSIS -->
+              <!-- FOR ANALYSIS -->
               <div class="dark-mode-btn" style="margin-top: 30%; margin-left: 5%;">
                 <button mat-raised-button style="background-color: dodgerblue;color: white; border-radius: 20px;" class="go-to-profile-btn" (click)="updateUserMode()">
                     <span *ngIf="user.darkMode">Light mode</span>

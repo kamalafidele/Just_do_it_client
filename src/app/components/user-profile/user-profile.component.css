@@ -50,3 +50,9 @@ div.loader{
       transform: rotate(360deg);
     }
   }
+@media only screen and (max-width:620px){
+    .user-profile-img{
+        width: 220px;
+        height: 200px;
+    }
+}

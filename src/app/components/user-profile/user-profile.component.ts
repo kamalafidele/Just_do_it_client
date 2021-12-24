@@ -26,6 +26,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   upload($event:any){
+    
     const reader=new FileReader();
     this.isUploaded=true;
 

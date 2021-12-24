@@ -28,7 +28,7 @@ div.commonDiv a:hover, div.lightMode a:hover{
 }
 
 div.lightMode a{
-    color: black
+color: black;
 }
 div.lightMode .question{
     border-top: 1px solid rgb(202, 202, 202);
@@ -115,6 +115,7 @@ div.commonDiv  .question:hover{
     width: 95%;
     height: auto;
     margin-left: 10px;
+    border-radius: 4px;
 }
 
 .votes-add-answers{
