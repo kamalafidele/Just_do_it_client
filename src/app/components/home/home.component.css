@@ -154,7 +154,7 @@ div.lightMode .user-settings{
 }
 div.left-sidebar{
     width: 25%;
-    height: 90.5%;
+    height: 91%;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -170,14 +170,19 @@ div.middle{
 }
 div.right-sidebar{
     width: 25%;
-    height: 90.5%;
+    height: 91%;
     position: fixed;
     right: 0;
     bottom: 0;
     overflow: hidden;
 }
+
+.add-images{
+    display: flex;
+    flex-direction: column;
+}
 .add-images img{
-    height: 275px;
+    height: 255px;
     width: 94%;
 }
 
@@ -220,7 +225,7 @@ div.user-workspace h3{
 div.test{
     display: none;
     width: 25%;
-    height: 90.5%;
+    height: 91%;
     position: fixed;
     left: 0px;
     bottom: 0px;
