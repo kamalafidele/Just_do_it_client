@@ -66,11 +66,11 @@
                         </div>
                         <div class="votes-add-answers">
                             <div class="icon-1 ico-container">
-                                <mat-icon class="arrow_upward" >arrow_upward</mat-icon> 
+                                <mat-icon class="arrow_upward" (click)="upvote(answer._id)">arrow_upward</mat-icon> 
                                 <span class="word"><strong>{{answer.upVotes}}</strong>  Votes</span>
                             </div>
                             <div class="icon-2 ico-container">
-                                <mat-icon class="arrow_downward">arrow_downward</mat-icon> 
+                                <mat-icon class="arrow_downward" (click)="downvote(answer._id)">arrow_downward</mat-icon> 
                                 <span class="word"> <strong>{{answer.downVotes}}</strong> Rejects</span>
                             </div>
                             <div class="btn-answer-cont">
@@ -107,9 +107,6 @@
                           <p class="question-body" >
                               <strong>{{question.question}}</strong></p>
                        </a>
-                        <div class="images"  *ngFor="let image of question.images">
-                            <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
-                        </div>
                         
                     </div>
                     <div class="answers" *ngIf="question.answertoshow">
@@ -121,12 +118,12 @@
                         </div>
                         <div class="votes-add-answers">
                             <div class="icon-1 ico-container">
-                                <mat-icon class="arrow_upward">arrow_upward</mat-icon> 
-                                <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Likes</span>
+                                <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_upward</mat-icon> 
+                                <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Votes</span>
                             </div>
                             <div class="icon-2 ico-container">
-                                <mat-icon class="arrow_downward" >arrow_downward</mat-icon> 
-                                <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Dislikes</span>
+                                <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_downward</mat-icon> 
+                                <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
                             </div>
                             <div class="btn-answer-cont">
                             </div>

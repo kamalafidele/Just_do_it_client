@@ -3,6 +3,8 @@ import { QuestionsService } from 'src/app/services/questions.service';
 import {MatDialog} from "@angular/material/dialog";
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
 import { AnswersService } from 'src/app/services/answers.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LikeDislike } from 'src/app/likeDislike';
 
 @Component({
   selector: 'specific-topic',
@@ -17,7 +19,7 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
    length=1;
    user:any;
 
-  constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService) { }
+  constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) { }
 
   ngOnInit(): void {
     this.user=this.passedUser;
@@ -50,35 +52,13 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
   // }
 
   upvote(id:any){
-    this.fowardVote(id,"upvote");
-    let data={answerId:id};
-    this.answerSer.upVote(data)
-    .subscribe((res:any) =>{
-    },
-    (err:any) => {this.reverseVote(id,"upvote")}
-    )
+    let like=new LikeDislike(this.answerSer,this.cookies,this.questions);
+    like.upvote(id);
   }
 
   downvote(id:any){
-    this.fowardVote(id,"downvote");
-     let data={answerId:id};
-     this.answerSer.downVote(data)
-     .subscribe((res:any) =>{
-     },
-     (err:any) =>{this.reverseVote(id,"downvote");}
-     )
-  }
-
-  fowardVote(id:any,action:any){
-    this.questions.forEach((q:any) => {
-      if(q.answertoshow._id==id && action=="upvote") q.answertoshow.upVotes++;
-      else if(q.answertoshow._id==id && action=="downvote") q.answertoshow.downVotes++;});
-  }
-
-  reverseVote(id:any,action:any){
-    this.questions.forEach((q:any) => {
-      if(q.answertoshow._id==id && action=="upvote") q.answertoshow.upVotes--;
-      else if(q.answertoshow._id==id && action=="downvote")  q.answertoshow.downVotes--;});
+    let dislike=new LikeDislike(this.answerSer,this.cookies,this.questions);
+    dislike.downvote(id);
   }
 
 }

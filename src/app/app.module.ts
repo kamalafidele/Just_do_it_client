@@ -27,6 +27,7 @@ import { AllTopicsComponent } from './components/all-topics/all-topics.component
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ViewQuestionComponent } from './components/view-question/view-question.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { ViewQuestionComponent } from './components/view-question/view-question.
     AppRoutesModule,
     AngularEditorModule
   ],
-  providers: [LoginRegisterService,AuthGuardService,WorkspacesService],
+  providers: [LoginRegisterService,AuthGuardService,WorkspacesService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

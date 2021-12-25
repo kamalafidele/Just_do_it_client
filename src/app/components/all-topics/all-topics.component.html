@@ -1,6 +1,3 @@
-<!-- <p>
-    <a [routerLink]="['/topic',question.question,question.askedBy.username,question.askedBy.avatar,question.askedBy._id]">
-</p> -->
 
 <div class="questions" [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " >
 
@@ -37,11 +34,11 @@
                 </div>
                 <div class="votes-add-answers">
                     <div class="icon-1 ico-container">
-                        <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow._id)">arrow_upward</mat-icon> 
+                        <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_upward</mat-icon> 
                         <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Votes</span>
                     </div>
                     <div class="icon-2 ico-container">
-                        <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow._id)">arrow_downward</mat-icon> 
+                        <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_downward</mat-icon> 
                         <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
                     </div>
                     <div class="btn-answer-cont">
