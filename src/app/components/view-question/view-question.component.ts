@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild,ElementRef, AfterViewInit } from '@angular
 import { ActivatedRoute } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { Title, Meta } from '@angular/platform-browser';
+import { AnswersService } from 'src/app/services/answers.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LikeDislike } from 'src/app/likeDislike';
 
 @Component({
   selector: 'app-view-question',
@@ -29,7 +32,8 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   codeamaLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Codeama-light_ayegug.png";
 
   @ViewChild("abc") abc:ElementRef;
-  constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService, public title:Title,public meta:Meta) {
+  constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService,private answerSer:AnswersService,public cookies:CookieService,
+    public title:Title,public meta:Meta) {
     this.abc=ref;
    }
 
@@ -81,5 +85,16 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
     this.mobileIcons=!this.mobileIcons;
   }
 
+  upvote(id:any){
+    let like=new LikeDislike(this.answerSer,this.cookies,this.questions);
+    like.upvote(id);
+    
+    
+  }
+
+  downvote(id:any){
+    let dislike=new LikeDislike(this.answerSer,this.cookies,this.questions);
+    dislike.downvote(id);
+  }
   
 }
