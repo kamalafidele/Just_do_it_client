@@ -13,7 +13,7 @@
         <!-- <span *ngIf="isImageError" class="error">Only two images allowed. Click Ctrl+Z to reduce them</span> -->
         <div class="btn-container">
            <div class="btn-1">
-            <button mat-raised-button color="primary" (click)="askQuestion()">
+            <button mat-raised-button color="primary" (click)="askQuestion()" class="ask-btn" [disabled]="isLoading">
               <span *ngIf="!isLoading">Ask</span> <div *ngIf="isLoading" class="loader"></div> </button>
            </div>
            <div class="btn-2">

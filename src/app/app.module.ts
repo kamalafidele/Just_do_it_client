@@ -28,6 +28,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ViewQuestionComponent } from './components/view-question/view-question.component';
 import { CookieService } from 'ngx-cookie-service';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutesModule,
-    AngularEditorModule
+    AngularEditorModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule
   ],
   providers: [LoginRegisterService,AuthGuardService,WorkspacesService,CookieService],
   bootstrap: [AppComponent]

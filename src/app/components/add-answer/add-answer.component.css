@@ -5,6 +5,9 @@ textarea{
     padding: 10px;
     font-size: 20px;
 }
+.answ-btn{
+  height: 40px;
+}
 .btn-container{
   display: flex;
   justify-content: space-between;

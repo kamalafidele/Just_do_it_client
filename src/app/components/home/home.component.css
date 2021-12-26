@@ -132,7 +132,7 @@ div.home-icon-container{
     border-radius: 4px;
     padding-top: 10px;
     position: absolute;
-    margin-top: 10px;
+    margin-top: 13px;
     right: 5px;
     height: auto;
     width: 200px;
@@ -182,7 +182,7 @@ div.right-sidebar{
     flex-direction: column;
 }
 .add-images img{
-    height: 255px;
+    height: 270px;
     width: 94%;
 }
 

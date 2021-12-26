@@ -14,6 +14,9 @@ textarea{
     justify-content: space-between;
     padding-top: 10px;
 }
+.ask-btn{
+    height: 40px;
+}
 .error{
     color: crimson;
 }

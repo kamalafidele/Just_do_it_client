@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
 }
 
   toggleCheck(workspace:any){
-
+   window.scrollTo(10,10)
     this.noneChecked=false;
     this.userWorkspaces.forEach((wksp:any) =>{
       if(wksp._id==workspace._id){
@@ -133,4 +133,5 @@ export class HomeComponent implements OnInit {
      ) 
 
    }
+
 }

@@ -8,6 +8,8 @@
     </div>
 
     <ng-container *ngIf="length  > 0">
+        <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+
         <div class="question" *ngFor="let question of questions">
             <div class="asked-by">
                 <div class="left">
@@ -41,16 +43,22 @@
                         <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_downward</mat-icon> 
                         <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
                     </div>
-                    <div class="btn-answer-cont">
-                    </div>
+                 
                 </div>
                 </div>
             </div>
     
-            <div class="button-answer-cont" *ngIf="user.isPro">
+            <div class="button-answer-cont">
                 <button class="btn-answer" (click)="openAnsweringDialog(question)">Add Answer</button>
             </div>
         </div>
+        <div class="loadingQuestions" *ngIf="scrollEffect">
+            <div class="circle" id="circle1"></div>
+            <div class="circle" id="circle2"></div>
+            <div class="circle" id="circle3"></div>
+        </div>
+    </div>
+
     </ng-container>
 
     <div class="no-question" *ngIf="length <= 0">

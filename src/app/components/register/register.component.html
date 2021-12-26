@@ -8,13 +8,13 @@
         <div class="row">
             <mat-form-field appearance="outline" class="inputs">
                 <mat-label>Username</mat-label>
-                <input type="text"  matInput [(ngModel)]="username" name="username"  />
+                <input type="text"  matInput [(ngModel)]="username" name="username" maxlength="40" />
               </mat-form-field>
         </div>
         <div class="row">
             <mat-form-field appearance="outline" class="inputs">
                 <mat-label>Email</mat-label>
-                <input type="email"  matInput [(ngModel)]="email" name="email"  (change)="checkStep()" />
+                <input type="email"  matInput [(ngModel)]="email" name="email"  (change)="checkStep()" maxlength="60"/>
               </mat-form-field>
               <button mat-raised-button matStepperNext color="primary" 
               style="display: block;" [disabled]="!firstStepCompleted" >Next</button>
@@ -25,18 +25,18 @@
         <div class="row">
             <mat-form-field appearance="outline" class="inputs">
                 <mat-label>Password</mat-label>
-                <input type="password"  matInput [(ngModel)]="password"  name="password"  />
+                <input type="password"  matInput [(ngModel)]="password"  name="password" maxlength="40" />
               </mat-form-field>
         </div>
         <div class="row">
             <mat-form-field appearance="outline" class="inputs">
                 <mat-label>Confirm Password</mat-label>
-                <input type="password" matInput [(ngModel)]="confirmPassword" name="confirmPassword"  />
+                <input type="password" matInput [(ngModel)]="confirmPassword" name="confirmPassword" maxlength="40" />
               </mat-form-field>
            <p class="error" *ngIf="withErrors">{{error}}</p>
         </div>
         <div class="row">
-            <button mat-raised-button class="btn" color="primary" type="submit" (click)="register()">
+            <button mat-raised-button class="btn" color="primary" type="submit" (click)="register()" [disabled]="isLoading">
             <span *ngIf="!isLoading">Sign Up</span>  <div *ngIf="isLoading" class="loader"></div></button>
             <button mat-raised-button matStepperPrevious color="accent" style="display: block;margin-top: 6px;">Back</button>
         </div>
