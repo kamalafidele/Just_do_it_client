@@ -1,6 +1,6 @@
 <div class="container" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'} ">
 
-    <div class="navbar " [ngClass]="user && user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
+    <div class="navbar " [ngClass]="user && user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " (click)="abort()" >
         <div class="head-search" id="head-search-viewq">
             <div>
                 <a [routerLink]="['/']" style="text-decoration: none;">
@@ -17,7 +17,15 @@
 
         <div class="viewq-input-container " [ngClass]="user && user.darkMode ? 'commonDiv' : 'lightMode' " >
             <input type="search"  name="searchTerm" class="input" [ngClass]="user && user.darkMode ? 'input-dark' : 'input-light' " 
-             placeholder=" Search  JustdoIt"/>
+             placeholder=" Search  JustdoIt" [(ngModel)]="searchInput" (keyup)="search()" />
+
+             <div class="search-results-cont" *ngIf="isSearching" id="searchCont">
+                <p class="search-result-para" *ngFor="let itemForSearching of itemsForSearching;">
+                   <a [routerLink]="['/questionAnswers',itemForSearching._id]" target="_blank" class="search-link">
+                     <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
+                 </p>
+                 <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching">No results found</p>
+             </div>
         </div>
 
      <div class="enter-links" >
@@ -29,10 +37,10 @@
 
     </div>
 
-    <div class="viewq-left" [ngClass]="user && user.darkMode ? 'commonDiv leftBorderDark' : 'lightMode leftBorderLight' ">
+    <div class="viewq-left" [ngClass]="user && user.darkMode ? 'commonDiv leftBorderDark' : 'lightMode leftBorderLight' " (click)="abort()">
 
     </div>
-    <div class="viewq-middle" [ngClass]="user && user.darkMode ? 'commonDiv' : 'lightMode' ">
+    <div class="viewq-middle" [ngClass]="user && user.darkMode ? 'commonDiv' : 'lightMode' " (click)="abort()">
 
         <div class="loadingQuestions" *ngIf="isLoading">
             <div class="circle" id="circle1"></div>
@@ -142,7 +150,7 @@
             <p class="no-question-para" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black'}">This question doesn't exist on our platform </p>
         </div>
     </div>
-    <div class="viewq-right" [ngClass]="user && user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
+    <div class="viewq-right" [ngClass]="user && user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' " (click)="abort()">
         <div class="add-images" style="padding-top: 5px;">
             <!-- <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2> -->
             <div class="img-1">

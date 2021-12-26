@@ -1,6 +1,6 @@
 <div class="container" [ngStyle]="{'background-color': user.darkMode ? 'black' : 'white'} ">
     <input #abc type="checkbox" name="check" id="check">
-    <div class="navbar " [ngClass]="user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " >
+    <div class="navbar " [ngClass]="user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " (click)="abort()">
         <div class="head-search" (click)="hideSettings()">
             <div>
                 <h2 class="header">JustDoIt</h2>
@@ -19,8 +19,16 @@
         </div>
 
         <div class="input-container " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " (click)="hideSettings()">
-            <input type="search"  name="searchTerm" class="input" [ngClass]="user.darkMode ? 'input-dark' : 'input-light' " 
-            placeholder=" Search  JustdoIt"/>
+            <input type="search"  [(ngModel)]="searchInput" name="searchTerm" class="input" [ngClass]="user.darkMode ? 'input-dark' : 'input-light' " 
+            placeholder=" Search  JustdoIt" (keyup)="search()"   />
+        
+            <div class="search-results-cont" *ngIf="isSearching" id="searchCont">
+               <p class="search-result-para" *ngFor="let itemForSearching of itemsForSearching;">
+                  <a [routerLink]="['/questionAnswers',itemForSearching._id]" target="_blank" class="search-link">
+                    <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
+                </p>
+                <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching">No results found</p>
+            </div>
         </div>
 
      <div class="profile-question-container">
@@ -54,7 +62,7 @@
     </div>
 
     <div class="content-container" (click)="hideSettings()">
-        <div class="left-sidebar " [ngClass]="user.darkMode ? 'commonDiv leftBorderDark' : 'lightMode leftBorderLight' ">
+        <div class="left-sidebar " [ngClass]="user.darkMode ? 'commonDiv leftBorderDark' : 'lightMode leftBorderLight' " (click)="abort()">
           <div class="user-workspaces">
               <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces;trackBy: trackWorkspace" 
               [class.active]="userWorkspace.isChecked"
@@ -72,7 +80,7 @@
               <!-- FOR ANALYSIS -->
           </div>
         </div>
-        <div class="middle " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' ">
+        <div class="middle " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " (click)="abort()">
            <div *ngIf="noneChecked && !notificationChecked" class="allQuestions">
                 <all-topics [passedUser]="user"></all-topics>
            </div>
@@ -83,7 +91,7 @@
               <notifications [passedUser]="user"></notifications>
            </div> 
         </div>
-        <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
+        <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' " (click)="abort()">
                <div class="add-images" style="margin-top: 10px;">
                    <!-- <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2> -->
                    <div class="img-1">

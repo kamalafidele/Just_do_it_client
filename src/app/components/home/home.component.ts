@@ -1,19 +1,21 @@
 import { NotificationService } from './../../services/notification.service';
 import { UserProfileComponent } from './../user-profile/user-profile.component';
 import { LoginRegisterService } from './../../services/login-register.service';
-import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AskQuestionComponent } from '../ask-question/ask-question.component';
 import { Meta, Title } from '@angular/platform-browser';
+import { QuestionsService } from 'src/app/services/questions.service';
+import { liveSearch } from 'src/app/liveSearch';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css','../loader.css']
+  styleUrls: ['./home.component.css','../loader.css','./home-assistant.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
    user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
    userImg:any=this.user.profile;
@@ -30,11 +32,16 @@ export class HomeComponent implements OnInit {
    mboneraLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105207/questionImages/images/Mbonera-light_ntebvt.png";
    bookingDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Codeam-dark_hrqnkd.png";
    bookingLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Booking-light_nzux3f.png";
-   //../../../assets/Images/Mbonera-light.png
+   itemsForSearching:any=[];
+   searchInput:any;
+   isSearching=false;
+   lostSearchParas=0;
+
   @ViewChild("abc") abc:ElementRef;
 
  constructor(private router:Router,private workspaceSer:WorkspacesService, private meta:Meta,private title:Title,
-   public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService, public ref:ElementRef) {
+   public dialog:MatDialog,private loginReg:LoginRegisterService, public notif:NotificationService, public ref:ElementRef,
+   public questionService:QuestionsService) {
      this.abc=ref;
     }
 
@@ -45,7 +52,7 @@ export class HomeComponent implements OnInit {
 
      this.workspaceSer.getUserWorkspaces()
      .subscribe((res:any) =>{
-       console.log("GOT RESPONSE",res.userWorkspaces.length);
+      
       if(res.userWorkspaces.length==0 || res.userWorkspaces[0].workspaces.length < 5)
           this.router.navigate(["/workspace"]);
           
@@ -57,6 +64,14 @@ export class HomeComponent implements OnInit {
        this.notifications=res.notifications;
      })
 
+  }
+
+  ngAfterViewInit(): void {
+      this.questionService.getAllQuestions()
+      .subscribe((res:any) =>{
+          this.itemsForSearching=res.questions;
+    
+      })
   }
   openQuestionDialog(){
     this.showSettings=false;
@@ -132,6 +147,17 @@ export class HomeComponent implements OnInit {
      }
      ) 
 
+   }
+
+   search(){
+     this.isSearching=true;
+    this.lostSearchParas=liveSearch(this.searchInput);
+    
+   }
+
+   abort(){
+     this.isSearching=false
+     this.searchInput=""
    }
 
 }
