@@ -16,7 +16,7 @@
           <p class="error" *ngIf="withErrors">{{error}}</p>
     </div>
     <div class="row">
-        <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="isLoading">
+        <button mat-raised-button class="btn" color="primary" type="submit"  [disabled]="isLoading" >
           <span *ngIf="!isLoading">Login</span>  <div *ngIf="isLoading" class="loader"></div> </button>
     </div>
     </form>

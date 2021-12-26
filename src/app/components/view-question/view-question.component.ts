@@ -7,11 +7,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { LikeDislike } from 'src/app/likeDislike';
 import { MatDialog } from '@angular/material/dialog';
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
+import { liveSearch } from 'src/app/liveSearch';
 
 @Component({
   selector: 'app-view-question',
   templateUrl: './view-question.component.html',
-  styleUrls: ['./view-question.component.css','../home/home.component.css','../loader.css']
+  styleUrls: ['./view-question.component.css','../home/home.component.css','../loader.css','../home/home-assistant.css']
 })
 export class ViewQuestionComponent implements OnInit, AfterViewInit {
   mobileIcons=false;
@@ -32,6 +33,10 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   mboneraLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105207/questionImages/images/Mbonera-light_ntebvt.png";
   codeamaDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Booking-dark_rdl3lp.png";
   codeamaLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Codeama-light_ayegug.png";
+  itemsForSearching:any=[];
+  searchInput:any;
+  isSearching=false;
+  lostSearchParas=0
 
   @ViewChild("abc") abc:ElementRef;
   constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService,private answerSer:AnswersService,public cookies:CookieService,
@@ -80,6 +85,10 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
       })
      },2000);
 
+     this.qService.getAllQuestions()
+     .subscribe((res:any) =>{
+       this.itemsForSearching=res.questions;
+     })
      
   }
   
@@ -102,5 +111,15 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   openAnsweringDialog(question:any){
     this.dialog.open(AddAnswerComponent,{data:{question},panelClass:"custom-dialog-container"});
  }
+
+ search(){
+  this.isSearching=true;
+  this.lostSearchParas=liveSearch(this.searchInput);
+}
+
+abort(){
+  this.isSearching=false
+  this.searchInput=""
+}
   
 }
