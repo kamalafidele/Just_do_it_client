@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'user-profile',
@@ -16,10 +17,11 @@ export class UserProfileComponent implements OnInit {
   uploadingResponse="";
   isLoading=false;
   wasUploaded=false;
+  dialogRef=this.dialog;
 
 
 
-  constructor(public userSer:UserService,public router:Router) { }
+  constructor(public userSer:UserService,public router:Router,public dialog:MatDialog) { }
 
   ngOnInit(): void {
 
@@ -67,5 +69,9 @@ export class UserProfileComponent implements OnInit {
 
   removeItem(name:string){
     localStorage.removeItem(name);
+  }
+
+  closeDialog(){
+    this.dialogRef.closeAll();
   }
 }

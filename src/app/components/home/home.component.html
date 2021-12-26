@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <div class="defaultIcons">
+        <div class="defaultIcons" (click)="hideSettings()">
             <div class="home-icon-container">
                 <mat-icon class="home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? 'dodgerblue': user.darkMode ? 'white' : 'black'}" (click)="goHome()">home</mat-icon>
             </div>
@@ -18,7 +18,7 @@
                 </div>
         </div>
 
-        <div class="input-container " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' ">
+        <div class="input-container " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " (click)="hideSettings()">
             <input type="search"  name="searchTerm" class="input" [ngClass]="user.darkMode ? 'input-dark' : 'input-light' " 
             placeholder=" Search  JustdoIt"/>
         </div>
@@ -84,8 +84,8 @@
            </div> 
         </div>
         <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
-               <div class="add-images">
-                   <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2>
+               <div class="add-images" style="margin-top: 10px;">
+                   <!-- <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2> -->
                    <div class="img-1">
                        <a href="https://mbonera.live" target="_blank">
                         <img [src]="user.darkMode ? mboneraDarkImg : mboneraLightImg" alt="mbonera add">

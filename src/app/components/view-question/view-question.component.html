@@ -73,10 +73,11 @@
                                 <mat-icon class="arrow_downward" (click)="downvote(answer._id)">arrow_downward</mat-icon> 
                                 <span class="word"> <strong>{{answer.downVotes}}</strong> Rejects</span>
                             </div>
-                            <div class="btn-answer-cont">
-                            </div>
                         </div>
                         </div>
+                    </div>
+                    <div class="button-answer-cont" *ngIf="user">
+                        <button class="btn-answer" (click)="openAnsweringDialog(question)">Add Answer</button>
                     </div>
                 </ng-container>
                 <div  *ngIf="length2 <= 0 && !isLoading" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'}">
@@ -130,6 +131,9 @@
                         </div>
                         </div>
                     </div>
+                    <div class="button-answer-cont" *ngIf="user">
+                        <button class="btn-answer" (click)="openAnsweringDialog(question)">Add Answer</button>
+                    </div>
                 </div>
             </div>
 
@@ -139,8 +143,8 @@
         </div>
     </div>
     <div class="viewq-right" [ngClass]="user && user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' ">
-        <div class="add-images">
-            <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2>
+        <div class="add-images" style="padding-top: 5px;">
+            <!-- <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2> -->
             <div class="img-1">
                 <a href="https://mbonera.live" target="_blank">
                  <img [src]="user && user.darkMode ? mboneraDarkImg : mboneraLightImg" alt="mbonera add">

@@ -2,10 +2,7 @@ div.navbar{
     width:100%;
     height: 60px;
     border-bottom: 1px solid rgb(204, 204, 204);
-    -webkit-box-shadow: 0 10px 6px -6px rgb(216, 216, 216);
-    -moz-box-shadow: 0 10px 6px -6px rgb(216, 216, 216);
-     box-shadow: 0 10px 6px -6px rgb(216, 216, 216);
-     padding: 10px;
+    padding: 10px;
 }
 
 h2.header{
@@ -89,5 +86,12 @@ div.loader{
 @media only screen and (max-width: 620px){
     div.workspaces-container{
         width: 98%;
+        height: auto;
+    }
+    div.workspaces{
+        padding: 5px;
+     }
+    div.workspace{
+        width:30%;
     }
 }

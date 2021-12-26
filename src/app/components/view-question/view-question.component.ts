@@ -5,6 +5,8 @@ import { Title, Meta } from '@angular/platform-browser';
 import { AnswersService } from 'src/app/services/answers.service';
 import { CookieService } from 'ngx-cookie-service';
 import { LikeDislike } from 'src/app/likeDislike';
+import { MatDialog } from '@angular/material/dialog';
+import { AddAnswerComponent } from '../add-answer/add-answer.component';
 
 @Component({
   selector: 'app-view-question',
@@ -33,7 +35,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
 
   @ViewChild("abc") abc:ElementRef;
   constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService,private answerSer:AnswersService,public cookies:CookieService,
-    public title:Title,public meta:Meta) {
+    public title:Title,public meta:Meta,public dialog:MatDialog) {
     this.abc=ref;
    }
 
@@ -76,7 +78,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
         this.isLoading2=false;
         this.questions=res.topicQuestions.filter((q:any) => q._id != this.question._id);
       })
-     },3000);
+     },2000);
 
      
   }
@@ -96,5 +98,9 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
     let dislike=new LikeDislike(this.answerSer,this.cookies,this.questions);
     dislike.downvote(id);
   }
+
+  openAnsweringDialog(question:any){
+    this.dialog.open(AddAnswerComponent,{data:{question},panelClass:"custom-dialog-container"});
+ }
   
 }

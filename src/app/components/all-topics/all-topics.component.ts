@@ -20,6 +20,12 @@ export class AllTopicsComponent implements OnInit {
    isUpVote=false;
    isDownVote=false;
    user:any;
+   scrollEffect=false;
+   allQuestions:any=[];
+   notScrolly=true;
+   notEmpty=true;
+   currentQuestionsNum=0;
+   numToReduce=0;
 
   constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) {
     
@@ -33,7 +39,12 @@ export class AllTopicsComponent implements OnInit {
      this.questionService.getAllQuestions()
      .subscribe((res:any) =>{
        this.isLoading=false;
-       this.questions=res.questions;
+       this.allQuestions=res.questions;
+        this.numToReduce=res.questions.length/10;
+       this.currentQuestionsNum=res.questions.length-10;
+       
+       
+       this.questions=res.questions.slice(0,res.questions.length/this.numToReduce);
        this.length=res.questions.length;
      })
     }
@@ -53,6 +64,46 @@ export class AllTopicsComponent implements OnInit {
   downvote(id:any){
     let dislike=new LikeDislike(this.answerSer,this.cookies,this.questions);
     dislike.downvote(id);
+  }
+
+  onScroll(){
+    if(this.notScrolly && this.notEmpty){
+      this.scrollEffect=true;
+      this.notScrolly=false;
+      setTimeout(() =>{
+        this.loadNextQuestions()
+      },1000);
+
+    }
+
+    
+  }
+
+  loadNextQuestions(){
+    let lastIndex=this.questions.length;
+
+    if(this.currentQuestionsNum >0 && this.currentQuestionsNum <10){
+    
+      this.allQuestions.slice(lastIndex,lastIndex+this.currentQuestionsNum).forEach((q:any) =>{
+        this.questions.push(q);
+      })
+
+      this.notScrolly=false;
+      this.scrollEffect=false;
+      this.currentQuestionsNum-=10;
+    }
+    else if(this.currentQuestionsNum > 10){
+       this.numToReduce=this.currentQuestionsNum/10;
+      
+      this.allQuestions.slice(lastIndex,(this.currentQuestionsNum/this.numToReduce)+lastIndex).forEach((q:any) =>{
+        this.questions.push(q);
+      })
+      
+      this.scrollEffect=false;
+      this.notScrolly=true;
+       this.currentQuestionsNum-=10;
+    }
+
   }
 
 }

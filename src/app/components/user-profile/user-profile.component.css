@@ -5,8 +5,8 @@
     align-items: center;
 }
 .user-profile-img{
-    width: 350px;
-    height: 300px;
+    width: 300px;
+    height: 250px;
     border-radius: 50%;
     padding-right: 10px;
     margin: 0px auto;
@@ -29,7 +29,16 @@ label.change-profile, .save-para{
     display: block;
 }
 .profile-input{
-    width: 90%;
+    width: 100%;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0px;
+  }
+.close-btn{
+    margin-top: 5px;
 }
 
 /* loader */
@@ -55,4 +64,6 @@ div.loader{
         width: 220px;
         height: 200px;
     }
+
+
 }
