@@ -12,12 +12,12 @@
      <div class="profile-inputs-container">
          <label for="name"><strong>Username</strong></label>
          <mat-form-field appearance="outline" class="profile-input">
-             <input matInput type="text"  name="username" [value]="user.username"  class="username" spellcheck="false" readonly>
+             <input matInput type="text"  name="username" [(ngModel)]="username" [value]="user.username"  class="username" spellcheck="false" >
          </mat-form-field>
      </div>
-     <p class="upload-message" *ngIf="wasUploaded" style="color: green; text-align: center;">Profile picture changed successfully</p>
+     <p class="upload-message" *ngIf="wasUploaded" style="color: green; text-align: center;">Profile details changed successfully</p>
     <div class="for-saving" *ngIf="!wasUploaded">
-        <div class="save-para" *ngIf="isUploaded" (click)="save()">
+        <div class="save-para" *ngIf="(isUploaded && username!=='') || (username!=user.username && username!=='')" (click)="save()">
             <p *ngIf="!isLoading">Save</p> 
             <div *ngIf="isLoading" class="loader"></div>
         </div>

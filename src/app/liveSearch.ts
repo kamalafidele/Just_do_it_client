@@ -9,6 +9,7 @@ export function liveSearch(searchTerm:any){
       neededValue=a.textContent || a.innerText;
 
       if(neededValue.toUpperCase().includes(searchTerm.toUpperCase()) ){
+        
         searchParas[i].classList.remove("hideSearch")
         if(lostSearchParas>0)
           lostSearchParas--;
