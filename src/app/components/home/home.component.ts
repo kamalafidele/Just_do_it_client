@@ -28,14 +28,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
    mobileIcons=false;
    defaultDesc="JustDoIt is a social platform where people discuss world matters and interesting topics that you like..";
    defaultImg="https://res.cloudinary.com/justdoit/image/upload/v1637511391/users/images/Just_do_display_image_a4lvcx.png"; 
-   mboneraDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Mbonera-dark_ntdvzp.png";
-   mboneraLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105207/questionImages/images/Mbonera-light_ntebvt.png";
-   bookingDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Codeam-dark_hrqnkd.png";
-   bookingLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Booking-light_nzux3f.png";
    itemsForSearching:any=[];
    searchInput:any;
    isSearching=false;
    lostSearchParas=0;
+   adds:any=[];
+   addLoading=true;
+   addLoader="../../assets/Images/Adds-loader.svg";
 
   @ViewChild("abc") abc:ElementRef;
 
@@ -72,6 +71,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.itemsForSearching=res.questions;
     
       })
+
+      setTimeout(() =>{
+        this.notif.getAllAdds()
+        .subscribe((res:any) =>{
+          this.addLoading=false;
+          this.adds=res.adds.filter((add:any) => add.name !=="Codeama");
+        },
+        (err:any) =>{this.addLoading=false;}
+        )
+      },10000);
   }
   openQuestionDialog(){
     this.showSettings=false;
@@ -126,6 +135,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
    changeNotifyStatus(){
      this.notificationChecked=true;
      this.noneChecked=true;
+     window.scrollTo(0,0);
    }
 
    toggleMobileIcons(){
@@ -160,4 +170,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
      this.searchInput=""
    }
 
+   onNotificationChange(newNotifications:any){
+     this.notifications=newNotifications;
+   }
+
+   updateClicks(addId:any){
+      
+      this.adds.forEach((add:any) =>{
+        if(add._id == addId){
+           add.clicks++;
+        }
+      })
+     let add=this.adds.filter((ad:any) => ad._id == addId);
+     let data={addId:add[0]._id,newClicks:add[0].clicks};
+   
+      this.notif.updateAddClicks(data)
+      .subscribe((res:any) =>{
+         console.log(res);
+      })
+
+   }
 }

@@ -8,6 +8,7 @@ import { LikeDislike } from 'src/app/likeDislike';
 import { MatDialog } from '@angular/material/dialog';
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
 import { liveSearch } from 'src/app/liveSearch';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-view-question',
@@ -29,18 +30,17 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   id:any="";
 
   user:any=JSON.parse(localStorage.getItem("justDoItUser") || 'null' );
-  mboneraDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Mbonera-dark_ntdvzp.png";
-  mboneraLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105207/questionImages/images/Mbonera-light_ntebvt.png";
-  codeamaDarkImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Booking-dark_rdl3lp.png";
-  codeamaLightImg="https://res.cloudinary.com/justdoit/image/upload/v1640105206/questionImages/images/Codeama-light_ayegug.png";
   itemsForSearching:any=[];
   searchInput:any;
   isSearching=false;
   lostSearchParas=0
-
   @ViewChild("abc") abc:ElementRef;
+  adds:any=[];
+  addLoading=true;
+  addLoader="../../assets/Images/Adds-loader.svg";
+
   constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService,private answerSer:AnswersService,public cookies:CookieService,
-    public title:Title,public meta:Meta,public dialog:MatDialog) {
+    public title:Title,public meta:Meta,public dialog:MatDialog, public notif:NotificationService) {
     this.abc=ref;
    }
 
@@ -73,6 +73,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
       this.isLoading=false;
      }
      )
+
   }
 
   ngAfterViewInit(): void {
@@ -82,13 +83,25 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
       .subscribe((res:any) =>{
         this.isLoading2=false;
         this.questions=res.topicQuestions.filter((q:any) => q._id != this.question._id);
+        if(!this.user)
+          this.itemsForSearching=res.topicQuestions.filter((q:any) => q._id != this.question._id);
       })
      },2000);
 
-     this.qService.getAllQuestions()
-     .subscribe((res:any) =>{
-       this.itemsForSearching=res.questions;
-     })
+     if(this.user){
+      this.qService.getAllQuestions()
+      .subscribe((res:any) =>{
+        this.itemsForSearching=res.questions;
+      })
+     }
+
+     setTimeout(() =>{
+      this.notif.getAllAdds()
+      .subscribe((res:any) =>{
+        this.addLoading=false
+        this.adds=res.adds.filter((add:any) => add.name !=="Booking")
+      })
+     },10000);
      
   }
   
@@ -100,7 +113,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
     let like=new LikeDislike(this.answerSer,this.cookies,this.questions);
     like.upvote(id);
     
-    
+
   }
 
   downvote(id:any){
@@ -120,6 +133,23 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
 abort(){
   this.isSearching=false
   this.searchInput=""
+}
+
+updateClicks(addId:any){
+      
+  this.adds.forEach((add:any) =>{
+    if(add._id == addId){
+       add.clicks++;
+    }
+  })
+ let add=this.adds.filter((ad:any) => ad._id == addId);
+ let data={addId:add[0]._id,newClicks:add[0].clicks};
+
+  this.notif.updateAddClicks(data)
+  .subscribe((res:any) =>{
+     console.log(res);
+  })
+
 }
   
 }

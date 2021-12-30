@@ -22,9 +22,9 @@
             <input type="search"  [(ngModel)]="searchInput" name="searchTerm" class="input" [ngClass]="user.darkMode ? 'input-dark' : 'input-light' " 
             placeholder=" Search  JustdoIt" (keyup)="search()"   />
         
-            <div class="search-results-cont" *ngIf="isSearching" id="searchCont">
+            <div class="search-results-cont" *ngIf="isSearching" id="searchCont" >
                <p class="search-result-para" *ngFor="let itemForSearching of itemsForSearching;">
-                  <a [routerLink]="['/questionAnswers',itemForSearching._id]" target="_blank" class="search-link">
+                  <a [routerLink]="['/questionAnswers',itemForSearching._id]"  class="search-link">
                     <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
                 </p>
                 <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching">No results found</p>
@@ -88,26 +88,29 @@
                <specific-topic [passedTopic]="checkedWorkspace" [passedUser]="user"></specific-topic>
            </div>
            <div class="user-notifications" *ngIf="noneChecked && notificationChecked">
-              <notifications [passedUser]="user"></notifications>
+              <notifications [passedUser]="user" (notificationChange)="onNotificationChange($event)"></notifications>
            </div> 
         </div>
         <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' " (click)="abort()">
                <div class="add-images" style="margin-top: 10px;">
+
+                <div class="advertise-disclaimer" *ngIf="addLoading">
+                    <a href="mailto://justdoitrw2@gmail.com" style="text-decoration: none; text-align: center; color: dodgerblue;"   >
+                        <h2 style="text-align: center;padding: 10% 20%;">Advertise with JDI</h2> 
+                    </a>
+                      <img [src]="addLoader" alt="addLoader" class="addLoaderImg">
+                </div>
+                  
                    <!-- <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2> -->
-                   <div class="img-1">
-                       <a href="https://mbonera.live" target="_blank">
-                        <img [src]="user.darkMode ? mboneraDarkImg : mboneraLightImg" alt="mbonera add">
-                       </a>
-                   </div>
-                   <div class="img-2">
-                       <a href="https://bookinga.netlify.app" target="_blank">
-                        <img [src]="user.darkMode ?  bookingDarkImg : bookingLightImg" alt="booking add">
+                   <div class="add" *ngFor="let add of adds;" (click)="updateClicks(add._id)">
+                       <a href="{{add.addLink}}" target="_blank">
+                           <img [src]="user.darkMode ? add.addDarkImage : add.addLightImage" alt="add.name">
                        </a>
                    </div>
                </div>
         </div>
     </div>
-    <div class="test " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " id="tdiv">
+    <div class="test " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " id="tdiv">        
         <div class="left-2-sidebar">
             <div class="user-workspaces">
                 <div class="user-workspace" *ngFor="let userWorkspace of userWorkspaces;trackBy: trackWorkspace" 

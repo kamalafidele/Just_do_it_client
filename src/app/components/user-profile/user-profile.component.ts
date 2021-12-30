@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'user-profile',
@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user=(JSON.parse(localStorage.getItem("justDoItUser")|| ""));
+  user:any=(JSON.parse(localStorage.getItem("justDoItUser")|| ""));
   uploadedImg:string="";
   isUploaded=false;
   imageToUpload=document.getElementById("isUploading");
@@ -18,10 +18,12 @@ export class UserProfileComponent implements OnInit {
   isLoading=false;
   wasUploaded=false;
   dialogRef=this.dialog;
+  username:string=this.user.username
 
 
-
-  constructor(public userSer:UserService,public router:Router,public dialog:MatDialog) { }
+  constructor(public userSer:UserService,public router:Router,public dialog:MatDialog) { 
+     
+  }
 
   ngOnInit(): void {
 
@@ -45,20 +47,28 @@ export class UserProfileComponent implements OnInit {
 
   save(){
     this.isLoading=true;
+    
 
-    const data={image:this.uploadedImgCopy};
-   
+    const data={image:this.uploadedImgCopy,username:this.username};
+    
     this.userSer.uploadProfilePicture(data)
     .subscribe((res:any) =>{
         this.isLoading=false;
-        this.user.profile=res.newProfile;
+        if(res.newUsername && !res.newProfile){
+          this.user.username=res.newUsername;  
+        }else{
+          this.user.profile=res.newProfile;
+          this.user.username=res.newUsername;
+        }
+
         this.wasUploaded=true;
         const newUser=this.user;
         this.removeItem("newUser");
 
         localStorage.setItem("justDoItUser",JSON.stringify(newUser)); 
+        
+        window.location.reload();
 
-        this.router.navigate(["/workspace"]); 
     },
     (err:any) =>{
       this.isLoading=false;

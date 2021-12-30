@@ -46,7 +46,12 @@ export class AllTopicsComponent implements OnInit {
        
        this.questions=res.questions.slice(0,res.questions.length/this.numToReduce);
        this.length=res.questions.length;
-     })
+     },
+     (err) =>{
+       this.notEmpty=false;
+       this.scrollEffect=false
+     }
+     )
     }
 
   openAnsweringDialog(question:any){

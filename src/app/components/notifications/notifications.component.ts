@@ -1,5 +1,5 @@
 import { NotificationService } from './../../services/notification.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'notifications',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NotificationsComponent implements OnInit {
   @Input() passedUser:any;
+  @Output() notificationChange=new EventEmitter();
   notifications:any=[];
   isLoading=false;
   length=1;
@@ -29,13 +30,17 @@ export class NotificationsComponent implements OnInit {
   }
 
   removeNotification(id:any){
+    
     let tempNotificatinos=this.notifications;
     this.notifications=this.notifications.filter((notification:any) => notification._id != id);
 
     this.notificationsServ.deleteNotication(id)
     .subscribe(
-      (res:any) =>{},
+      (res:any) =>{
+        this.notificationChange.emit(this.notifications);
+      },
      (err:any) =>{
+       
        this.notifications=tempNotificatinos;
     }
     )

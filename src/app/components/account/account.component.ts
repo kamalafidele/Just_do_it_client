@@ -18,7 +18,7 @@ export class AccountComponent implements OnInit {
     let user=localStorage.getItem("justDoItUser");
 
     if(this.loginService.isLoggedIn() && user){
-      this.router.navigate(["/workspace"]);
+      this.router.navigate(["/"]);
     }
 
     this.title.setTitle("JDI | Account");

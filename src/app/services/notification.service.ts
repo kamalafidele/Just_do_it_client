@@ -22,4 +22,12 @@ export class NotificationService {
   updateUserMode(modeStatus:boolean){
     return this.http.post(`${MYAPIS.LIVEAPI}/userNotifications/userMode/${modeStatus}`,{name:"Kamara"},{headers:{"Bearer":`${this.token}`}});
   }
+
+  getAllAdds(){
+    return this.http.get(`${MYAPIS.LIVEAPI}/adds`);
+  }
+
+  updateAddClicks(data:any){
+     return this.http.put(`${MYAPIS.LIVEAPI}/adds/updatingClicks`,data);
+  }
 }
