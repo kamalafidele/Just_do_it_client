@@ -27,7 +27,7 @@
                   <a [routerLink]="['/questionAnswers',itemForSearching._id]"  class="search-link">
                     <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
                 </p>
-                <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching">No results found</p>
+                <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching" class="no-result-found">No results found</p>
             </div>
         </div>
 

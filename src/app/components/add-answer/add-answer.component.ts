@@ -10,9 +10,10 @@ import { AnswersService } from 'src/app/services/answers.service';
   encapsulation:ViewEncapsulation.Emulated
 })
 export class AddAnswerComponent implements OnInit {
-  htmlContent = '';
+  htmlContent ="";
   images=document.getElementsByTagName("img");
   fonts=document.getElementsByTagName("font");
+  paras=document.getElementsByTagName("p");
   insertedImages:any=[];
   enteredAnswer=""; 
   dialogRef=this.dialog;
@@ -84,13 +85,22 @@ export class AddAnswerComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,public answerServ:AnswersService,public dialog:MatDialog) {
     this.passedQuestion=data;
+ 
    } 
 
   ngOnInit(): void {
 
   }
 
+  editorChange(){
+    for(let i=0; i<this.images.length; i++){
+      if(!this.images[i].alt){
+       this.images[i].style.width="90%";
+       this.images[i].style.borderRadius="5px";
 
+      }
+     }
+  }
 
   giveAnswer(){
      
@@ -102,9 +112,12 @@ export class AddAnswerComponent implements OnInit {
 
     for(let j=0; j<this.fonts.length; j++){
        this.enteredAnswer+=this.fonts[j].innerText+" ";
-       
     }
 
+    for(let n=0; n<this.paras.length; n++){
+      if(!this.paras[n].className)
+        this.enteredAnswer+=this.paras[n].innerText+" ";
+    }
 
      if(this.enteredAnswer == "" ){
           this.error="Enter your answer please.";
@@ -119,8 +132,7 @@ export class AddAnswerComponent implements OnInit {
 
       this.isLoading=true;
       let data={question:this.data.question._id,answer:this.enteredAnswer,images:this.insertedImages};
-      //console.log(data);
-
+ 
       this.answerServ.addAnswer(data)
       .subscribe((res:any) =>{
         this.isLoading=false;

@@ -24,7 +24,7 @@
                    <a [routerLink]="['/questionAnswers',itemForSearching._id]" target="_blank" class="search-link">
                      <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
                  </p>
-                 <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching">No results found</p>
+                 <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching" class="no-result-found">No results found</p>
              </div>
         </div>
 
@@ -89,7 +89,7 @@
                     </div>
                 </ng-container>
                 <div  *ngIf="length2 <= 0 && !isLoading" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'}">
-                    <p style="padding-left: 10px;" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black'}">
+                    <p style="padding-left: 10px;" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black'}" class="no-ans">
                         This question doesn't currently have answers </p>
                 </div>
             

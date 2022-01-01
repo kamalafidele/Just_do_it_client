@@ -186,7 +186,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
    
       this.notif.updateAddClicks(data)
       .subscribe((res:any) =>{
-         console.log(res);
+         
       })
 
    }

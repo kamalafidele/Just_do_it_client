@@ -9,7 +9,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 div.commonDiv{
-    background-color: black;
+    background-color: rgb(2, 2, 2);
     color: white;
 }
 div.lightMode{
