@@ -2,7 +2,7 @@
     <form>
          <p class="question-para">{{passedQuestion.question.question}}</p>
         <span *ngIf="errorExists" class="error">{{error}}</span>
-        <angular-editor [(ngModel)]="htmlContent" [config]="config" name="htmlContent"></angular-editor>
+        <angular-editor [(ngModel)]="htmlContent" [config]="config" name="htmlContent" (input)="editorChange()"></angular-editor>
  
         <span *ngIf="isImageError" class="error">Only two images allowed. Click Ctrl+Z to reduce them</span>
         <div class="btn-container">

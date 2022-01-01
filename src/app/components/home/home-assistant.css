@@ -6,7 +6,7 @@ div.commonDiv .user-settings{
     color: black;
 }
 div.lightMode .user-settings{
-    background-color: rgb(131, 131, 131);
+    background-color: rgb(153, 153, 153);
     color: white;
 }
 .bars{

@@ -18,7 +18,7 @@
      <p class="upload-message" *ngIf="wasUploaded" style="color: green; text-align: center;">Profile details changed successfully</p>
     <div class="for-saving" *ngIf="!wasUploaded">
         <div class="save-para" *ngIf="(isUploaded && username!=='') || (username!=user.username && username!=='')" (click)="save()">
-            <p *ngIf="!isLoading">Save</p> 
+            <p *ngIf="!isLoading" class="save">Save</p> 
             <div *ngIf="isLoading" class="loader"></div>
         </div>
     </div>
