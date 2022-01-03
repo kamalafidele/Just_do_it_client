@@ -34,8 +34,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
    lostSearchParas=0;
    adds:any=[];
    addLoading=true;
-   addLoader="../../assets/Images/Adds-loader.svg";
-
+   addLoader="https://res.cloudinary.com/justdoit/image/upload/v1641234634/questionImages/images/Adds-loader_r7tlln.svg";
+   workspaceStatus=false;
+   
   @ViewChild("abc") abc:ElementRef;
 
  constructor(private router:Router,private workspaceSer:WorkspacesService, private meta:Meta,private title:Title,
@@ -92,7 +93,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 }
 
   toggleCheck(workspace:any){
-   window.scrollTo(10,10)
+   window.scrollTo(0,0)
     this.noneChecked=false;
     this.userWorkspaces.forEach((wksp:any) =>{
       if(wksp._id==workspace._id){

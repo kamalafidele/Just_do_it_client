@@ -4,13 +4,13 @@
         <div class="head-search" id="head-search-viewq">
             <div>
                 <a [routerLink]="['/']" style="text-decoration: none;">
-                    <h2 class="header" id="mobile-header">JDI</h2>
+                    <h2 class="header vieq-header" id="mobile-header">JDI</h2>
                     <h2 class="header">JustDoIt</h2>
                 </a>
             </div>
             <div class="home-ic" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black' }">
                 <a [routerLink]="['/']" style="text-decoration: none;" class="viewq-link">
-                    <mat-icon>home</mat-icon>
+                    <mat-icon class="viewq-home-icon">home</mat-icon>
                 </a>
             </div>
         </div>
@@ -49,7 +49,7 @@
         </div>
 
         <ng-container *ngIf="length  > 0">
-            <div class="question">
+            <div class="question viewq-question">
                 <div class="asked-by">
                     <div class="left">
                         <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
@@ -69,16 +69,16 @@
                         <strong style="color: dodgerblue; padding-left: 10px;">Answer {{i+1}}</strong>
                         <div class="answer">
                            <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{answer.answer}}</p>
-                           <div class="answer-images"  *ngFor="let answerImages of answer.images">
+                        <div class="answer-images"  *ngFor="let answerImages of answer.images">
                             <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
                         </div>
                         <div class="votes-add-answers">
                             <div class="icon-1 ico-container">
-                                <mat-icon class="arrow_upward" (click)="upvote(answer._id)">arrow_upward</mat-icon> 
+                                <mat-icon class="arrow_upward" (click)="specialUpvote(answer._id)">thumb_up</mat-icon> 
                                 <span class="word"><strong>{{answer.upVotes}}</strong>  Votes</span>
                             </div>
                             <div class="icon-2 ico-container">
-                                <mat-icon class="arrow_downward" (click)="downvote(answer._id)">arrow_downward</mat-icon> 
+                                <mat-icon class="arrow_downward" (click)="specialDownvote(answer._id)">thumb_down</mat-icon> 
                                 <span class="word"> <strong>{{answer.downVotes}}</strong> Rejects</span>
                             </div>
                         </div>
@@ -127,14 +127,12 @@
                         </div>
                         <div class="votes-add-answers">
                             <div class="icon-1 ico-container">
-                                <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_upward</mat-icon> 
+                                <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_up</mat-icon> 
                                 <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Votes</span>
                             </div>
                             <div class="icon-2 ico-container">
-                                <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_downward</mat-icon> 
+                                <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_down</mat-icon> 
                                 <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
-                            </div>
-                            <div class="btn-answer-cont">
                             </div>
                         </div>
                         </div>

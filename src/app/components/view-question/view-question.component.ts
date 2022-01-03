@@ -16,7 +16,6 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./view-question.component.css','../home/home.component.css','../loader.css','../home/home-assistant.css']
 })
 export class ViewQuestionComponent implements OnInit, AfterViewInit {
-  mobileIcons=false;
   question:any=[];
   answers:any=[];
   length=0;
@@ -86,7 +85,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
         if(!this.user)
           this.itemsForSearching=res.topicQuestions.filter((q:any) => q._id != this.question._id);
       })
-     },2000);
+     },1000);
 
      if(this.user){
       this.qService.getAllQuestions()
@@ -95,6 +94,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
       })
      }
 
+     //THIS FUNCTION LOADS THEE ADDS AFTER 10 SECONDS WHEN THE PAGE HAS BEEN DISPLAYED
      setTimeout(() =>{
       this.notif.getAllAdds()
       .subscribe((res:any) =>{
@@ -105,10 +105,6 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
      
   }
   
-  toggleMobileIcons(){
-    this.mobileIcons=!this.mobileIcons;
-  }
-
   upvote(id:any){
     let like=new LikeDislike(this.answerSer,this.cookies,this.questions);
     like.upvote(id);
@@ -121,20 +117,88 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
     dislike.downvote(id);
   }
 
+  specialDownvote(answerId:any){
+    
+    if(!this.cookies.get(answerId)){
+      this.cookies.set(answerId,"downvote");
+      this.fowardVote(answerId,"downvote");
+
+      let data={answerId:answerId,isReduce:false};
+      this.answerSer.downVote(data)
+      .subscribe((res:any) =>{
+      },
+      (err:any) =>{this.reverseVote(answerId,"downvote");}
+      )
+
+    }
+    else if(this.cookies.get(answerId) && this.cookies.get(answerId) == "upvote"){
+       this.cookies.delete(answerId);
+       this.cookies.set(answerId,"downvote");
+
+       this.fowardVote(answerId,"downvote");
+       this.reverseVote(answerId,"upvote");
+
+       let data1={answerId:answerId,isReduce:true};
+       let data2={answerId:answerId,isReduce:false};
+
+       this.answerSer.downVote(data2)
+       .subscribe((res:any) =>{
+        this.answerSer.upVote(data1)
+        .subscribe((res:any) =>{
+        })    
+       })
+    }
+
+  }
+  specialUpvote(answerId:any){
+
+    if(!this.cookies.get(answerId)){
+      this.cookies.set(answerId,"upvote");
+      this.fowardVote(answerId,"upvote");
+
+      let data={answerId:answerId,isReduce:false};
+      this.answerSer.upVote(data)
+      .subscribe((res:any) =>{
+      },
+      (err:any) => {this.reverseVote(answerId,"upvote")}
+      )
+
+    }
+    else if(this.cookies.get(answerId) && this.cookies.get(answerId)=="downvote"){
+        this.cookies.delete(answerId);
+        this.cookies.set(answerId,"upvote");
+
+        this.reverseVote(answerId,"downvote");
+        this.fowardVote(answerId,"upvote");
+        
+        let data1={answerId:answerId,isReduce:false};
+        let data2={answerId:answerId,isReduce:true};
+
+        this.answerSer.downVote(data2)
+        .subscribe((res:any) =>{
+          this.answerSer.upVote(data1)
+          .subscribe((res:any) =>{})
+        })
+    }
+  }
+
   openAnsweringDialog(question:any){
     this.dialog.open(AddAnswerComponent,{data:{question},panelClass:"custom-dialog-container"});
  }
 
+ //THIS CALLS THE LIVESEARCH FUNCTION FOR MAKING A SEARCH AS YOU TYPE ALGORITH
  search(){
   this.isSearching=true;
   this.lostSearchParas=liveSearch(this.searchInput);
 }
 
+//THIS HELPS TO HIDE THE DIV CONTAINING RESULTS
 abort(){
   this.isSearching=false
   this.searchInput=""
 }
 
+//THIS UPDATES THE CLICKS OF THE ADD
 updateClicks(addId:any){
       
   this.adds.forEach((add:any) =>{
@@ -151,5 +215,20 @@ updateClicks(addId:any){
   })
 
 }
-  
+ 
+
+reverseVote(id:any, action:string){
+  this.answers.forEach((answer:any) =>{
+    if(answer._id == id && action == "upvote") answer.upVotes--;
+    else if(answer._id && action == "downvote") answer.downVotes--;
+  })
+}
+
+fowardVote(id:any, action:string){
+  this.answers.forEach((answer:any) =>{
+    if(answer._id == id && action == "upvote") answer.upVotes++;
+    else if(answer._id && action == "downvote") answer.downVotes++;
+  })
+}
+
 }

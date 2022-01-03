@@ -20,7 +20,7 @@ div.lightMode{
 
 div.commonDiv a{
     color: white;
-    text-decoration: 1px solid white underline;
+    /* text-decoration: 1px solid white underline; */
      
 }
 
@@ -30,6 +30,14 @@ div.commonDiv a:hover, div.lightMode a:hover{
 
 div.lightMode a{
 color: black;
+
+}
+
+div.lightMode .question:first-child{
+    border-top: none;
+}
+div.commonDiv .question:first-child{
+    border-top: none;
 }
 div.lightMode .question{
     border-top: 1px solid rgb(202, 202, 202);
@@ -80,9 +88,6 @@ div.question-container{
     padding: 10px;
     cursor: pointer;
 }
-/* .question:hover{
-    background-color: rgb(15, 15, 15);
-} */
 
 div.lightMode .question:hover{
     background-color: rgb(233, 233, 233);
@@ -120,6 +125,7 @@ div.commonDiv  .question:hover{
 }
 
 .votes-add-answers{
+    margin: 4px 10px 4px 10px;
     padding: 10px 0px;
     display: flex;
     justify-content: space-between;
@@ -128,10 +134,9 @@ div.commonDiv  .question:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 .word{
-    padding-left: 30px;
+    padding-left: 10px;
 }
 .arrow_upward, .arrow_downward{
     cursor: pointer;

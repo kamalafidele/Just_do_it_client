@@ -97,7 +97,7 @@ export class AllTopicsComponent implements OnInit {
       this.scrollEffect=false;
       this.currentQuestionsNum-=10;
     }
-    else if(this.currentQuestionsNum > 10){
+    else if(this.currentQuestionsNum >= 10){
        this.numToReduce=this.currentQuestionsNum/10;
       
       this.allQuestions.slice(lastIndex,(this.currentQuestionsNum/this.numToReduce)+lastIndex).forEach((q:any) =>{
