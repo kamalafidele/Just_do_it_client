@@ -6,6 +6,14 @@
     padding-top: 0px;
     align-items: center;
     position: relative;
+    background-color: transparent;
+}
+
+div.commonDiv .viewq-question{
+    border-bottom: 1px solid rgb(41, 40, 40);
+}
+div.lightMode .viewq-question{
+    border-bottom: 1px solid rgb(202, 202, 202);
 }
 
 .enter-links {
@@ -46,18 +54,24 @@
 
 .home-ic{
     margin-left: 70%; 
-    margin-top: 10px;
+    margin-top: 5px;
+}
+.viewq-home-icon{
+    font-size: 30px;
 }
 
 
 
     @media only screen and (max-width: 620px){
+        .vieq-header{
+            margin-top: 10px;
+        }
         .viewq-link{
             display: block;
         }
         .home-ic{
             margin-left: 13%;
-            margin-top: 5px;
+            margin-top: 10px;
             display: block;
         }
         .viewq-left{

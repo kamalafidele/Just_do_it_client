@@ -58,17 +58,18 @@ export class LikeDislike{
            this.cookies.delete(id);
            this.cookies.set(id,"downvote");
     
-           this.reverseVote(id,"upvote");
            this.fowardVote(id,"downvote");
+           this.reverseVote(id,"upvote");
     
            let data1={answerId:id,isReduce:true};
            let data2={answerId:id,isReduce:false};
-           this.answerSer.upVote(data1)
+
+           this.answerSer.downVote(data2)
            .subscribe((res:any) =>{
-             this.answerSer.downVote(data2)
-             .subscribe((res:any) =>{})
+            this.answerSer.upVote(data1)
+            .subscribe((res:any) =>{
+            })    
            })
-    
         }
       }
     
@@ -80,7 +81,7 @@ export class LikeDislike{
     
       reverseVote(id:any,action:any){
         this.questions.forEach((q:any) => {
-          if((q.answertoshow && q.answertoshow._id==id) && action=="upvote") q.answertoshow.upVotes--;
+          if((q.answertoshow && q.answertoshow._id==id) && action=="upvote" ) q.answertoshow.upVotes--;
           else if((q.answertoshow && q.answertoshow._id==id) && action=="downvote")  q.answertoshow.downVotes--;});
           
       }

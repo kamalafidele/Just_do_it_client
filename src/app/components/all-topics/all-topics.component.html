@@ -36,11 +36,11 @@
                 </div>
                 <div class="votes-add-answers">
                     <div class="icon-1 ico-container">
-                        <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_upward</mat-icon> 
+                        <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_up</mat-icon> 
                         <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Votes</span>
                     </div>
                     <div class="icon-2 ico-container">
-                        <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">arrow_downward</mat-icon> 
+                        <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_down</mat-icon> 
                         <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
                     </div>
                  
