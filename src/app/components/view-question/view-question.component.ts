@@ -36,7 +36,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   @ViewChild("abc") abc:ElementRef;
   adds:any=[];
   addLoading=true;
-  addLoader="../../assets/Images/Adds-loader.svg";
+  addLoader="https://res.cloudinary.com/justdoit/image/upload/v1641234634/questionImages/images/Adds-loader_r7tlln.svg";
 
   constructor(public ref:ElementRef, public routes:ActivatedRoute, public qService:QuestionsService,private answerSer:AnswersService,public cookies:CookieService,
     public title:Title,public meta:Meta,public dialog:MatDialog, public notif:NotificationService) {

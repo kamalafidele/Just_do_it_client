@@ -2,7 +2,7 @@ div.container{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../../../assets/Images/Back3.jpg");
+    background-image: url("https://res.cloudinary.com/justdoit/image/upload/v1641235015/questionImages/images/Back3_vrkr3k.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
