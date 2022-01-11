@@ -127,7 +127,7 @@ div.home-icon-container{
 .home-icon{
     position: relative;
     right: 8px;
-    font-size: 30px;
+    font-size: 25px;
     cursor: pointer;
 }
 .notification-icon-container{
@@ -138,7 +138,7 @@ div.home-icon-container{
 .notification-icon{
     position: relative;
     right: 8px;
-    font-size: 30px;
+    font-size: 25px;
     cursor: pointer;
 }
 

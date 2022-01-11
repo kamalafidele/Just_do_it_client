@@ -8,9 +8,10 @@
                     <h2 class="header">JustDoIt</h2>
                 </a>
             </div>
-            <div class="home-ic" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black' }">
+            <div *ngIf="user" class="home-ic" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black' }">
                 <a [routerLink]="['/']" style="text-decoration: none;" class="viewq-link">
-                    <mat-icon class="viewq-home-icon">home</mat-icon>
+                    <!-- <mat-icon class="viewq-home-icon">home</mat-icon> -->
+                    <i class="fa fa-home viewq-home-icon" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -65,7 +66,7 @@
                 </div>
                  
                 <ng-container *ngIf="length2 > 0">
-                    <div class="answers" *ngFor="let answer of answers; index as i">
+                    <div class="answers" *ngFor="let answer of answers; index as i" @slide>
                         <strong style="color: dodgerblue; padding-left: 10px;">Answer {{i+1}}</strong>
                         <div class="answer">
                            <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{answer.answer}}</p>
@@ -101,7 +102,7 @@
                 <div class="circle" id="circle3"></div>
             </div>
             <div class="relatedQuestions">
-                <div class="question" *ngFor="let question of questions">
+                <div class="question" *ngFor="let question of questions" @fade>
                     <div class="asked-by">
                         <div class="left">
                             <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
@@ -112,7 +113,7 @@
                         
                     </div>
                     <div class="question-container">
-                        <a [routerLink]="['/questionAnswers',question._id]"  target="_blank">
+                        <a [routerLink]="['/questionAnswers',question._id]" class="viewq-related-q-link" target="_blank">
                           <p class="question-body" >
                               <strong>{{question.question}}</strong></p>
                        </a>
@@ -158,7 +159,7 @@
                   <img [src]="addLoader" alt="addLoader" class="addLoaderImg">
             </div>
 
-            <div class="add" *ngFor="let add of adds;" (click)="updateClicks(add._id)">
+            <div class="add" *ngFor="let add of adds;" (click)="updateClicks(add._id)" @topSlide>
                 <a href="{{add.addLink}}" target="_blank">
                     <img [src]="user.darkMode ? add.addDarkImage : add.addLightImage" alt="add.name">
                 </a>

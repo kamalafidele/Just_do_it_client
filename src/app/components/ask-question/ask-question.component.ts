@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {AngularEditorConfig} from "@kolkov/angular-editor"
 import { QuestionsService } from 'src/app/services/questions.service';
 import { WorkspacesService } from 'src/app/services/workspaces.service';
+import { AngularEditorConfigData } from '../AngularEditorConfigData';
 
 @Component({
   selector: 'app-ask-question',
@@ -22,64 +23,7 @@ export class AskQuestionComponent implements OnInit {
   topicError=false;
   isLoading=false;
   dialogRef=this.dialog;
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '20rem',
-    minHeight: '5rem',
-    width:'100%',
-    placeholder: 'Enter a question here...',
-    translate: 'no',
-    enableToolbar: false,
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-    toolbarPosition: 'bottom',
-    toolbarHiddenButtons: [
-      ['bold','redo',
-      'italic',
-      'underline',
-      'strikeThrough',
-      'subscript',
-      'superscript',
-      'justifyLeft',
-      'justifyCenter',
-      'justifyRight',
-      'justifyFull',
-      'indent',
-      'outdent',
-      'insertUnorderedList',
-      'insertOrderedList',
-      'heading',
-      'fontName'],  [
-        'fontSize',
-        'textColor',
-        'backgroundColor',
-        'customClasses',
-        'link',
-        'unlink',
-        'insertVideo',
-        'insertImage',
-        'insertHorizontalRule',
-        'removeFormat',
-        'toggleEditorMode'
-      ]
-      ],
-    customClasses: [
-      {
-        name: "quote",
-        class: "quote",
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: "titleText",
-        class: "titleText",
-        tag: "h1",
-      },
-    ]
-  };
+  config: AngularEditorConfig = AngularEditorConfigData;
 
   constructor(public questionServ:QuestionsService,public workspaceServ:WorkspacesService, public dialog:MatDialog) { } 
 

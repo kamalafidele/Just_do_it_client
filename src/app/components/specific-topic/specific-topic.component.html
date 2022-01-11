@@ -14,7 +14,7 @@
     <ng-container *ngIf="length > 0 ">
         <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
 
-        <div class="question" *ngFor="let question of questions">
+        <div class="question" *ngFor="let question of questions" >
             <div class="asked-by">
                 <div class="left">
                     <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
@@ -26,7 +26,7 @@
                 <!-- <div class="right"><mat-icon class="close-icon" (click)=" removeQuestion(question._id)">close</mat-icon></div> -->
             </div>
             <div class="question-container">
-                <a [routerLink]="['/questionAnswers',question._id]" target="_blank">
+                <a [routerLink]="['/questionAnswers',question._id]" >
                   <p class="question-body" ><strong>{{question.question}}</strong></p>
                 </a>
                 <div class="images"  *ngFor="let image of question.images">

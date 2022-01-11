@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation,Inject } from '@angular/core';
 import {AngularEditorConfig} from "@kolkov/angular-editor"
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AnswersService } from 'src/app/services/answers.service';
+import { AngularEditorConfigData } from '../AngularEditorConfigData';
 
 @Component({
   selector: 'app-add-answer',
@@ -22,66 +23,9 @@ export class AddAnswerComponent implements OnInit {
   isImageError=false;
   errorExists=false;
   passedQuestion:any;
-
   isLoading=false;
 
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '20rem',
-    minHeight: '5rem',
-    width:'100%',
-    placeholder: 'Enter your answer here...',
-    translate: 'no',
-    enableToolbar: false,
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-    toolbarPosition: 'bottom',
-    toolbarHiddenButtons: [
-      ['bold','redo',
-      'italic',
-      'underline',
-      'strikeThrough',
-      'subscript',
-      'superscript',
-      'justifyLeft',
-      'justifyCenter',
-      'justifyRight',
-      'justifyFull',
-      'indent',
-      'outdent',
-      'insertUnorderedList',
-      'insertOrderedList',
-      'heading',
-      'fontName'],  [
-        'fontSize',
-        'textColor',
-        'backgroundColor',
-        'customClasses',
-        'link',
-        'unlink',
-        'insertVideo',
-        'insertHorizontalRule',
-        'removeFormat',
-        'toggleEditorMode'
-      ]
-      ],
-    customClasses: [
-      {
-        name: "quote",
-        class: "quote",
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: "titleText",
-        class: "titleText",
-        tag: "h1",
-      },
-    ]
-  };
+  config: AngularEditorConfig = AngularEditorConfigData;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,public answerServ:AnswersService,public dialog:MatDialog) {
     this.passedQuestion=data;

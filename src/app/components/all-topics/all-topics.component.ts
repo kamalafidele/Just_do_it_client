@@ -1,17 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import {MatDialog} from "@angular/material/dialog";
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
 import { AnswersService } from 'src/app/services/answers.service';
 import { CookieService } from 'ngx-cookie-service';
 import { LikeDislike } from 'src/app/likeDislike';
+import {  slideAnimation, topSlideAnimation } from '../animations';
+
+
 
 @Component({
   selector: 'all-topics',
   templateUrl: './all-topics.component.html',
-  styleUrls: ['./all-topics.component.css','../loader.css']
+  styleUrls: ['./all-topics.component.css','../loader.css'],
+  animations:[
+     slideAnimation,
+     topSlideAnimation
+  ]
 })
-export class AllTopicsComponent implements OnInit {
+export class AllTopicsComponent implements OnInit, AfterViewInit {
   @Input() passedTopic:any;
   @Input() passedUser:any;
    questions:any=[];
@@ -26,6 +33,8 @@ export class AllTopicsComponent implements OnInit {
    notEmpty=true;
    currentQuestionsNum=0;
    numToReduce=0;
+   storedCookies:any=[];
+   contentHasInit=false;  
 
   constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) {
     
@@ -43,7 +52,6 @@ export class AllTopicsComponent implements OnInit {
         this.numToReduce=res.questions.length/10;
        this.currentQuestionsNum=res.questions.length-10;
        
-       
        this.questions=res.questions.slice(0,res.questions.length/this.numToReduce);
        this.length=res.questions.length;
      },
@@ -53,7 +61,11 @@ export class AllTopicsComponent implements OnInit {
      }
      )
     }
-
+ngAfterViewInit(): void {
+    setTimeout(() =>{
+      this.contentHasInit=true;
+    },4000);
+}
   openAnsweringDialog(question:any){
      this.dialog.open(AddAnswerComponent,{data:{question},panelClass:"custom-dialog-container"});
   }
@@ -72,16 +84,13 @@ export class AllTopicsComponent implements OnInit {
   }
 
   onScroll(){
-    if(this.notScrolly && this.notEmpty){
+    if(this.notScrolly && this.notEmpty && this.contentHasInit){
       this.scrollEffect=true;
       this.notScrolly=false;
       setTimeout(() =>{
         this.loadNextQuestions()
       },1000);
-
     }
-
-    
   }
 
   loadNextQuestions(){
@@ -108,7 +117,5 @@ export class AllTopicsComponent implements OnInit {
       this.notScrolly=true;
        this.currentQuestionsNum-=10;
     }
-
-  }
-
-}
+ 
+  }}
