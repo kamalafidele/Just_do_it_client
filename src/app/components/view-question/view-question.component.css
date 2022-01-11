@@ -57,9 +57,12 @@ div.lightMode .viewq-question{
     margin-top: 5px;
 }
 .viewq-home-icon{
-    font-size: 30px;
+    font-size: 25px;
 }
 
+.viewq-related-q-link{
+    text-decoration: 1px solid underline;
+}
 
 
     @media only screen and (max-width: 620px){

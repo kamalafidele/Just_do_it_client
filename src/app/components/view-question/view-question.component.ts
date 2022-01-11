@@ -9,18 +9,24 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
 import { liveSearch } from 'src/app/liveSearch';
 import { NotificationService } from 'src/app/services/notification.service';
+import { fadeAnimation, slideAnimation, topSlideAnimation } from '../animations';
 
 @Component({
   selector: 'app-view-question',
   templateUrl: './view-question.component.html',
-  styleUrls: ['./view-question.component.css','../home/home.component.css','../loader.css','../home/home-assistant.css']
+  styleUrls: ['./view-question.component.css','../home/home.component.css','../loader.css','../home/home-assistant.css'],
+  animations:[
+    slideAnimation,
+    fadeAnimation,
+    topSlideAnimation
+  ]
 })
 export class ViewQuestionComponent implements OnInit, AfterViewInit {
   question:any=[];
   answers:any=[];
   length=0;
   length2=0;
-  isLoading=false;
+  isLoading=true;
   isLoading2=true;
 
   relatedQuestions:any=[];

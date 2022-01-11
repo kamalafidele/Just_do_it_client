@@ -9,11 +9,17 @@ import { AskQuestionComponent } from '../ask-question/ask-question.component';
 import { Meta, Title } from '@angular/platform-browser';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { liveSearch } from 'src/app/liveSearch';
+import { fadeAnimation, slideAnimation, topSlideAnimation } from '../animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css','../loader.css','./home-assistant.css']
+  styleUrls: ['./home.component.css','../loader.css','./home-assistant.css'],
+  animations:[
+    fadeAnimation,
+    topSlideAnimation,
+    slideAnimation
+  ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
@@ -36,6 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
    addLoading=true;
    addLoader="https://res.cloudinary.com/justdoit/image/upload/v1641234634/questionImages/images/Adds-loader_r7tlln.svg";
    workspaceStatus=false;
+   showThemeModeButton=false;
    
   @ViewChild("abc") abc:ElementRef;
 
@@ -82,6 +89,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
         (err:any) =>{this.addLoading=false;}
         )
       },10000);
+
+      setTimeout(() =>{
+        this.showThemeModeButton=true;
+      },2000);
   }
   openQuestionDialog(){
     this.showSettings=false;

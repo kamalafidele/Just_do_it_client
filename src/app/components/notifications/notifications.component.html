@@ -7,7 +7,7 @@
     </div>
 
     <ng-container *ngIf="length>0">
-        <div class="notification" *ngFor="let notification of notifications" [ngClass]="user.darkMode ? 'notif-dark' : 'notif-light' " >
+        <div class="notification" *ngFor="let notification of notifications" [ngClass]="user.darkMode ? 'notif-dark' : 'notif-light' " @slide>
             <div class="left" [ngStyle]="{color: user.darkMode ? 'white' : 'black'}">
                 <p>{{notification.notificationMessage}}</p>
             </div>

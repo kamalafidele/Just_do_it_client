@@ -1,10 +1,16 @@
 import { NotificationService } from './../../services/notification.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { fadeAnimation, slideAnimation, topSlideAnimation } from '../animations';
 
 @Component({
   selector: 'notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  styleUrls: ['./notifications.component.css'],
+  animations:[
+    fadeAnimation,
+    slideAnimation,
+    topSlideAnimation
+  ]
 })
 export class NotificationsComponent implements OnInit {
   @Input() passedUser:any;
@@ -33,7 +39,7 @@ export class NotificationsComponent implements OnInit {
     
     let tempNotificatinos=this.notifications;
     this.notifications=this.notifications.filter((notification:any) => notification._id != id);
-
+    this.length=this.notifications.length;
     this.notificationsServ.deleteNotication(id)
     .subscribe(
       (res:any) =>{
