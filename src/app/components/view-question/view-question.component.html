@@ -161,7 +161,7 @@
 
             <div class="add" *ngFor="let add of adds;" (click)="updateClicks(add._id)" @topSlide>
                 <a href="{{add.addLink}}" target="_blank">
-                    <img [src]="user.darkMode ? add.addDarkImage : add.addLightImage" alt="add.name">
+                    <img [src]="user && user.darkMode ? add.addDarkImage : add.addLightImage" alt="add.name">
                 </a>
             </div>
         </div>
