@@ -62,7 +62,7 @@ export class AskQuestionComponent implements OnInit {
         window.location.reload();
       },
       (err:any) =>{
-        this.isLoading=false;
+        //this.isLoading=false;
         console.log("Error: ",err);
       }
       )

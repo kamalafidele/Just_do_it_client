@@ -21,7 +21,6 @@ div.lightMode{
 div.commonDiv a{
     color: white;
     /* text-decoration: 1px solid white underline; */
-     
 }
 
 div.commonDiv a:hover, div.lightMode a:hover{

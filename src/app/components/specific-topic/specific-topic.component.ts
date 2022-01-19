@@ -25,6 +25,7 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
    notEmpty=true;
    currentQuestionsNum=0;
    numToReduce=0;
+   contentHasInit=false;
 
   constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) { }
 
@@ -53,6 +54,7 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
       this.isLoading=false;
       this.questions=res.topicQuestions;
       this.length=res.topicQuestions.length;
+      this.contentHasInit=true;
     })
   }
 
@@ -74,7 +76,7 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
   }
 
   onScroll(){
-    if(this.notScrolly && this.notEmpty){
+    if(this.notScrolly && this.notEmpty && this.contentHasInit){
       this.scrollEffect=true;
       this.notScrolly=false;
       setTimeout(() =>{

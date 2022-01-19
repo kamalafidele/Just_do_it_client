@@ -18,7 +18,7 @@ import {  slideAnimation, topSlideAnimation } from '../animations';
      topSlideAnimation
   ]
 })
-export class AllTopicsComponent implements OnInit, AfterViewInit {
+export class AllTopicsComponent implements OnInit {
   @Input() passedTopic:any;
   @Input() passedUser:any;
    questions:any=[];
@@ -51,7 +51,7 @@ export class AllTopicsComponent implements OnInit, AfterViewInit {
        this.allQuestions=res.questions;
         this.numToReduce=res.questions.length/10;
        this.currentQuestionsNum=res.questions.length-10;
-       
+       this.contentHasInit=true;
        this.questions=res.questions.slice(0,res.questions.length/this.numToReduce);
        this.length=res.questions.length;
      },
@@ -61,11 +61,7 @@ export class AllTopicsComponent implements OnInit, AfterViewInit {
      }
      )
     }
-ngAfterViewInit(): void {
-    setTimeout(() =>{
-      this.contentHasInit=true;
-    },4000);
-}
+
   openAnsweringDialog(question:any){
      this.dialog.open(AddAnswerComponent,{data:{question},panelClass:"custom-dialog-container"});
   }

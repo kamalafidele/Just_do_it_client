@@ -22,7 +22,7 @@ import { fadeAnimation, slideAnimation, topSlideAnimation } from '../animations'
   ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-
+   
    user:any=JSON.parse(localStorage.getItem("justDoItUser") || '');
    userImg:any=this.user.profile;
    userWorkspaces:any=[];
@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
    addLoader="https://res.cloudinary.com/justdoit/image/upload/v1641234634/questionImages/images/Adds-loader_r7tlln.svg";
    workspaceStatus=false;
    showThemeModeButton=false;
-   
   @ViewChild("abc") abc:ElementRef;
 
  constructor(private router:Router,private workspaceSer:WorkspacesService, private meta:Meta,private title:Title,
