@@ -6,6 +6,12 @@
 .questions{
    min-height: 100vh;
 }
-.search-results{
-   padding-top: 4%;
+div.commonDiv .question:first-child:hover{
+   background-color: black;
 }
+div.lightMode .question:first-child:hover{
+   background-color: white;
+}
+/* .search-results{
+   padding-top: 2%;
+} */

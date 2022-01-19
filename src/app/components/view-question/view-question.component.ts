@@ -22,7 +22,7 @@ import { fadeAnimation, slideAnimation, topSlideAnimation } from '../animations'
   ]
 })
 export class ViewQuestionComponent implements OnInit, AfterViewInit {
-  question:any=[];
+  question:any;
   answers:any=[];
   length=0;
   length2=0;
@@ -82,7 +82,6 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-     
      setTimeout(() =>{
       this.qService.getQuestionRelatedQuestions(this.question.topic._id)
       .subscribe((res:any) =>{
