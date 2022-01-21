@@ -15,14 +15,13 @@
     justify-content: space-between;
 }
 .notif-dark{
-    background-color: rgb(66, 66, 66);
-    border-top: 1px solid rgb(41, 40, 40);
+    background-color: rgb(34, 33, 33);
 }
 .notif-light{
     background-color: rgb(204, 204, 204);
 }
 .notif-dark:hover{
-    background-color: rgb(85, 85, 85);
+    background-color: rgb(34, 33, 33);
 }
 /* .notification:hover{
     background-color: rgb(94, 94, 94);

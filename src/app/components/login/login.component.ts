@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LoginRegisterService } from 'src/app/services/login-register.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
   withErrors=false;
   isLoading=false;
 
-  constructor(http:LoginRegisterService,private router:Router) {
+  constructor(http:LoginRegisterService,private router:Router, private route:ActivatedRoute) {
     this.loginService=http;
    }
 
@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit{
       
       localStorage.setItem("justDoitTokAuth",res.token);
       localStorage.setItem("justDoItUser",JSON.stringify(res.user));
+      
+     // let returnUrl=this.route.snapshot.queryParamMap.get("redirectUrl");
       
       this.router.navigate(["/"]);
       

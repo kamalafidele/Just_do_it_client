@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         },
         (err:any) =>{this.addLoading=false;}
         )
-      },10000);
+      },5000);
 
       setTimeout(() =>{
         this.showThemeModeButton=true;
