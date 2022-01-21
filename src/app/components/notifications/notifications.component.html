@@ -9,7 +9,7 @@
     <ng-container *ngIf="length>0">
         <div class="notification" *ngFor="let notification of notifications" [ngClass]="user.darkMode ? 'notif-dark' : 'notif-light' " @slide>
             <div class="left" [ngStyle]="{color: user.darkMode ? 'white' : 'black'}">
-                <p>{{notification.notificationMessage}}</p>
+                <h3>{{notification.notificationMessage}}</h3>
             </div>
             <div>
                 <div class="right"><mat-icon class="close-icon" (click)="removeNotification(notification._id)">close</mat-icon></div>

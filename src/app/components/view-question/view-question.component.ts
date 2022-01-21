@@ -33,6 +33,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
   questions:any=[];
   token=localStorage.getItem("justDoitTokAuth") || '';  
   id:any="";
+  topicId:any="";
 
   user:any=JSON.parse(localStorage.getItem("justDoItUser") || 'null' );
   itemsForSearching:any=[];
@@ -62,8 +63,8 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
        this.answers=res.answers;
        this.length=1;
        this.question=res.question;
+       this.topicId=res.question.topic._id;
        this.length2=res.answers.length;
-
        this.title.setTitle(res.question.question);
        this.meta.updateTag({name:"description",content:res.question.question});
 
@@ -79,18 +80,19 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
      }
      )
 
+    
   }
 
   ngAfterViewInit(): void {
      setTimeout(() =>{
-      this.qService.getQuestionRelatedQuestions(this.question.topic._id)
+      this.qService.getQuestionRelatedQuestions(this.topicId)
       .subscribe((res:any) =>{
         this.isLoading2=false;
         this.questions=res.topicQuestions.filter((q:any) => q._id != this.question._id);
         if(!this.user)
           this.itemsForSearching=res.topicQuestions.filter((q:any) => q._id != this.question._id);
       })
-     },1000);
+     },2000);
 
      if(this.user){
       this.qService.getAllQuestions()
@@ -106,7 +108,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
         this.addLoading=false
         this.adds=res.adds.filter((add:any) => add.name !=="Booking")
       })
-     },10000);
+     },5000);
      
   }
   

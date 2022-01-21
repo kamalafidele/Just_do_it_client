@@ -24,14 +24,14 @@
 
         <div class="input-container " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " (click)="hideSettings()">
             <input type="search"  [(ngModel)]="searchInput" name="searchTerm" class="input" [ngClass]="user.darkMode ? 'input-dark' : 'input-light' " 
-            placeholder=" Search  JustdoIt" (keyup)="search()"   />
+            placeholder=" Search" (keyup)="search()"   />
         
             <div class="search-results-cont" *ngIf="isSearching" id="searchCont" >
                <p class="search-result-para" *ngFor="let itemForSearching of itemsForSearching;">
                   <a [routerLink]="['/questionAnswers',itemForSearching._id]"  class="search-link">
                     <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
                 </p>
-                <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching" class="no-result-found">No results found</p>
+                <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching" class="no-result-found" style="color: black;">No results found</p>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
          <div class="user-img-container">
              <img [src]="userImg" alt="user.username"  class="user-profile" (click)="toggleSettings()">
 
-           <div class="user-settings" *ngIf="showSettings" @slide>
+           <div class="user-settings" *ngIf="showSettings">
                <button mat-button class="go-to-profile-btn" (click)="openUserProfile()">User Profile</button>
                <mat-divider></mat-divider>
                <button mat-button class="go-to-profile-btn" (click)="updateUserMode()">

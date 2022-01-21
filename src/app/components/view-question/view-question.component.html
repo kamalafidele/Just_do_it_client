@@ -25,14 +25,14 @@
                    <a [routerLink]="['/questionAnswers',itemForSearching._id]" target="_blank" class="search-link">
                      <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
                  </p>
-                 <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching" class="no-result-found">No results found</p>
+                 <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching" class="no-result-found" style="color: black;">No results found</p>
              </div>
         </div>
 
      <div class="enter-links" >
 
          <p class="signup-para" *ngIf="!token">
-            <a [routerLink]="['/account']">Signup</a>
+            <a [routerLink]="['/account']">Signin</a>
          </p>
      </div>
 

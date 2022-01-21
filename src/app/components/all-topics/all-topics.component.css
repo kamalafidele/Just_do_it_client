@@ -7,7 +7,7 @@
    min-height: 100vh;
 }
 div.commonDiv .question:first-child:hover{
-   background-color: black;
+   background-color: rgb(14, 13, 13);
 }
 div.lightMode .question:first-child:hover{
    background-color: white;
