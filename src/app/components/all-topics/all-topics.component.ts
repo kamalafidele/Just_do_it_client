@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import {MatDialog} from "@angular/material/dialog";
 import { AddAnswerComponent } from '../add-answer/add-answer.component';

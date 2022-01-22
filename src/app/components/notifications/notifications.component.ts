@@ -5,7 +5,7 @@ import { fadeAnimation, slideAnimation, topSlideAnimation } from '../animations'
 @Component({
   selector: 'notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css'],
+  styleUrls: ['./notifications.component.css','../loader.css'],
   animations:[
     fadeAnimation,
     slideAnimation,

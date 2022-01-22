@@ -69,7 +69,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
        this.meta.updateTag({name:"description",content:res.question.question});
 
        if(res.answers.length > 0)
-         this.meta.updateTag({property:"og:description",content:res.answers[0].answer});
+         this.meta.addTag({property:"og:description",content:res.answers[0].answer});
 
        if(res.answers.length > 0 && res.answers[0].images.length > 0 )
           this.meta.updateTag({property:"og:image",content:res.answers[0].images[0]})
