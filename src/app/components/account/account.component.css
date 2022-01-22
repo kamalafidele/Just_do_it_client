@@ -1,0 +1,40 @@
+div.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://res.cloudinary.com/justdoit/image/upload/v1641235015/questionImages/images/Back3_vrkr3k.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+div.content-container{
+    width:45%;
+    margin-top: 5%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+div.head h2.header{
+    text-align: center;
+    color: dodgerblue;
+    font-size: 50px;
+}
+div.head p{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+@media only screen and (max-width:620px){
+    div.container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    div.content-container{
+        width:98%;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,169 @@
+<div class="container" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'} ">
+
+    <div class="navbar " [ngClass]="user && user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " (click)="abort()" >
+        <div class="head-search" id="head-search-viewq">
+            <div>
+                <a [routerLink]="['/']" style="text-decoration: none;">
+                    <h2 class="header vieq-header" id="mobile-header">JDI</h2>
+                    <h2 class="header">JustDoIt</h2>
+                </a>
+            </div>
+            <div *ngIf="user" class="home-ic" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black' }">
+                <a [routerLink]="['/']" style="text-decoration: none;" class="viewq-link">
+                    <!-- <mat-icon class="viewq-home-icon">home</mat-icon> -->
+                    <i class="fa fa-home viewq-home-icon" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="viewq-input-container " [ngClass]="user && user.darkMode ? 'commonDiv' : 'lightMode' " >
+            <input type="search"  name="searchTerm" class="input" [ngClass]="user && user.darkMode ? 'input-dark' : 'input-light' " 
+             placeholder=" Search  JustdoIt" [(ngModel)]="searchInput" (keyup)="search()" />
+
+             <div class="search-results-cont" *ngIf="isSearching" id="searchCont">
+                <p class="search-result-para" *ngFor="let itemForSearching of itemsForSearching;">
+                   <a [routerLink]="['/questionAnswers',itemForSearching._id]" target="_blank" class="search-link">
+                     <span class="spa-search-link">{{itemForSearching.question}}</span></a> 
+                 </p>
+                 <p *ngIf="lostSearchParas==itemsForSearching.length && isSearching" class="no-result-found" style="color: black;">No results found</p>
+             </div>
+        </div>
+
+     <div class="enter-links" >
+
+         <p class="signup-para" *ngIf="!token">
+            <a [routerLink]="['/account']">Signin</a>
+         </p>
+     </div>
+
+    </div>
+
+    <div class="viewq-left" [ngClass]="user && user.darkMode ? 'commonDiv leftBorderDark' : 'lightMode leftBorderLight' " (click)="abort()">
+
+    </div>
+    <div class="viewq-middle" [ngClass]="user && user.darkMode ? 'commonDiv' : 'lightMode' " (click)="abort()">
+
+        <div class="loadingQuestions" *ngIf="isLoading">
+            <div class="circle" id="circle1"></div>
+            <div class="circle" id="circle2"></div>
+            <div class="circle" id="circle3"></div>
+        </div>
+
+        <ng-container *ngIf="length  > 0">
+            <div class="question viewq-question">
+                <div class="asked-by">
+                    <div class="left">
+                        <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
+                        <strong class="askedBy-username"  
+                        [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{question.askedBy.username}} 
+                            <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
+                    </div>
+                    
+                </div>
+                <div class="question-container">
+                      <p class="question-body" >
+                          <strong>{{question.question}}</strong></p>                    
+                </div>
+                 
+                <ng-container *ngIf="length2 > 0">
+                    <div class="answers" *ngFor="let answer of answers; index as i" @slide>
+                        <strong style="color: dodgerblue; padding-left: 10px;">Answer {{i+1}}</strong>
+                        <div class="answer">
+                           <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{answer.answer}}</p>
+                        <div class="answer-images"  *ngFor="let answerImages of answer.images">
+                            <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
+                        </div>
+                        <div class="votes-add-answers">
+                            <div class="icon-1 ico-container">
+                                <mat-icon class="arrow_upward" (click)="specialUpvote(answer._id)">thumb_up</mat-icon> 
+                                <span class="word"><strong>{{answer.upVotes}}</strong>  Votes</span>
+                            </div>
+                            <div class="icon-2 ico-container">
+                                <mat-icon class="arrow_downward" (click)="specialDownvote(answer._id)">thumb_down</mat-icon> 
+                                <span class="word"> <strong>{{answer.downVotes}}</strong> Rejects</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="button-answer-cont" *ngIf="user">
+                        <button class="btn-answer" (click)="openAnsweringDialog(question)">Add Answer</button>
+                    </div>
+                </ng-container>
+                <div  *ngIf="length2 <= 0 && !isLoading" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'}">
+                    <p style="padding-left: 10px;" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black'}" class="no-ans">
+                        This question doesn't currently have answers </p>
+                </div>
+            
+            </div>
+
+            <div class="loadingQuestions" *ngIf="isLoading2">
+                <div class="circle" id="circle1"></div>
+                <div class="circle" id="circle2"></div>
+                <div class="circle" id="circle3"></div>
+            </div>
+            <div class="relatedQuestions">
+                <div class="question" *ngFor="let question of questions" @fade>
+                    <div class="asked-by">
+                        <div class="left">
+                            <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
+                            <strong class="askedBy-username" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                                {{question.askedBy.username}} 
+                                <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
+                        </div>
+                        
+                    </div>
+                    <div class="question-container">
+                        <a [routerLink]="['/questionAnswers',question._id]" class="viewq-related-q-link" target="_blank">
+                          <p class="question-body" >
+                              <strong>{{question.question}}</strong></p>
+                       </a>
+                        
+                    </div>
+                    <div class="answers" *ngIf="question.answertoshow">
+                        <div class="answer" >
+                           <p class="answer-para" [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">
+                            {{question.answertoshow.answer}}</p>
+                           <div class="answer-images"  *ngFor="let answerImages of question.answertoshow.images">
+                            <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
+                        </div>
+                        <div class="votes-add-answers">
+                            <div class="icon-1 ico-container">
+                                <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_up</mat-icon> 
+                                <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Votes</span>
+                            </div>
+                            <div class="icon-2 ico-container">
+                                <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_down</mat-icon> 
+                                <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="button-answer-cont" *ngIf="user">
+                        <button class="btn-answer" (click)="openAnsweringDialog(question)">Add Answer</button>
+                    </div>
+                </div>
+            </div>
+
+        </ng-container>
+        <div class="no-question" *ngIf="length <= 0 && !isLoading" [ngStyle]="{'background-color': user && user.darkMode ? 'black' : 'white'}">
+            <p class="no-question-para" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black'}">This question doesn't exist on our platform </p>
+        </div>
+    </div>
+    <div class="viewq-right" [ngClass]="user && user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' " (click)="abort()">
+        <div class="add-images" style="padding-top: 5px;">
+            <!-- <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2> -->
+            <div class="advertise-disclaimer" *ngIf="addLoading">
+                <a href="mailto://justdoitrw2@gmail.com" style="text-decoration: none; color: dodgerblue;"   >
+                    <h2 style="text-align: center;padding: 10%;">Advertise with JDI</h2> 
+                </a>
+                  <img [src]="addLoader" alt="addLoader" class="addLoaderImg">
+            </div>
+
+            <div class="add" *ngFor="let add of adds;" (click)="updateClicks(add._id)" @topSlide>
+                <a href="{{add.addLink}}" target="_blank">
+                    <img [src]="user && user.darkMode ? add.addDarkImage : add.addLightImage" alt="add.name">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

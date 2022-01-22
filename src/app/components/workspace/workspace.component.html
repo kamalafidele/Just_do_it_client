@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="navbar">
+        <h2 class="header">JustDoIt</h2>
+    </div>
+    <div class="workspaces-container">
+        <div class="lastStep">
+            <h2>Last step to finish</h2>
+        </div>
+        <div class="workspaces">
+            <div class="workspace" *ngFor="let workspace of workspaces;trackBy: trackWorkspace" (click)="toggleCheck(workspace)">
+                <img src="{{workspace.picture}}" alt="{{workspace.name}}">
+                <span class="workspace-title">{{workspace.name}}</span>
+                <p class="check"><mat-icon color="primary" style="font-weight: bold;" *ngIf="workspace.isChecked">done</mat-icon></p>
+                <!-- <mat-checkbox color="primary" class="check"></mat-checkbox> -->
+            </div>
+        </div>
+        <div class="select-container">
+            <button mat-raised-button color="primary" (click)="submitWorspaces()" 
+            [disabled]="selectedWorkspaces.length!=5">
+            <span *ngIf="selectedWorkspaces.length < 5">Choose</span>  
+            {{selectedWorkspaces.length<5 ? 5-selectedWorkspaces.length: '' }} <span *ngIf="selectedWorkspaces.length < 5">topics</span>
+                <span *ngIf="selectedWorkspaces.length==5"> 
+                    <span *ngIf="!isLoading">Continue</span> <div *ngIf="isLoading" class="loader"></div> 
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

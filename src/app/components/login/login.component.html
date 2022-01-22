@@ -1,0 +1,27 @@
+
+<h2 class="head">Login to your Account</h2>
+  <div class="login-container">
+    <form (ngSubmit)="login()">
+      <div class="row">
+        <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Email</mat-label>
+            <input type="email" [(ngModel)]="email" matInput name="email" maxlength="60" />
+          </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline" class="inputs">
+            <mat-label>Password</mat-label>
+            <input type="password" [(ngModel)]="password" matInput name="password" maxlength="30" />
+          </mat-form-field>
+          <p class="error" *ngIf="withErrors">{{error}}</p>
+    </div>
+    <div class="row">
+        <button mat-raised-button class="btn" color="primary" type="submit"  [disabled]="isLoading" >
+          <span *ngIf="!isLoading">Login</span>  <div *ngIf="isLoading" class="loader"></div> </button>
+    </div>
+    </form>
+  </div>
+<div class="row">
+  Don't have an account? <button mat-button matStepperNext color="primary">Sign up</button>
+</div>
+

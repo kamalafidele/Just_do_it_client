@@ -1,0 +1,67 @@
+
+<div class="questions" [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " >
+
+    <div class="loadingQuestions" *ngIf="isLoading">
+        <div class="circle" id="circle1"></div>
+        <div class="circle" id="circle2"></div>
+        <div class="circle" id="circle3"></div>
+    </div>
+
+    <ng-container *ngIf="length  > 0">
+        <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+
+        <div class="question" *ngFor="let question of questions">
+            <div class="asked-by">
+                <div class="left">
+                    <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
+                    <strong class="askedBy-username" >{{question.askedBy.username}} 
+                        <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
+                </div>
+                <!-- <div class="right"><mat-icon class="close-icon" (click)="removeQuestion(question._id)">close</mat-icon> </div> -->
+            </div>
+            <div class="question-container">
+                <a [routerLink]="['/questionAnswers',question._id]" >
+                  <p class="question-body" ><strong>{{question.question}}</strong></p>
+               </a>
+                <div class="images"  *ngFor="let image of question.images">
+                    <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
+                </div>
+                
+            </div>
+            <div class="answers" *ngIf="question.answertoshow">
+                <div class="answer" >
+                   <p class="answer-para" >{{question.answertoshow.answer}}</p>
+                   <div class="answer-images"  *ngFor="let answerImages of question.answertoshow.images">
+                    <img src="{{answerImages}}" alt="{{question.askedBy.username}}" class="answer-img">
+                </div>
+                <div class="votes-add-answers">
+                    <div class="icon-1 ico-container">
+                        <mat-icon class="arrow_upward" (click)="upvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_up</mat-icon> 
+                        <span class="word"><strong>{{question.answertoshow.upVotes}}</strong>  Votes</span>
+                    </div>
+                    <div class="icon-2 ico-container">
+                        <mat-icon class="arrow_downward" (click)="downvote(question.answertoshow ? question.answertoshow._id: 123)">thumb_down</mat-icon> 
+                        <span class="word"> <strong>{{question.answertoshow.downVotes}}</strong> Rejects</span>
+                    </div>
+                 
+                </div>
+                </div>
+            </div>
+    
+            <div class="button-answer-cont">
+                <button class="btn-answer" (click)="openAnsweringDialog(question)">Add Answer</button>
+            </div>
+        </div>
+        <div class="loadingQuestions" *ngIf="scrollEffect">
+            <div class="circle" id="circle1"></div>
+            <div class="circle" id="circle2"></div>
+            <div class="circle" id="circle3"></div>
+        </div>
+    </div>
+
+    </ng-container>
+
+    <div class="no-question" *ngIf="length <= 0">
+        <p class="no-question-para">No questions available </p>
+    </div>
+</div>

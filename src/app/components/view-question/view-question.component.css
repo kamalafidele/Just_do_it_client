@@ -1,0 +1,99 @@
+.viewq-input-container{
+    display: flex;
+    border-radius: 20%;
+    width: 400px;
+    height: auto;
+    padding-top: 0px;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+}
+
+div.commonDiv .viewq-question{
+    border-bottom: 1px solid rgb(41, 40, 40);
+}
+div.lightMode .viewq-question{
+    border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+.enter-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.enter-links a{
+    background-color: dodgerblue;
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    padding: 8px;
+    margin-left: 10px;
+}
+.viewq-left{
+    width: 20%;
+    height: 90.5%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.viewq-middle{
+    width: 60%;
+    margin-left: 20%;
+    padding-top: 4.3%;
+    min-height: 100vh;
+}
+.viewq-right{
+    width: 20%;
+    height: 90.5%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.home-ic{
+    margin-left: 70%; 
+    margin-top: 5px;
+}
+.viewq-home-icon{
+    font-size: 25px;
+}
+
+.viewq-related-q-link{
+    text-decoration: 1px solid underline;
+}
+
+
+    @media only screen and (max-width: 620px){
+        .vieq-header{
+            margin-top: 0px;
+        }
+        .viewq-link{
+            display: block;
+        }
+        .home-ic{
+            margin-left: 13%;
+            margin-top: 12px;
+            display: block;
+        }
+        .viewq-left{
+            width: 0%;
+        }
+        .viewq-middle{
+            width: 100%;
+            margin-left: 0%;
+            padding-top: 15%;
+        }
+        .viewq-right{
+            width: 0%;
+        }
+
+        .viewq-input-container{
+            display: flex;
+            border-radius: 30%;
+            width: 100%;
+            height: auto;
+            margin-left: 10%;
+        }
+    }

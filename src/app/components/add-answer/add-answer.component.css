@@ -1,0 +1,44 @@
+.answer-container{
+    width: 500px;
+}
+textarea{
+    padding: 10px;
+    font-size: 20px;
+}
+.answ-btn{
+  height: 40px;
+}
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.error{
+    color: crimson;
+}
+div.loader{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 7px lightgray solid;
+    border-top: 7px #3D52B4 solid;
+    animation: spinner 0.7s linear infinite;
+    margin: 0px auto;
+}
+@keyframes spinner{
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+
+  @media only screen and (max-width: 620px){
+    .answer-container{
+        width: 100%;
+    }
+    .btn-container{
+        padding-top: 10px;
+    }
+  }
