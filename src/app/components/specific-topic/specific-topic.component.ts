@@ -36,9 +36,9 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
      .subscribe((res:any) =>{
       this.isLoading=false;
       this.allQuestions=res.topicQuestions;
-      this.numToReduce=res.topicQuestions.length/4;
-      this.currentQuestionsNum=res.topicQuestions.length-4;
-     
+      this.numToReduce=res.topicQuestions.length/7;
+      this.currentQuestionsNum=res.topicQuestions.length-7;
+      this.contentHasInit=true;
      
       this.questions=res.topicQuestions.slice(0,res.topicQuestions.length/this.numToReduce);
        this.length=res.topicQuestions.length;
@@ -91,7 +91,7 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
   loadNextQuestions(){
     let lastIndex=this.questions.length;
 
-    if(this.currentQuestionsNum >0 && this.currentQuestionsNum <4){
+    if(this.currentQuestionsNum >0 && this.currentQuestionsNum <7){
     
       this.allQuestions.slice(lastIndex,lastIndex+this.currentQuestionsNum).forEach((q:any) =>{
         this.questions.push(q);
@@ -99,10 +99,10 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
 
       this.notScrolly=false;
       this.scrollEffect=false;
-      this.currentQuestionsNum-=4;
+      this.currentQuestionsNum-=7;
     }
-    else if(this.currentQuestionsNum > 4){
-       this.numToReduce=this.currentQuestionsNum/4;
+    else if(this.currentQuestionsNum > 7){
+       this.numToReduce=this.currentQuestionsNum/7;
       
       this.allQuestions.slice(lastIndex,(this.currentQuestionsNum/this.numToReduce)+lastIndex).forEach((q:any) =>{
         this.questions.push(q);
@@ -110,7 +110,7 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
       
       this.scrollEffect=false;
       this.notScrolly=true;
-       this.currentQuestionsNum-=4;
+       this.currentQuestionsNum-=7;
     }
     else if(this.currentQuestionsNum <=0 ){
       this.scrollEffect=false;

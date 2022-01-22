@@ -1,4 +1,4 @@
-<div class="container" [ngStyle]="{'background-color': user.darkMode ? 'black' : 'white'} ">
+<div class="container" [ngStyle]="{'background-color': user.darkMode ? 'rgb(14, 13, 13)' : 'white'} ">
     <input #abc type="checkbox" name="check" id="check">
     <div class="navbar " [ngClass]="user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " (click)="abort()">
         <div class="head-search" (click)="hideSettings()">
