@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
    addLoader="https://res.cloudinary.com/justdoit/image/upload/v1641234634/questionImages/images/Adds-loader_r7tlln.svg";
    workspaceStatus=false;
    showThemeModeButton=false;
+   questionsToPassToSpecific:any=[];
   @ViewChild("abc") abc:ElementRef;
 
  constructor(private router:Router,private workspaceSer:WorkspacesService, private meta:Meta,private title:Title,
@@ -200,5 +201,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
          
       })
 
+   }
+
+   getQuestionsFromAllTopics(questions:any){
+     this.questionsToPassToSpecific=questions;
    }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { QuestionsService } from 'src/app/services/questions.service';
 import {MatDialog} from "@angular/material/dialog";
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
 import { AnswersService } from 'src/app/services/answers.service';
@@ -15,8 +14,8 @@ import { LikeDislike } from 'src/app/likeDislike';
 export class SpecificTopicComponent implements OnInit, OnChanges {
   @Input() passedTopic:any;
   @Input() passedUser:any;
+  @Input() passedQuestions:any;
    questions:any=[];
-   isLoading=false;
    length=1;
    user:any;
    scrollEffect=false;
@@ -27,35 +26,26 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
    numToReduce=0;
    contentHasInit=false;
 
-  constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) { }
+  constructor(public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) { }
 
   ngOnInit(): void {
     this.user=this.passedUser;
-    this.isLoading=true;
-     this.questionService.getTopicRelatedQuestions(this.passedTopic._id)
-     .subscribe((res:any) =>{
-      this.isLoading=false;
-      this.allQuestions=res.topicQuestions;
-      this.numToReduce=res.topicQuestions.length/7;
-      this.currentQuestionsNum=res.topicQuestions.length-7;
+
+    this.allQuestions=this.passedQuestions.filter((q:any) => q.topic._id == this.passedTopic._id);
+      this.numToReduce=this.allQuestions.length/7;
+      this.currentQuestionsNum=this.allQuestions.length-7;
       this.contentHasInit=true;
-     
-      this.questions=res.topicQuestions.slice(0,res.topicQuestions.length/this.numToReduce);
-       this.length=res.topicQuestions.length;
-     })
+      this.length=this.allQuestions.length;
+      this.questions=this.allQuestions.slice(0,this.allQuestions.length/this.numToReduce);
+
     }
 
   ngOnChanges(changes:SimpleChanges){
-    this.length=1;
-    this.isLoading=true;
+
     this.passedTopic=changes.passedTopic.currentValue;
-    this.questionService.getTopicRelatedQuestions(this.passedTopic._id)
-    .subscribe((res:any) =>{
-      this.isLoading=false;
-      this.questions=res.topicQuestions;
-      this.length=res.topicQuestions.length;
-      this.contentHasInit=true;
-    })
+    this.questions=this.passedQuestions.filter((q:any) => q.topic._id == this.passedTopic._id);
+    this.length=this.questions.length;
+    this.contentHasInit=true;
   }
 
   openAnsweringDialog(question:any){

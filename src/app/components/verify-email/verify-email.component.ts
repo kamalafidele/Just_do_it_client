@@ -11,12 +11,10 @@ export class VerifyEmailComponent implements OnInit {
   
   verificationCode:string="";
   constructor(private activatedRoute:ActivatedRoute,private service:LoginRegisterService,private router:Router) { }
-  //verificationCode
 
   ngOnInit(): void {
     this.activatedRoute.paramMap
     .subscribe((params:any) =>{
-        //console.log(params.params)
         this.verificationCode= params.get("id") ;
      
     });

@@ -16,6 +16,13 @@ export class WorkspaceComponent implements OnInit {
   constructor(private workspaceService:WorkspacesService,private router:Router) { }
 
   ngOnInit(): void {
+
+    this.workspaceService.getUserWorkspaces()
+    .subscribe((res:any) =>{
+      if(res.userWorkspaces[0].workspaces.length >= 5)
+         this.router.navigate(["/"]);
+    })
+
       this.workspaceService.getAllWorkspaces()
       .subscribe((res:any) =>{
       this.workspaces=res.workspaces;
@@ -25,11 +32,6 @@ export class WorkspaceComponent implements OnInit {
       }
       )
 
-      this.workspaceService.getUserWorkspaces()
-      .subscribe((res:any) =>{
-        if(res.userWorkspaces[0].workspaces.length >= 5)
-           this.router.navigate(["/"]);
-      })
   }
 
   trackWorkspace(workspace:any,index:number){

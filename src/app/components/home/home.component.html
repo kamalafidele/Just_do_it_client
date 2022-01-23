@@ -85,15 +85,20 @@
           </div>
         </div>
         <div class="middle " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " (click)="abort()">
+
            <div *ngIf="noneChecked && !notificationChecked" class="allQuestions">
-                <all-topics [passedUser]="user"></all-topics>
+                <all-topics (sendQuestions)="getQuestionsFromAllTopics($event)" [passedUser]="user"></all-topics>
            </div>
+
            <div class="specifiTopic" *ngIf="!noneChecked">
-               <specific-topic [passedTopic]="checkedWorkspace" [passedUser]="user"></specific-topic>
+               <specific-topic [passedTopic]="checkedWorkspace" [passedUser]="user" [passedQuestions]="questionsToPassToSpecific"></specific-topic>
            </div>
+
            <div class="user-notifications" *ngIf="noneChecked && notificationChecked">
-              <notifications [passedUser]="user" (notificationChange)="onNotificationChange($event)"></notifications>
+              <notifications [passedUser]="user" [passedNotifications]="notifications" (notificationChange)="onNotificationChange($event)">
+              </notifications>
            </div> 
+           
         </div>
         <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' " (click)="abort()">
                <div class="add-images" style="margin-top: 10px;">
