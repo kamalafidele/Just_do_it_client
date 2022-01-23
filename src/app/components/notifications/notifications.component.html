@@ -1,14 +1,8 @@
 <div class="notifications-container" [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' ">
 
   <div class="sub-not-container" >
-    <div class="loadingQuestions" *ngIf="isLoading">
-        <div class="circle" id="circle1"></div>
-        <div class="circle" id="circle2"></div>
-        <div class="circle" id="circle3"></div>
-    </div>
-
     <ng-container *ngIf="length>0">
-        <div class="notification" *ngFor="let notification of notifications" [ngClass]="user.darkMode ? 'notif-dark' : 'notif-light' " >
+        <div class="notification" *ngFor="let notification of notifications" [ngClass]="user.darkMode ? 'notif-dark' : 'notif-light' " @topSlide>
             <div class="left" [ngStyle]="{color: user.darkMode ? 'white' : 'black'}" style="display: flex; justify-content: space-evenly;flex-direction: column;">
                 <div class="user-related" style="display: flex;align-items: baseline; flex-direction: column;">
                     <img [src]="notification.image" alt="notification.owner" class="notif-img">

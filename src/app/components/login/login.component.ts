@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginRegisterService } from 'src/app/services/login-register.service';
 
@@ -7,7 +7,7 @@ import { LoginRegisterService } from 'src/app/services/login-register.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
   email:string="";
   password:string="";
   loginService;
@@ -19,13 +19,6 @@ export class LoginComponent implements OnInit{
     this.loginService=http;
    }
 
-   ngOnInit(){
-     let user=localStorage.getItem("justDoItUser");
-
-     if(this.loginService.isLoggedIn() && user){
-        this.router.navigate(["/"]);
-     }
-   }
 
   login(){
     this.isLoading=true;

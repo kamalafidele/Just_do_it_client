@@ -10,7 +10,7 @@
     <ng-container *ngIf="length  > 0">
         <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
 
-        <div class="question" *ngFor="let question of questions">
+        <div class="question" *ngFor="let question of questions; trackBy: trackQuestion" @fade>
             <div class="asked-by">
                 <div class="left">
                     <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
