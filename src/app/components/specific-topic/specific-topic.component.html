@@ -59,7 +59,7 @@
         </div>
     </ng-container>
 
-    <div class="no-question" *ngIf="length <= 0" style="background-color: black;">
+    <div class="no-question" *ngIf="length <= 0" [ngStyle]="{'background-color': user.darkMode ? 'rgb(14, 13, 13)' : 'white'}">
         <p class="no-question-para">No questions available in this workspace</p>
     </div>
 </div>

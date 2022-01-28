@@ -1,0 +1,11 @@
+<div class="comments-container">
+    <div class="comments" [ngClass]="passedUser.darkMode ? 'darkMode' : 'lightMode' " *ngFor="let comment of passedComments">
+        <div class="commented-by">
+          <img [src]="comment.commentedBy.avatar" class="commentedBy-img" alt="">
+          <strong class="commentedBy-username">{{comment.commentedBy.username}}</strong>
+        </div>
+        <div class="comment-body">
+            {{comment.comment}} 
+        </div>
+    </div>
+</div>

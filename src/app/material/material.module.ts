@@ -11,6 +11,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatListModule} from "@angular/material/list";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatTooltipModule} from "@angular/material/tooltip"
 
 export const MaterialComponents=[
   MatInputModule,
@@ -23,7 +24,8 @@ export const MaterialComponents=[
   MatSelectModule,
   MatMenuModule,
   MatListModule,
-  MatDividerModule
+  MatDividerModule,
+  MatTooltipModule
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { CommentService } from './../../services/comment.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import {MatDialog} from "@angular/material/dialog";
@@ -37,14 +38,17 @@ export class AllTopicsComponent implements OnInit {
    numToReduce=0;
    storedCookies:any=[];
    contentHasInit=false;  
+   comment="";
 
-  constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) {
+  constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,
+    public cookies:CookieService, public commentSer:CommentService) {
     
     this.isLoading=true;
     this.questionService.getAllQuestions()
     .subscribe((res:any) =>{
       this.isLoading=false;
       this.allQuestions=res.questions;
+  
        this.numToReduce=res.questions.length/10;
       this.currentQuestionsNum=res.questions.length-10;
       this.contentHasInit=true;
@@ -123,4 +127,26 @@ export class AllTopicsComponent implements OnInit {
     return question ? index : undefined;
 }
 
+toggleDisplayComments(question:any){
+  
+    this.questions.forEach((q:any) => {
+      if(q.answertoshow &&  (q.answertoshow._id == question.answertoshow._id) )
+         q.answertoshow.showComments=!q.answertoshow.showComments;
+    })
+}
+addComment(answerId:any){
+     let commentObject={answerId:answerId,comment:this.comment};
+     this.comment="";
+     
+     this.commentSer.addComment(commentObject)
+     .subscribe((res:any) =>{
+       this.questions.forEach((q:any) =>{
+        if(q.answertoshow &&  (q.answertoshow._id == answerId) )
+          q.answertoshow.comments.push(res.addedComment);
+       })
+
+     },
+     (err:any) =>{})
+     //console.log(commentObject);
+}
 }
