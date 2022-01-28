@@ -1,0 +1,37 @@
+.comments-container{
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.comments{
+    padding: 10px;
+}
+/* .darkMode{
+    background-color: rgb(26, 24, 24);
+}
+.lightMode {
+    background-color: rgb(216, 216, 216);
+} */
+.commented-by{
+    display: flex;
+    align-items: center;
+}
+.commentedBy-img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.commentedBy-username{
+    padding-left: 7px;
+}
+.comment-body{
+    padding-left: 8%;
+}
+
+@media only screen and (max-width:620px){
+    .comments{
+        padding: 5px;
+    } 
+    .comment-body{
+        padding-left: 16%;
+    }
+}

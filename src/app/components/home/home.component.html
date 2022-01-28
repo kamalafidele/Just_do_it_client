@@ -41,16 +41,16 @@
              <img [src]="userImg" alt="user.username"  class="user-profile" (click)="toggleSettings()">
 
            <div class="user-settings" *ngIf="showSettings">
-               <button mat-button class="go-to-profile-btn" (click)="openUserProfile()">User Profile</button>
+               <button mat-button class="go-to-profile-btn" (click)="openUserProfile()"><i class="fa fa-user-circle" aria-hidden="true"></i> User Profile</button>
                <mat-divider></mat-divider>
-               <button mat-button class="go-to-profile-btn" (click)="updateUserMode()">
-                  <span *ngIf="user.darkMode">Light mode</span>
-                  <span *ngIf="!user.darkMode">Dark mode</span> 
+               <button mat-button class="go-to-profile-btn" (click)="updateUserMode()"> <i class="fa fa-adjust" aria-hidden="true"></i>
+                  <span *ngIf="user.darkMode"> Light mode</span>
+                  <span *ngIf="!user.darkMode"> Dark mode</span> 
                 </button>
                <mat-divider></mat-divider>
-               <button mat-button class="go-to-profile-btn">JustDoIt Pro</button>
+               <button mat-button class="go-to-profile-btn"><i class="fa fa-user-plus" aria-hidden="true"></i> JustDoIt Pro</button>
                <mat-divider></mat-divider>
-               <button mat-button class="logout-btn" (click)="logout()">Logout</button>
+            <button mat-button class="logout-btn" (click)="logout()"><i class="fa fa-outdent" aria-hidden="true"></i> Logout</button>
            </div>
 
          </div>

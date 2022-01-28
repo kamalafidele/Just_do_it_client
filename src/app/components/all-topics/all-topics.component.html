@@ -24,7 +24,7 @@
                   <p class="question-body" ><strong>{{question.question}}</strong></p>
                </a>
                 <div class="images"  *ngFor="let image of question.images">
-                    <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img">
+                    <img src="{{image}}" alt="{{question.askedBy.username}}" class="question-img" @animateImage>
                 </div>
                 
             </div>
@@ -50,7 +50,27 @@
     
             <div class="button-answer-cont">
                 <button class="btn-answer" (click)="openAnsweringDialog(question)">Add Answer</button>
+                <div class="comment-icon-cont" *ngIf="question.answertoshow">
+                    <i class="fa fa-comment comment-icon" aria-hidden="true" [ngStyle]="{'color': user.darkMode ? 'white' : 'black'}" 
+                    (click)="toggleDisplayComments(question)"  #tooltip="matTooltip"  matTooltip="Comments"
+                    matTooltipHideDelay="1000" matTooltipPosition="above" ></i>
+                    <strong class="comments-number">{{question.answertoshow.comments.length}}</strong>
+                </div> 
+
             </div>
+            <div class="add-comment" *ngIf="question.answertoshow && question.answertoshow.showComments">
+              <div class="adding-comment-cont">
+                <input type="text" [(ngModel)]="comment" class="comment-input" name="comment" maxlength="400"
+                [ngClass]="passedUser.darkMode ? 'darkModeInput' : 'lightModeInput' " required placeholder="Add a comment" />
+                <button class="comment-btn" (click)="addComment(question.answertoshow._id)" [disabled]="comment == '' ">Comment</button>
+              </div>
+
+                  <ng-container *ngIf="question.answertoshow && question.answertoshow.comments.length > 0">
+                    <mat-divider style="margin-top: 5px;"></mat-divider>
+                    <app-comments [passedComments]="question.answertoshow.comments" [passedUser]="passedUser"></app-comments>
+                  </ng-container>
+            </div>
+            
         </div>
         <div class="loadingQuestions" *ngIf="scrollEffect">
             <div class="circle" id="circle1"></div>

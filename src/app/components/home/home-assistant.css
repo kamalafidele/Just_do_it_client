@@ -1,5 +1,6 @@
 .user-settings .logout-btn, .user-settings .go-to-profile-btn{
     width: 100%;
+    text-align: left;
 }
 div.commonDiv .user-settings{
     background-color: rgb(34, 33, 33);

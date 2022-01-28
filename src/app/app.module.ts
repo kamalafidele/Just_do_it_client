@@ -30,6 +30,7 @@ import { ViewQuestionComponent } from './components/view-question/view-question.
 import { CookieService } from 'ngx-cookie-service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AllTopicsComponent,
     UserProfileComponent,
     NotificationsComponent,
-    ViewQuestionComponent
+    ViewQuestionComponent,
+    CommentsComponent
   ],
   entryComponents:[AskQuestionComponent,AddAnswerComponent,UserProfileComponent],
   imports: [
