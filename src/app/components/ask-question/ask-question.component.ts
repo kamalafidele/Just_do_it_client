@@ -24,8 +24,11 @@ export class AskQuestionComponent implements OnInit {
   isLoading=false;
   dialogRef=this.dialog;
   config: AngularEditorConfig = AngularEditorConfigData;
+  allQuestions:any;
 
-  constructor(public questionServ:QuestionsService,public workspaceServ:WorkspacesService, public dialog:MatDialog) { } 
+  constructor(public questionServ:QuestionsService,public workspaceServ:WorkspacesService, public dialog:MatDialog) { 
+    this.allQuestions=JSON.parse(localStorage.getItem("allQuestions") || "[]");
+  } 
 
   ngOnInit(): void {
     this.workspaceServ.getUserWorkspaces()
@@ -59,6 +62,9 @@ export class AskQuestionComponent implements OnInit {
       this.questionServ.addQuestion(data)
       .subscribe((res:any) =>{
         this.isLoading=false;
+        
+        this.allQuestions.unshift(res.addedQuestion);
+        localStorage.setItem("allQuestions",JSON.stringify(this.allQuestions));
         window.location.reload();
       },
       (err:any) =>{
