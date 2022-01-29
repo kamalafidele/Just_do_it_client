@@ -8,8 +8,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { LikeDislike } from 'src/app/likeDislike';
 import {  fadeAnimation, slideAnimation, topSlideAnimation } from '../animations';
 
-
-
 @Component({
   selector: 'all-topics',
   templateUrl: './all-topics.component.html',
@@ -39,34 +37,56 @@ export class AllTopicsComponent implements OnInit {
    storedCookies:any=[];
    contentHasInit=false;  
    comment="";
+   allQuestionsCopy:any=JSON.parse(localStorage.getItem("allQuestions") || "[]");
 
   constructor(private questionService:QuestionsService,public dialog:MatDialog,private answerSer:AnswersService,
     public cookies:CookieService, public commentSer:CommentService) {
-    
-    this.isLoading=true;
+
     this.questionService.getAllQuestions()
     .subscribe((res:any) =>{
-      this.isLoading=false;
-      this.allQuestions=res.questions;
-  
-       this.numToReduce=res.questions.length/10;
-      this.currentQuestionsNum=res.questions.length-10;
-      this.contentHasInit=true;
-      this.questions=res.questions.slice(0,res.questions.length/this.numToReduce);
-      this.length=res.questions.length;
+      if(res.questions.length > this.allQuestionsCopy.length){ 
+       this.allQuestionsCopy=res.questions;
+       this.allQuestions=this.allQuestionsCopy;
+       this.numToReduce=this.allQuestionsCopy.length/10;
+       this.currentQuestionsNum=this.allQuestionsCopy.length-10;
+       this.contentHasInit=true;
+       this.questions=this.allQuestionsCopy.slice(0,this.allQuestionsCopy.length/this.numToReduce);
+       this.length=this.allQuestionsCopy.length;
+       this.allQuestionsCopy=this.allQuestionsCopy
+       this.sendQuestions.emit(this.allQuestionsCopy);
+      }
 
-      this.sendQuestions.emit(res.questions);
+      // THIS IS TO MAKE SURE THAT EVERY RECCENT CHANGES LIKE COMMENTS IS ALSO SAVED IN THE STORAGE
+      localStorage.setItem("allQuestions",JSON.stringify(res.questions))
     },
     (err) =>{
       this.notEmpty=false;
-      this.scrollEffect=false
-    }
-    )
-
+      this.scrollEffect=false})
    }
 
   ngOnInit(): void {
     this.user=this.passedUser;
+    // if(this.allQuestionsCopy.length <=0 ){
+    //   this.isLoading=true;
+    //   this.questionService.getAllQuestions()
+    //   .subscribe((res:any) =>{
+    //     this.isLoading=false;
+    //     this.allQuestions=res.questions;
+    //      localStorage.setItem("allQuestions",JSON.stringify(res.questions))
+    //   },
+    //   (err) =>{
+    //     this.notEmpty=false;
+    //     this.scrollEffect=false})
+    // }
+    this.allQuestions=this.allQuestionsCopy;
+    this.numToReduce=this.allQuestionsCopy.length/10;
+    this.currentQuestionsNum=this.allQuestionsCopy.length-10;
+    this.contentHasInit=true;
+    this.questions=this.allQuestionsCopy.slice(0,this.allQuestionsCopy.length/this.numToReduce);
+    this.length=this.allQuestionsCopy.length;
+    this.allQuestionsCopy=this.allQuestionsCopy
+    this.sendQuestions.emit(this.allQuestionsCopy);
+    
     }
 
   openAnsweringDialog(question:any){
@@ -147,6 +167,5 @@ addComment(answerId:any){
 
      },
      (err:any) =>{})
-     //console.log(commentObject);
 }
 }

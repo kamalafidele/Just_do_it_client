@@ -80,6 +80,8 @@ export class AddAnswerComponent implements OnInit {
       this.answerServ.addAnswer(data)
       .subscribe((res:any) =>{
         this.isLoading=false;
+
+        localStorage.setItem("allQuestions",JSON.stringify(res.newAllQuestions));
         window.location.reload();
       },
       (err:any) =>{

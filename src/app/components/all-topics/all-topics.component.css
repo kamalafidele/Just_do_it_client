@@ -12,6 +12,14 @@ div.commonDiv .question:first-child:hover{
 div.lightMode .question:first-child:hover{
    background-color: white;
 }
+div.lightMode .btn-answer:disabled{
+   background-color: rgb(226, 226, 226);
+   cursor: inherit;
+}
+div.commonDiv .btn-answer:disabled{
+   background-color: rgb(48, 47, 47);
+   cursor: inherit;
+}
 .comment-icon-cont{
    display: flex;
    align-items: center;

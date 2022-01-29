@@ -1,3 +1,4 @@
+import { CommentService } from './../../services/comment.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import { AddAnswerComponent } from '../add-answer/add-answer.component';
@@ -9,7 +10,7 @@ import { LikeDislike } from 'src/app/likeDislike';
 @Component({
   selector: 'specific-topic',
   templateUrl: './specific-topic.component.html',
-  styleUrls: ['./specific-topic.component.css','../loader.css']
+  styleUrls: ['./specific-topic.component.css','../loader.css','../all-topics/all-topics.component.css']
 })
 export class SpecificTopicComponent implements OnInit, OnChanges {
   @Input() passedTopic:any;
@@ -25,8 +26,9 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
    currentQuestionsNum=0;
    numToReduce=0;
    contentHasInit=false;
+   comment=""
 
-  constructor(public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService) { }
+  constructor(public dialog:MatDialog,private answerSer:AnswersService,public cookies:CookieService, private commentSer:CommentService) { }
 
   ngOnInit(): void {
     this.user=this.passedUser;
@@ -108,5 +110,30 @@ export class SpecificTopicComponent implements OnInit, OnChanges {
     }
 
   }
+
+  toggleDisplayComments(question:any){
+  
+    this.questions.forEach((q:any) => {
+      if(q.answertoshow &&  (q.answertoshow._id == question.answertoshow._id) )
+         q.answertoshow.showComments=!q.answertoshow.showComments;
+    })
+}
+
+addComment(answerId:any){
+  let commentObject={answerId:answerId,comment:this.comment};
+  this.comment="";
+  
+  this.commentSer.addComment(commentObject)
+  .subscribe((res:any) =>{
+    this.questions.forEach((q:any) =>{
+     if(q.answertoshow &&  (q.answertoshow._id == answerId) )
+       q.answertoshow.comments.push(res.addedComment);
+    })
+
+  },
+  (err:any) =>{})
+  //console.log(commentObject);
+}
+
 
 }
