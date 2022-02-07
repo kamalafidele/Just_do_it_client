@@ -20,6 +20,12 @@ div.commonDiv .btn-answer:disabled{
    background-color: rgb(48, 47, 47);
    cursor: inherit;
 }
+.arrow_upward:hover{
+   color: rgb(243, 105, 128);
+}
+.arrow_downward:hover{
+   color: rgb(63, 28, 41);
+}
 .comment-icon-cont{
    display: flex;
    align-items: center;
