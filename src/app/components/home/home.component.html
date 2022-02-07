@@ -76,9 +76,9 @@
               </div>
               <!-- FOR ANALYSIS -->
               <div class="dark-mode-btn" style="margin-top: 40%;" *ngIf="showThemeModeButton">
-                <button mat-raised-button style="background-color: dodgerblue;color: white; border-radius: 5px;" class="go-to-profile-btn" (click)="updateUserMode()">
-                    <span *ngIf="user.darkMode">Light mode</span>
-                    <span *ngIf="!user.darkMode">Dark mode</span> 
+                <button mat-button style="background-color: #185bf9;color: white; border-radius: 3px;" 
+                   class="go-to-profile-btn" (click)="updateUserMode()">
+                   <i class="fa fa-adjust" aria-hidden="true" style="font-size: 23px;"></i>
                   </button>
               </div>
               <!-- FOR ANALYSIS -->
@@ -131,10 +131,10 @@
                 
               <!-- BUTTON  FOR TURNING ON THE DARK MODE OF LIGHT MODE -->
               <div class="dark-mode-btn" style="margin-top: 30%; margin-left: 5%;">
-                <button mat-raised-button style="background-color: dodgerblue;color: white; border-radius: 20px;" class="go-to-profile-btn" (click)="updateUserMode()">
-                    <span *ngIf="user.darkMode">Light mode</span>
-                    <span *ngIf="!user.darkMode">Dark mode</span> 
-                  </button>
+                <button mat-button style="background-color: #185bf9;color: white; border-radius: 3px;" 
+                class="go-to-profile-btn" (click)="updateUserMode()">
+                <i class="fa fa-adjust" aria-hidden="true" style="font-size: 23px;" ></i>
+               </button>
               </div>
               <!-- END OF BUTTON  FOR TURNING ON THE DARK MODE OF LIGHT MODE -->
 
