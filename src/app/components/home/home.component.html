@@ -74,14 +74,7 @@
                 <img src="{{userWorkspace.picture}}"  alt="{{userWorkspace.name}}" class="topic-profile">
                 <h3 class="topic-name" matBadge="{{userWorkspace.isChecked ? '': '..' }}" matBadgePosition="above before" matBadgeColor="primary">{{userWorkspace.name}}</h3>
               </div>
-              <!-- FOR ANALYSIS -->
-              <div class="dark-mode-btn" style="margin-top: 40%;" *ngIf="showThemeModeButton">
-                <button mat-button style="background-color: #185bf9;color: white; border-radius: 3px;" 
-                   class="go-to-profile-btn" (click)="updateUserMode()">
-                   <i class="fa fa-adjust" aria-hidden="true" style="font-size: 23px;"></i>
-                  </button>
-              </div>
-              <!-- FOR ANALYSIS -->
+
           </div>
         </div>
         <div class="middle " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " (click)="abort()">
@@ -130,12 +123,12 @@
                 </div>
                 
               <!-- BUTTON  FOR TURNING ON THE DARK MODE OF LIGHT MODE -->
-              <div class="dark-mode-btn" style="margin-top: 30%; margin-left: 5%;">
+              <!-- <div class="dark-mode-btn" style="margin-top: 30%; margin-left: 5%;">
                 <button mat-button style="background-color: #185bf9;color: white; border-radius: 3px;" 
                 class="go-to-profile-btn" (click)="updateUserMode()">
                 <i class="fa fa-adjust" aria-hidden="true" style="font-size: 23px;" ></i>
                </button>
-              </div>
+              </div> -->
               <!-- END OF BUTTON  FOR TURNING ON THE DARK MODE OF LIGHT MODE -->
 
             </div>
