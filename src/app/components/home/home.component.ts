@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
    notificationChecked=false;
    notifications:any=[];
    mobileIcons=false;
-   defaultDesc="JustDoIt is a social platform where people discuss world matters and interesting topics that you like..";
    defaultImg="https://res.cloudinary.com/justdoit/image/upload/v1637511391/users/images/Just_do_display_image_a4lvcx.png"; 
    itemsForSearching:any=[];
    searchInput:any;
@@ -54,8 +53,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
      this.title.setTitle("JDI | Home");
-     this.meta.updateTag({name:"description",content:this.defaultDesc});
+     this.meta.updateTag({property:"og:title",content:"Just Do It"});
      this.meta.updateTag({property:"og:image",content:this.defaultImg});
+     this.meta.updateTag({property:"og:description",content:"A question and answer platform"});
 
      this.workspaceSer.getUserWorkspaces()
      .subscribe((res:any) =>{

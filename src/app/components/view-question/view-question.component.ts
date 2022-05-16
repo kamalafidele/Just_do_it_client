@@ -66,13 +66,13 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
        this.topicId=res.question.topic._id;
        this.length2=res.answers.length;
        this.title.setTitle(res.question.question);
-       this.meta.updateTag({name:"description",content:res.question.question});
+       this.meta.updateTag({property:"og:title",content:res.question.question});
 
        if(res.answers.length > 0)
-         this.meta.addTag({property:"og:description",content:res.answers[0].answer});
+         this.meta.updateTag({property:"og:description",content:res.answers[0].answer});
 
        if(res.answers.length > 0 && res.answers[0].images.length > 0 )
-          this.meta.updateTag({property:"og:image",content:res.answers[0].images[0]})
+          this.meta.updateTag({property:"og:image",content:res.answers[0].images[0]});
          
      },
      (err:any) =>{
