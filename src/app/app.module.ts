@@ -53,7 +53,7 @@ import { CommentsComponent } from './components/comments/comments.component';
   ],
   entryComponents:[AskQuestionComponent,AddAnswerComponent,UserProfileComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
