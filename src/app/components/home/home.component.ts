@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
    notificationChecked=false;
    notifications:any=[];
    mobileIcons=false;
-   defaultImg="https://res.cloudinary.com/justdoit/image/upload/v1637511391/users/images/Just_do_display_image_a4lvcx.png"; 
+   defaultImg="https://res.cloudinary.com/justdoit/image/upload/v1660559830/questionImages/images/new_jdi_back_ja4yrb.png"; 
    itemsForSearching:any=[];
    searchInput:any;
    isSearching=false;
@@ -80,15 +80,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     
       })
 
-      setTimeout(() =>{
-        this.notif.getAllAdds()
-        .subscribe((res:any) =>{
-          this.addLoading=false;
-          this.adds=res.adds.filter((add:any) => add.name !=="Codeama");
-        },
-        (err:any) =>{this.addLoading=false;}
-        )
-      },5000);
+      // setTimeout(() =>{
+      //   this.notif.getAllAdds()
+      //   .subscribe((res:any) =>{
+      //     this.addLoading=false;
+      //     this.adds=res.adds.filter((add:any) => add.name !=="Codeama");
+      //   },
+      //   (err:any) =>{this.addLoading=false;}
+      //   )
+      // },5000);
 
       setTimeout(() =>{
         this.showThemeModeButton=true;

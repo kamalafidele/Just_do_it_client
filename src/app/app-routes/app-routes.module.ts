@@ -10,21 +10,21 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ViewQuestionComponent } from '../components/view-question/view-question.component';
 
 
-const routes:Routes=[
-  {component:HomeComponent,path:"",canActivate:[AuthGuardService]},
-  {component:AccountComponent,path:"account"},
-  {component:WorkspaceComponent,path:"workspace",canActivate:[AuthGuardService]},
-  {component:VerifyEmailComponent,path:"verifyEmail/:id"},
-  {component:EmailSentComponent,path:"emailSent"},
-  {component:ViewQuestionComponent, path:"questionAnswers/:questionId"}
+const routes:Routes = [
+  { component: HomeComponent, path: "", canActivate: [AuthGuardService] },
+  { component: AccountComponent, path: "account"},
+  { component: WorkspaceComponent, path: "workspace", canActivate: [AuthGuardService] },
+  { component: VerifyEmailComponent, path: "verifyEmail/:id"},
+  { component: EmailSentComponent, path: "emailSent"},
+  { component: ViewQuestionComponent, path:"questionAnswers/:questionId"}
 ]
 
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports:[RouterModule],
+  exports: [RouterModule],
   providers:[
-    {provide:JWT_OPTIONS,useValue:JWT_OPTIONS},
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
   ]
 })

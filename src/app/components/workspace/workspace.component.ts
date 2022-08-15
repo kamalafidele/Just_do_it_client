@@ -8,17 +8,17 @@ import { WorkspacesService } from 'src/app/services/workspaces.service';
   styleUrls: ['./workspace.component.css']
 })
 export class WorkspaceComponent implements OnInit {
-  workspaces:any =[];
-  selectedWorkspaces:any=[];
-  isChecked=false;
-  isLoading=false;
+  workspaces:any = [];
+  selectedWorkspaces:any = [];
+  isChecked = false;
+  isLoading = false;
 
   constructor(private workspaceService:WorkspacesService,private router:Router) { }
 
   ngOnInit(): void {
 
     this.workspaceService.getUserWorkspaces()
-    .subscribe((res:any) =>{
+    .subscribe((res:any) => {
       if(res.userWorkspaces[0].workspaces.length >= 5)
          this.router.navigate(["/"]);
     })

@@ -5,7 +5,7 @@
             <div>
                 <a [routerLink]="['/']" style="text-decoration: none;">
                     <h2 class="header vieq-header" id="mobile-header">JDI</h2>
-                    <h2 class="header">JustDoIt</h2>
+                    <h2 class="header">JDI</h2>
                 </a>
             </div>
             <div *ngIf="user" class="home-ic" [ngStyle]="{'color': user && user.darkMode ? 'white' : 'black' }">
@@ -56,7 +56,7 @@
                         <img src="{{question.askedBy.avatar}}" alt="{{question.askedBy.username}}" class="askedBy-img">
                         <strong class="askedBy-username"  
                         [ngStyle]="user && user.darkMode ? {color:'white'} : {color:'black'}">{{question.askedBy.username}} 
-                            <em *ngIf="question.askedBy.isPro" style="color: dodgerblue;">Pro</em> </strong> 
+                            <em *ngIf="question.askedBy.isPro" style="color: #3f51b5;">Pro</em> </strong> 
                     </div>
                     
                 </div>
@@ -153,7 +153,7 @@
         <div class="add-images" style="padding-top: 5px;">
             <!-- <h2 style="padding-left: 10px;color: dodgerblue; font-family: Verdana, Geneva, Tahoma, sans-serif;" >TRENDING WEB APPS </h2> -->
             <div class="advertise-disclaimer" *ngIf="addLoading">
-                <a href="mailto://justdoitrw2@gmail.com" style="text-decoration: none; color: dodgerblue;"   >
+                <a href="mailto://justdoitrw2@gmail.com" style="text-decoration: none; color: #3f51b5;"   >
                     <h2 style="text-align: center;padding: 10%;">Advertise with JDI</h2> 
                 </a>
                   <img [src]="addLoader" alt="addLoader" class="addLoaderImg">

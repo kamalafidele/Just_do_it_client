@@ -6,12 +6,10 @@ import { MYAPIS } from '../components/Api';
   providedIn: 'root'
 })
 export class WorkspacesService {
-  token=localStorage.getItem("justDoitTokAuth")
+  token = localStorage.getItem("justDoitTokAuth")
   constructor(private http:HttpClient) { }
 
   getAllWorkspaces(){
-    
-
     return this.http.get(`${MYAPIS.LIVEAPI}/workspaces/allWorkspaces`,{headers:{"Bearer":`${this.token}`}});
   }
 

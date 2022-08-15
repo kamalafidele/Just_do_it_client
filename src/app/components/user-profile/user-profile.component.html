@@ -2,7 +2,7 @@
     <div class="profile-container-header">
         <img [src]="user.profile"  alt="{{user.username}}" class="user-profile-img" *ngIf="!isUploaded">
         <img [src]="uploadedImgCopy" *ngIf="isUploaded" class="user-profile-img" id="isUploading">
-        <h2>{{user.username}} <strong><em *ngIf="user.isPro" style="color: dodgerblue;">Pro</em></strong> </h2>
+        <h2>{{user.username}} <strong><em *ngIf="user.isPro" style="color: #3f51b5;">Pro</em></strong> </h2>
     </div>
     <div class="upload">
         <input type="file" name="uploadedImg" id="uploaded" style="display: none;" [(ngModel)]="uploadedImg" (change)="upload($event)">

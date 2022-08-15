@@ -2,28 +2,28 @@ div.container{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("https://res.cloudinary.com/justdoit/image/upload/v1641235015/questionImages/images/Back3_vrkr3k.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    /* background-image: url("https://res.cloudinary.com/justdoit/image/upload/v1641235015/questionImages/images/Back3_vrkr3k.jpg"); */
+    background-image: linear-gradient(0deg,white 45%, #3f51b5 30%);
     height: 100%;
 }
 div.content-container{
     width:45%;
     margin-top: 5%;
     padding: 10px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     background-color: white;
     border-radius: 5px;
 }
 div.head h2.header{
     text-align: center;
-    color: dodgerblue;
-    font-size: 50px;
+    color: #3f51b5;
+    font-size: 40px;
 }
 div.head p{
     text-align: center;
     color: black;
     font-weight: bold;
-    font-size: 23px;
+    font-size: 18px;
 }
 
 @media only screen and (max-width:620px){

@@ -3,19 +3,19 @@
     <div class="navbar " [ngClass]="user.darkMode ? 'commonDiv darkBorder' : 'lightMode lightBorder' " (click)="abort()">
         <div class="head-search" (click)="hideSettings()">
             <div>
-                <h2 class="header">JustDoIt</h2>
+                <h2 class="header">JDI</h2>
                 <h2 class="header" id="mobile-header">JDI</h2>
             </div>
         </div>
 
         <div class="defaultIcons" (click)="hideSettings()">
             <div class="home-icon-container">
-                <i class="fa fa-home home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? 'dodgerblue': user.darkMode ? 'white' : 'black'}"
+                <i class="fa fa-home home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? '#3f51b5': user.darkMode ? 'white' : 'black'}"
                  aria-hidden="true" (click)="goHome()"></i>
                 <!-- <mat-icon class="home-icon" [ngStyle]="{'color':noneChecked && !notificationChecked ? 'dodgerblue': user.darkMode ? 'white' : 'black'}" (click)="goHome()">home</mat-icon> -->
             </div>
                 <div class="notification-icon-container">
-                    <i class="fa fa-bell notification-icon" [ngStyle]="{'color':noneChecked && notificationChecked ? 'dodgerblue': user.darkMode ? 'white' : 'black'}" 
+                    <i class="fa fa-bell notification-icon" [ngStyle]="{'color':noneChecked && notificationChecked ? '#3f51b5': user.darkMode ? 'white' : 'black'}" 
                     [matBadge]="notifications.length>0 ? notifications.length : '' " matBadgeColor="warn" (click)="changeNotifyStatus()" aria-hidden="true"></i>
                     <!-- <mat-icon class="notification-icon"  [ngStyle]="{'color':noneChecked && notificationChecked ? 'dodgerblue': user.darkMode ? 'white' : 'black'}"
                      [matBadge]="notifications.length>0 ? notifications.length : '' " matBadgeColor="warn" (click)="changeNotifyStatus()">notifications_none</mat-icon> -->
@@ -94,7 +94,7 @@
            
         </div>
         <div class="right-sidebar " [ngClass]="user.darkMode ? 'commonDiv rightBorderDark' : 'lightMode rightBorderLight' " (click)="abort()">
-               <div class="add-images" style="margin-top: 10px;">
+               <!-- <div class="add-images" style="margin-top: 10px;">
 
                 <div class="advertise-disclaimer" *ngIf="addLoading">
                     <a href="mailto://justdoitrw2@gmail.com" style="text-decoration: none; text-align: center; color: dodgerblue;"   >
@@ -108,7 +108,7 @@
                            <img [src]="user.darkMode ? add.addDarkImage : add.addLightImage" alt="add.name">
                        </a>
                    </div>
-               </div>
+               </div> -->
         </div>
     </div>
     <div class="test " [ngClass]="user.darkMode ? 'commonDiv' : 'lightMode' " id="tdiv">        

@@ -106,7 +106,7 @@ export class ViewQuestionComponent implements OnInit, AfterViewInit {
       this.notif.getAllAdds()
       .subscribe((res:any) =>{
         this.addLoading=false
-        this.adds=res.adds.filter((add:any) => add.name !=="Booking")
+        this.adds=res.adds.filter((add:any) => add.name !=="Codeama")
       })
      },5000);
      

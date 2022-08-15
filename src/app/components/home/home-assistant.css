@@ -25,7 +25,8 @@ div.left-sidebar{
     left: 0;
     bottom: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 30px;
 }
 
 div.middle{
@@ -62,7 +63,7 @@ div.user-workspaces{
     margin-top: 20px;
 }
  .topic-name:hover{
-   color: dodgerblue;
+   color: #3f51b5;
 }
 a{
     text-decoration: none;
@@ -86,7 +87,7 @@ div.user-workspace h3{
     color: black;
 }
 .active h3{
-    color: dodgerblue;
+    color: #3f51b5;
 }
 div.test{
     display: none;

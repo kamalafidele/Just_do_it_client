@@ -26,7 +26,7 @@ div.head-search{
 }
 
 h2.header{
-    color: dodgerblue;
+    color: #3f51b5;
     font-size: 40px;
     padding-left: 20px;
 }
@@ -87,7 +87,7 @@ h2.header{
     font-weight: bold;
 }
 div.lightMode .spa-search-link:hover{
-    color: rgb(9, 108, 207);
+    color: #3f51b5;
 }
 div.commonDiv .spa-search-link:hover{
     color: rgb(65, 158, 252);
@@ -158,7 +158,7 @@ div.home-icon-container{
     height: 35px;
     border-radius: 40px;
     color: white;
-    background-color: dodgerblue;
+    background-color: #3f51b5;
     border: none;
     cursor: pointer;
 }

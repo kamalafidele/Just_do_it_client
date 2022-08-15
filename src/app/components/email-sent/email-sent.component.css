@@ -1,6 +1,6 @@
 div.container{
     height: 100vh;
-    background-image: linear-gradient(0deg,white 45%, #001E3C 30%);
+    background-image: linear-gradient(0deg,white 45%, #3f51b5 30%);
 }
 div.content-container{
     display: flex;
